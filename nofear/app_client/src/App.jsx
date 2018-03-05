@@ -21,12 +21,15 @@ class App extends Component {
             <Navbar />
             <div className = "container">
               <Route exact path ="/" component={Home}/>
-              <Route exact path ="/employees" component={EmployeeHome}/>
-              <Route exact path ="/employees/add" component={EmployeeAdd}/>
-              <Route exact path ="/employees/edit/:id" component={EmployeeEdit}/>
-              <Route exact path ="/employees/view/:id" component={EmployeeView}/>
+              <Route exact path ="/news" component={News}/>
+              <Route exact path ="/chat" component={Chat}/>
+              <Route exact path ="/events" component={Events}/>
+              <Route exact path ="/user/add" component={UserAdd}/>
+              <Route exact path ="/user/view/:id" component={UserView}/>
+              <Route exact path ="/user/edit/:id" component={UserEdit}/>
+
             </div>
-            {/* footer go here yo */}
+            {/* footer if we want one */}
           </div>
         </Router>
       </div>
