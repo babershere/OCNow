@@ -34,8 +34,8 @@ mongoose.connect(MONGODB_URI, {
 });
 
 // Database configuration
-// let databaseUrl = "news";
-// let collections = ["user"];
+let databaseUrl = "newsdb";
+let collections = ["users", "stories", "blog", "replies"];
 
 // Hook mongojs configuration to the db variable
 const db = mongojs(databaseUrl, collections);

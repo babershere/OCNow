@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Route} from "react-router-dom";
-import Home from "./components/Home";
 import Navbar from "./components/Navbar";
-// employee components
-import EmployeeHome from "./pages/employees/EmployeeHome";
-import EmployeeAdd from "./pages/employees/EmployeeAdd";
-import EmployeeEdit from "./pages/employees/EmployeeEdit";
-import EmployeeView from "./pages/employees/EmployeeView";
+
+import Home from "./pages/Home";
+import UserAdd from "./pages/UserAdd";
+import UserEdit from "./pages/UserEdit";
+import UserProfile from "./pages/UserProfile";
+
 
 
 import logo from './logo.svg';
@@ -21,12 +21,10 @@ class App extends Component {
             <Navbar />
             <div className = "container">
               <Route exact path ="/" component={Home}/>
-              <Route exact path ="/news" component={News}/>
-              <Route exact path ="/chat" component={Chat}/>
-              <Route exact path ="/events" component={Events}/>
+              <Route exact path ="/user/edit" component={UserEdit}/>
               <Route exact path ="/user/add" component={UserAdd}/>
-              <Route exact path ="/user/view/:id" component={UserView}/>
-              <Route exact path ="/user/edit/:id" component={UserEdit}/>
+              <Route exact path ="/user/profile/:id" component={UserProfile}/>
+
 
             </div>
             {/* footer if we want one */}
