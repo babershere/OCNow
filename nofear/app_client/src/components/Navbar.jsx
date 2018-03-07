@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import CitiesDropDown from "./CitiesDropDown"
 
 class Navbar extends React.Component {
 
@@ -66,7 +67,6 @@ class Navbar extends React.Component {
                     <input name="searchTerm" type="text" className="search-query form-control" placeholder="Search" value={this.state.searchTerm} onChange={this.handleChange} />
                 </form> 
                 </div>
-
 
                 <div className="navbar-form navbar-right">                
                     <form className="navbar-search pull-right" >
