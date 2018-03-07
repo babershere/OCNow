@@ -1,5 +1,5 @@
 const express = require("express");
-const bodyParser = require("body-parser");
+// const bodyParser = require("body-parser");
 // const models = require("./app_api/models");
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -8,19 +8,19 @@ const app = express();
 const mongojs = require("mongojs");
 const mongoose = require("mongoose");
 // Require request and cheerio. This makes the scraping possible
-const request = require("request");
-const cheerio = require("cheerio");
-const router = express.Router();
-const axios = require('axios');
+// const request = require("request");
+// const cheerio = require("cheerio");
+// const router = express.Router();
+// const axios = require('axios');
 
 
 // Serve static content for the app from the "public" directory in the application directory.
-app.use(express.static("public"));
+// app.use(express.static("public"));
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-app.use(express.static('app_client/build'));
-app.use("/api", apiRoutes)
+// app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.json());
+// app.use(express.static('app_client/build'));
+// app.use("/api", apiRoutes)
 
 // If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
 var MONGODB_URI =
@@ -35,7 +35,8 @@ mongoose.connect(MONGODB_URI, {
 
 // Database configuration
 let databaseUrl = "newsdb";
-let collections = ["users", "stories", "blog", "replies"];
+let collections = ["users", "articles", "blog", "replies"];
+
 
 // Hook mongojs configuration to the db variable
 const db = mongojs(databaseUrl, collections);
