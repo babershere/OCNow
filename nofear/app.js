@@ -1,9 +1,9 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-// const models = require("./app_api/models");
+const models = require("./app_api/models");
 const PORT = process.env.PORT || 3001;
 const app = express();
-// const apiRoutes = require("./app_api/routes/index.routes");
+const apiRoutes = require("./app_api/routes/index.routes");
 
 const mongojs = require("mongojs");
 const mongoose = require("mongoose");
@@ -35,7 +35,8 @@ mongoose.connect(MONGODB_URI, {
 
 // Database configuration
 let databaseUrl = "newsdb";
-let collections = ["users", "stories", "blog", "replies"];
+let collections = ["users", "articles", "blog", "replies"];
+
 
 // Hook mongojs configuration to the db variable
 const db = mongojs(databaseUrl, collections);
