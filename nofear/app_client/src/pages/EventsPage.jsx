@@ -1,13 +1,13 @@
 import React from "react";
 import Chat from '../components/Chat';
-import News from '../components/News'
+import Events from '../components/Events'
 import Deals from '../components/Deals';
 
-const Home = () => 
+const EventsPage = () => 
     <div>
         <div className='row'>
             <div className='col-md-12'>
-                <h1>Home Page</h1>
+                <h1> Events Page</h1>
             </div>
         </div>
 
@@ -16,7 +16,7 @@ const Home = () =>
                 <Deals />
             </div>
             <div className='col-md-5'>
-                <News />
+                <Events />
             
             </div>
             <div className='col-md-4'>
@@ -28,4 +28,4 @@ const Home = () =>
     </div>
     
 
-export default Home;
+export default EventsPage;
