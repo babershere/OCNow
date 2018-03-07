@@ -5,19 +5,30 @@ class Navbar extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {value: ''};
+        this.state = {
+            searchTerm: '',
+            userPassword: '',
+            userName: ''
+        };
     
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
       }
     
       handleChange(event) {
-        this.setState({value: event.target.value});
+        const inputName = event.target.name;
+        this.setState({[inputName]: event.target.value});
+        console.log(this.state)
       }
     
       handleSubmit(event) {
-        alert('A name was submitted: ' + this.state.value);
         event.preventDefault();
+        this.setState({
+            searchTerm: '',
+            userPassword: '',
+            userName: ''
+        }) 
+
       }
     
 
@@ -27,7 +38,7 @@ class Navbar extends React.Component {
             <div className="container-fluid">
                 <div className="navbar-header">
                     <Link className="navbar-brand" to="/">
-                        Home
+                        NEWSIE
                     </Link>
                 </div>
                 <ul className="nav navbar-nav">
@@ -40,40 +51,41 @@ class Navbar extends React.Component {
                     >
                     <Link to="/">Home</Link>
                     </li>
-                    <li
-                    className={window.location.pathname === "/user/profile/:id" ? "active" : ""}
-                    >
-                    <Link to="/user/profile/:id">My Profile</Link>
+                    
+                    <li className={window.location.pathname === "/events" ? "active" : ""}>
+                    <Link to="/events">Events</Link>
                     </li>
-                    {/* <li className={window.location.pathname === "/search" ? "active" : ""}>
-                    <Link to="/search">Search</Link>
-                    </li> */}
-   
+
+                    <li className={window.location.pathname === "/user/profile/:id" ? "active" : ""}>
+                    <Link to="/user/profile/:id">My Profile</Link>
+                    </li>   
                 </ul>
 
-                <form className="navbar-form navbar-left">
+                <div className="navbar-form navbar-left">
                 <form className="navbar-search pull-right" onSubmit={this.handleSubmit}>
-                    <input type="text" className="search-query form-control" placeholder="Search" value={this.state.value} onChange={this.handleChange} />
+                    <input name="searchTerm" type="text" className="search-query form-control" placeholder="Search" value={this.state.searchTerm} onChange={this.handleChange} />
                 </form> 
-                </form>
+                </div>
 
-                <form className="navbar-form navbar-right">                
+
+                <div className="navbar-form navbar-right">                
                     <form className="navbar-search pull-right" >
                         <div className="form-group" onSubmit={this.handleSubmit}>
-                            <input type="text" className="form-control" placeholder="User Name" value={this.state.value} onChange={this.handleChange} />
-                            <input type="text" className="form-control" placeholder="Password" value={this.state.value} onChange={this.handleChange} />                    
-                            <button className="btn btn-primary" disabled="">Login</button>
+                            <input name="userName" type="text" className="form-control" placeholder="User Name" value={this.state.userName} onChange={this.handleChange} />
+                            <input name="userPassword" type="password" className="form-control" placeholder="Password" value={this.state.userPassword} onChange={this.handleChange} />                    
+                            <button className="btn btn-primary" disabled="">Log In</button>
+                            <button className="btn btn-danger" disabled="">Log Out</button>
                         </div>
                     </form> 
-                </form>
+                </div>
 
-                <form className="navbar-form navbar-right">                
+                <div className="navbar-form navbar-right">                
                     <form className="navbar-search pull-right" >
                         <div className="form-group" onSubmit={this.handleSubmit}>
                             <button className="btn btn-success" disabled="">Sign Up</button>
                         </div>
                     </form> 
-                </form>
+                </div>
             </div>         
         </nav>
         )
