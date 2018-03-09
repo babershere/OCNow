@@ -20,9 +20,18 @@ const userSchema = new Schema ({
     },
     email: {
         type: String,
+        unique: true,
         required: true
     },
     password: {
+        type: String,
+        required: true
+    },
+    salt: {
+        type: String,
+        required: true
+    },
+    hash: {
         type: String,
         required: true
     },
@@ -34,6 +43,12 @@ const userSchema = new Schema ({
     }],
     _id: false
 });
+
+
+
+
+
+
 // This creates our model from above schema, using mongoose's model method
 const User = mongoose.model('User', userSchema);
 // Export the User Model

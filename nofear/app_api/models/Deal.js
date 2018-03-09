@@ -20,5 +20,5 @@ const goals = new Schema ({
 });
 // This creates our model from above schema, using mongoose's model method
 const Deal = mongoose.model("Deal", articleSchema);
-// Export the User Model
+// Export the Deal Model
 module.exports = Deal;
