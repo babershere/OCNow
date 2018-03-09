@@ -11,7 +11,6 @@ class CitiesDropDown extends React.Component {
 
   handleChange(event) {
     this.setState({value: event.target.value})
-      alert('Now scraping: ' + event.target.value)
   }
 
   handleSubmit(event) {
