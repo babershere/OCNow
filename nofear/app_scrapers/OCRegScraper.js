@@ -1,7 +1,7 @@
 let cheerio = require('cheerio');
 let request = require('request');
 
-module.exports.OCRegScraper= function() {
+module.exports.OCRegScraper = function() {
 
     request("https://www.ocregister.com/location/california/orange-county/mission-viejo/", function(error, response, html) {
 
@@ -45,3 +45,5 @@ module.exports.OCRegScraper= function() {
   });
 
 }
+
+console.log('OCRegScraper.js file reached')
