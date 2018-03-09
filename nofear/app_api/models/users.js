@@ -37,4 +37,4 @@ const userSchema = new Schema ({
 // This creates our model from above schema, using mongoose's model method
 const User = mongoose.model('User', userSchema);
 // Export the User Model
-modeule.exports = User;
+module.exports = User;

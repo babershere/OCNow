@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import CitiesDropDown from "./CitiesDropDown"
+// import CitiesDropDown from "./CitiesDropDown"
 
 class Navbar extends React.Component {
 
@@ -69,7 +69,7 @@ class Navbar extends React.Component {
                 </div>
 
                 <div className="navbar-form navbar-right">                
-                    <form className="navbar-search pull-right" >
+                    <form className="navbar-search" >
                         <div className="form-group" onSubmit={this.handleSubmit}>
                             <input name="userName" type="text" className="form-control" placeholder="User Name" value={this.state.userName} onChange={this.handleChange} />
                             <input name="userPassword" type="password" className="form-control" placeholder="Password" value={this.state.userPassword} onChange={this.handleChange} />                    

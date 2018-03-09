@@ -1,7 +1,19 @@
 import React from "react";
+import scraper from '../helpers/OCRegScraper.js'
 
-const News = () => 
+class News extends React.Component {
 
-    <h1>News Component</h1>
+    render() {
+        scraper.OCRegScraper();
+        return (
+            <h1>News Component</h1>
+        )
+        
+    }
+    
+
+} 
+
+    
 
 export default News;

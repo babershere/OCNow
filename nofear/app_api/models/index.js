@@ -3,4 +3,4 @@ module.exports = {
     User: require('./users')
   };
 
-export const User = require('./user');
+// export const User = require('./user');
