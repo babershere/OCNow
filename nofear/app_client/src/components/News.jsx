@@ -2,11 +2,21 @@ import React from "react";
 
 class News extends React.Component {
 
+    constructor(props) {
+        super(props);
+    
+        // This binding is necessary to make `this` work in the callback
+        this.handleScrapeData = this.handleScrapeData.bind(this);
+      }
+
     handleScrapeData() {
         fetch('/scrape')
             .then((response) => {
-                console.log('I work!');
-                console.log(response);
+                // console.log(response);
+                console.log('Button clicked at component level!');
+                response.json().then((data) => {
+                    console.log("client: ", data);
+                });
             })
             .catch(err => console.log(err));
     }
