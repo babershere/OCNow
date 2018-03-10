@@ -28,7 +28,13 @@ const ArticleSchema = new Schema({
   publication: {
     type: Date,
     required: true
-  }
+  }, 
+  // Object array of favorite articles potentially saved
+  favorites: [{
+    title: String,
+    url: String,
+    date: Date,
+}],
 });
 // This creates our model from the above schema, using mongoose's model method
 const Article = mongoose.model('Article', ArticleSchema);

@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 // Save a reference to the Schema constructor
 const Schema = mongoose.Schema;
 
+var bcrypt   = require('bcrypt-nodejs');
 // Using the schema constructor, create a new Userchema Object
 // This is similar to a Sequelize model
 const userSchema = new Schema ({
@@ -27,6 +28,11 @@ const userSchema = new Schema ({
         type: String,
         required: true
     },
+    local: {
+        email: String,
+        password: String,
+        required: true
+    }
     salt: {
         type: String,
         required: true
@@ -35,16 +41,30 @@ const userSchema = new Schema ({
         type: String,
         required: true
     },
-    // Object array of favorite articles potentially saved
-    favorites: [{
-        title: String,
-        url: String,
-        date: Date,
-    }],
+    facebook: {
+        id: String,
+        token: String,
+        name: String,
+        email: String
+    }
+    google: {
+        id: String,
+        token: String,
+        email: String,
+        name: String
+    }
     _id: false
 });
 
+// generating a hash
+userSchema.methods.generateHash = function(password) {
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+};
 
+// checking if password is valid
+userSchema.methods.validPassword = function(password) {
+    return bcrypt.compareSync(password, this.local.password);
+};
 
 
 
