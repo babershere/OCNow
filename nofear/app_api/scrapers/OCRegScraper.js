@@ -17,7 +17,7 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get("/scrape", function(req, res) {
-  console.log('The "/" route was hit')
+  console.log('The "/scrape" route was hit')
   request("https://www.ocregister.com/location/california/orange-county/mission-viejo/", function(error, response, html) {
 
     // Load the HTML into cheerio and save it to a variable
@@ -27,7 +27,7 @@ app.get("/scrape", function(req, res) {
     // Select each element in the HTML body from which you want information.
     // NOTE: Cheerio selectors function similarly to jQuery's selectors,
     // but be sure to visit the package's npm page to see how it works
-    let justScraped = [];
+    let justScrapedArr = [];
     
     $("article.archive-view").each(function(i, element) {
   
@@ -41,22 +41,19 @@ app.get("/scrape", function(req, res) {
           if (error) {
             console.log(error);
           } else {            
-            justScraped.push({
+            justScrapedArr.push({
               title: title,
               link: link,
               date: date
             })            
-            const hbsObject = {
-              news: justScraped
-            };
           }
       }        
     });
-    const hbsObject = {
-      news: justScraped
+    const scapeObject = {
+        data: justScrapedArr
     };
-    res.render("index", hbsObject);         
-    console.log('Number of Stories Scraped: ' + justScraped.length) 
+    res.send(justScrapedArr);         
+    console.log('Number of Stories Scraped: ' + justScrapedArr.length) 
   });
 });
 
