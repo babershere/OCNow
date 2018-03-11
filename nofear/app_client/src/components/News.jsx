@@ -14,9 +14,9 @@ class News extends React.Component {
             .then((response) => {
                 // console.log(response);
                 console.log('Button clicked at component level!');
-                response.json().then((data) => {
-                    console.log("client: ", data);
-                });
+                // response.json().then((data) => {
+                //     console.log("client: ", data);
+                // });
             })
             .catch(err => console.log(err));
     }
