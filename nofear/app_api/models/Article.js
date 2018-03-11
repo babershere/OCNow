@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 // Using the Schema constructor, create a new UserSchema object
 // This is similar to a Sequelize model
-const ArticleSchema = new Schema({
+const articleSchema = new Schema({
   // `title` is required and of type String
   title: {
     type: String,
@@ -37,6 +37,6 @@ const ArticleSchema = new Schema({
 }],
 });
 // This creates our model from the above schema, using mongoose's model method
-const Article = mongoose.model('Article', ArticleSchema);
+const Article = mongoose.model('Article', articleSchema);
 // Export the Article Model
 module.exports = Article;

@@ -32,7 +32,7 @@ const userSchema = new Schema ({
         email: String,
         password: String,
         required: true
-    }
+    },
     salt: {
         type: String,
         required: true
@@ -46,13 +46,13 @@ const userSchema = new Schema ({
         token: String,
         name: String,
         email: String
-    }
+    },
     google: {
         id: String,
         token: String,
         email: String,
         name: String
-    }
+    },
     _id: false
 });
 
@@ -65,8 +65,6 @@ userSchema.methods.generateHash = function(password) {
 userSchema.methods.validPassword = function(password) {
     return bcrypt.compareSync(password, this.local.password);
 };
-
-
 
 
 // This creates our model from above schema, using mongoose's model method

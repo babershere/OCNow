@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 // Using the Schema constructor, create a new UserSchema object
 // This is similar to a Sequelize model
-const ChatSchema = new Schema ({
+const chatSchema = new Schema ({
     userName: {
         title: String,
         required: true
@@ -14,6 +14,6 @@ const ChatSchema = new Schema ({
     }
 });
 // This creates our model from the above schema, using mongoose's model method
-const Chat = mongoose.model('Chat', ChatSchema);
+const Chat = mongoose.model('Chat', chatSchema);
 // Export the Chat model
 module.exports = Chat;

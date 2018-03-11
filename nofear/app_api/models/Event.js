@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 // Using the Schema constructor, create a new UserSchema object
 // This is similar to a Sequelize model
-const EventSchema = new Schema({
+const eventSchema = new Schema({
     title: {
         type: String,
         required: true
@@ -22,6 +22,6 @@ const EventSchema = new Schema({
     }
 })
 // This creates our model from the above schema, using mongoose's model method
-const Event = mongoose.model('Event', EventSchema);
+const Event = mongoose.model('Event', eventSchema);
 // Export the Event Model
 module.exports = Event;
