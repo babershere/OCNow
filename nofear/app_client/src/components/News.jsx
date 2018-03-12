@@ -4,7 +4,13 @@ class News extends React.Component {
 
     constructor(props) {
         super(props);
-    
+        this.state = {
+            title:'',
+            description:'',
+            link:'',
+            note:''
+        }
+
         // This binding is necessary to make `this` work in the callback
         this.handleScrapeData = this.handleScrapeData.bind(this);
       }
@@ -12,7 +18,7 @@ class News extends React.Component {
     handleScrapeData() {
         fetch('/scrape')
             .then((response) => {
-                // console.log(response);
+                console.log(response);
                 console.log('Button clicked at component level!');
                 // response.json().then((data) => {
                 //     console.log("client: ", data);
@@ -20,6 +26,10 @@ class News extends React.Component {
             })
             .catch(err => console.log(err));
     }
+
+    componentDidMount() {
+            this.handleScrapeData
+        }
 
     render() {
         

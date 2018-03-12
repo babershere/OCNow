@@ -7,8 +7,7 @@ router.route("/")
   .post(userController.create);
 
 // Matches with "/api/user/:id"
-router
-  .route("/:id")
+router.route("/:id")
   .get(userController.findById)
   .put(userController.update)
   .delete(userController.remove);
