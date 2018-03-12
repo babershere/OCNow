@@ -7,17 +7,17 @@ let location = '';
 
 class Weather extends React.Component {
 
-    getWeather = async (location) => {
+    // getWeather = async (location) => {
         
-        const api_call = await fetch(`http://api.wunderground.com/api/${weatherAPI_Key}/conditions/q/CA/Costa_Mesa.json`)
+    //     const api_call = await fetch(`http://api.wunderground.com/api/${weatherAPI_Key}/conditions/q/CA/Costa_Mesa.json`)
 
-        const data = await api_call.json();
-        console.log(data);
-    }
+    //     const data = await api_call.json();
+    //     console.log(data);
+    // }
 
-    componentDidMount() {
-        this.getWeather
-    }
+    // componentDidMount() {
+    //     this.getWeather
+    // }
 
     render() {
         return (

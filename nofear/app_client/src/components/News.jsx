@@ -18,7 +18,7 @@ class News extends React.Component {
     handleScrapeData() {
         fetch('/scrape')
             .then((response) => {
-                // console.log(response);
+                console.log(response);
                 console.log('Button clicked at component level!');
                 // response.json().then((data) => {
                 //     console.log("client: ", data);
@@ -26,6 +26,10 @@ class News extends React.Component {
             })
             .catch(err => console.log(err));
     }
+
+    componentDidMount() {
+            this.handleScrapeData
+        }
 
     render() {
         
