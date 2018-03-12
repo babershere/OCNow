@@ -2,7 +2,6 @@ import React from "react";
 
 class News extends React.Component {
 
-<<<<<<< HEAD
     handleScrapeData(){
         fetch('scrape')
           .then((response) => {
@@ -12,8 +11,9 @@ class News extends React.Component {
             });
           })
           .catch(err => console.log(err));
-=======
-    constructor(props) {
+      }
+
+      constructor(props) {
         super(props);
         this.state = {
             title:'',
@@ -24,8 +24,6 @@ class News extends React.Component {
 
         // This binding is necessary to make `this` work in the callback
         this.handleScrapeData = this.handleScrapeData.bind(this);
->>>>>>> af2709747509e3ca4fb7ddbbb2c6fb7ae28c495c
-      }
 
     render() {
         
