@@ -12,6 +12,35 @@ const request = require("request");
 const cheerio = require("cheerio");
 const router = express.Router();
 const axios = require('axios');
+const passport = require ("passport");
+const flash = require ('connect-flash');
+const session = require('express-session');
+const configDB = require('./config/database.js');
+// Serve static content for the app from the "public" directory in the application directory.
+app.use(express.static("public"));
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(express.static('app_client/build'));
+app.use("/api", apiRoutes)
+app.use(flash());
+//Configuration for user authentication
+require('./config/passport')(passport); // pass passport for configuration
+mongoose.connect(configDB.url); // connect to our database
+
+
+// required for passport
+app.use(session({
+  secret: 'assandtitties', // session secret
+  resave: true,
+  saveUninitialized: true
+}));
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+app.use(flash()); // use connect-flash for flash messages stored in session
+
+require('./app_api/routes/user.js')(app, passport); // load our routes and pass in our app and fully configured passport
+
 
 // If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
 var MONGODB_URI =
@@ -96,5 +125,5 @@ app.get('/test', (req, res) => {
 
 // Listen on port
 app.listen(PORT, function() {
-    console.log("App running on:  "+ PORT);
-  });
+  console.log("App running on:  "+ PORT);
+});

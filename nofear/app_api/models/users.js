@@ -1,40 +1,32 @@
-const mongoose = require('mongoose');
-// Save a reference to the Schema constructor
-const Schema = mongoose.Schema;
+// load the things we need
+var mongoose = require('mongoose');
+var bcrypt = require('bcrypt-nodejs');
 
-// Using the schema constructor, create a new Userchema Object
-// This is similar to a Sequelize model
-const userSchema = new Schema ({
-    // Make sure everything is required except Favorites that is optional
-    _id: {
-        type: Schema.Types.ObjectId,
-        required: true
+// define the schema for our user model
+var userSchema = mongoose.Schema({
+
+    local: {
+        email: String,
+        password: String
     },
-    firstName: {
-        type: String,
-        required: true
-    },
-    lastName: {
-        type: String,
-        required: true
-    },
-    email: {
-        type: String,
-        required: true
-    },
-    password: {
-        type: String,
-        required: true
-    },
-    // Object array of favorite articles potentially saved
-    favorites: [{
-        title: String,
-        url: String,
-        date: Date,
-    }],
-    _id: false
+    google: {
+        id: String,
+        token: String,
+        email: String,
+        name: String
+    }
+
 });
-// This creates our model from above schema, using mongoose's model method
-const User = mongoose.model('User', userSchema);
-// Export the User Model
-module.exports = User;
+
+// generating a hash
+userSchema.methods.generateHash = function (password) {
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+};
+
+// checking if password is valid
+userSchema.methods.validPassword = function (password) {
+    return bcrypt.compareSync(password, this.local.password);
+};
+
+// create the model for users and expose it to our app
+module.exports = mongoose.model('User', userSchema);
