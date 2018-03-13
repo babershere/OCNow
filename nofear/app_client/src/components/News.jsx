@@ -28,7 +28,7 @@ class News extends React.Component {
     }
 
     componentDidMount() {
-            this.handleScrapeData
+            this.handleScrapeData()
         }
 
     render() {
