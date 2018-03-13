@@ -16,6 +16,7 @@ const passport = require ("passport");
 const flash = require ('connect-flash');
 const session = require('express-session');
 const configDB = require('./config/database.js');
+
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
 
@@ -38,6 +39,12 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
+
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 require('./app_api/routes/user.js')(app, passport); // load our routes and pass in our app and fully configured passport
 

@@ -1,14 +1,35 @@
 
+const jwt = require("jsonwebtoken");
 
 module.exports = function(app, passport) {
 
     // process the login form
     app.post('/login', 
         passport.authenticate('local-login', {
-            successRedirect: '/profile', // redirect to the secure profile section
-            failureRedirect: '/login', // redirect back to the signup page if there is an error
             failureFlash: true // allow flash messages
-        })
+        }),
+        function(req, res) {
+            if(req.user) {
+
+                const expTime = new Date();
+                expTime.setDate(expTime.getDate() + 7);
+                const signedJWT = jwt.sign({
+                    userID: req.user._id,
+                    email: req.user.local.email,
+                    exp: parseInt(expTime.getTime() / 1000)
+                }, 'assandtitties');
+
+                delete req.user.local.password;
+                res.status(200).send({
+                    jwt: signedJWT,
+                    user: req.user
+                })
+            } else {
+                res.status(400).send({
+                    message: 'Wrong username or password'
+                })
+            }
+        }
     );
 
 
@@ -37,6 +58,10 @@ module.exports = function(app, passport) {
 
     // send to google to do the authentication
     app.get('/auth/google', 
+        function(req, res, next) {
+            console.log('hello');
+            next()
+        },
         passport.authenticate('google', { scope: ['profile', 'email'] })
     );
 
