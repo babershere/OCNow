@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 // import CitiesDropDown from "./CitiesDropDown"
 
 class Navbar extends React.Component {
@@ -7,7 +8,7 @@ class Navbar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            searchTerm: '',
+            // searchTerm: '',
             userPassword: '',
             userName: ''
         };
@@ -24,6 +25,7 @@ class Navbar extends React.Component {
     
       handleSubmit(event) {
         event.preventDefault();
+        axios.post("/login", this.state)
         this.setState({
             searchTerm: '',
             userPassword: '',
@@ -39,7 +41,7 @@ class Navbar extends React.Component {
             <div className="container-fluid">
                 <div className="navbar-header">
                     <Link className="navbar-brand" to="/">
-                        NEWSIE
+                        OC NOW
                     </Link>
                 </div>
                 <ul className="nav navbar-nav">
@@ -84,7 +86,10 @@ class Navbar extends React.Component {
                         <div className="form-group" onSubmit={this.handleSubmit}>
                             <button className="btn btn-success" disabled="">Sign Up</button>
                         </div>
-                    </form> 
+                            <div className="form-group" onSubmit={this.handleSubmit}>
+                            <button to="/auth/google" className="btn btn-danger" onClick={this.submit}>Google +</button>
+                            </div>
+                             </form> 
                 </div>
             </div>         
         </nav>
