@@ -10,8 +10,13 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",
+<<<<<<< HEAD
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
+=======
+    "bcrypt": "^1.0.3",
+    "bcrypt-nodejs": "0.0.3",
+>>>>>>> 4e0998a2c7d7d37e05c5e2697e631a81fecbf62a
     "cheerio": "^1.0.0-rc.2",
     "connect-flash": "^0.1.1",
     "express": "^4.16.3",
