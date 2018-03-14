@@ -59,18 +59,18 @@ class Navbar extends React.Component {
                 </ul>
 
                     <div className="navbar-form navbar-right">
-                        <form onSubmit={this.handleSubmit} className="navbar-search" >
+                        {/* <form onSubmit={this.handleSubmit} className="navbar-search" >
                             <div className="form-group" onSubmit={this.handleSubmit}>
                                 <input name="email" type="text" className="form-control" placeholder="email" value={this.state.userName} onChange={this.handleChange} />
                                 <input name="password" type="password" className="form-control" placeholder="Password" value={this.state.userPassword} onChange={this.handleChange} />
                                 <button className="btn btn-primary" disabled="">Log In</button>
                                 
                             </div>
-                        </form>
+                        </form> */}
                         <button className="btn btn-danger" disabled="">Log Out</button>
                     </div>
 
-                    <div className="navbar-form navbar-right">
+                    {/* <div className="navbar-form navbar-right">
                         <form className="navbar-search pull-right" >
                             <div className="form-group" onSubmit={this.handleSubmit}>
                                 <button className="btn btn-success" disabled="">Sign Up</button>
@@ -89,7 +89,7 @@ class Navbar extends React.Component {
                                 } >Google +</a>
                             </div>
                         </form>
-                    </div>
+                    </div> */}
                 </div>
             </nav>
         )
