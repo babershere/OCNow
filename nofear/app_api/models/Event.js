@@ -15,11 +15,11 @@ const eventSchema = new Schema({
     link: {
         type: String,
         required: true
-    }
-    date: {
-        type: Date,
-        required: true
-    }
+    },
+    // date: {
+    //     type: Date,
+    //     required: true
+    // }
 })
 // This creates our model from the above schema, using mongoose's model method
 const Event = mongoose.model('Event', eventSchema);

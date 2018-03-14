@@ -1,7 +1,7 @@
 module.exports = {
-    Article: require('./article'),
-    User: require('./users'),
-    Deal: require('./deal'),
-    Chat: require('./chat'),
-    Event: require('./event')
+    Article: require('./Article'),
+    User: require('./User'),
+    Deal: require('./Deal'),
+    Chat: require('./Chat'),
+    Event: require('./Event')
   };

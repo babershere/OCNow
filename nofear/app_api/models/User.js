@@ -19,19 +19,18 @@ const userSchema = new Schema ({
         type: String,
         required: true
     },
-    email: {
-        type: String,
-        unique: true,
-        required: true
-    },
-    password: {
-        type: String,
-        required: true
-    },
     local: {
-        email: String,
-        password: String,
-        required: true
+        type: [{
+            email: {
+                type: String,
+                unique: true,
+                required: true
+            },
+            password: {
+                type: String,
+                required: true
+            }
+        }],
     },
     salt: {
         type: String,
@@ -41,17 +40,14 @@ const userSchema = new Schema ({
         type: String,
         required: true
     },
-    facebook: {
-        id: String,
-        token: String,
-        name: String,
-        email: String
-    },
     google: {
-        id: String,
-        token: String,
-        email: String,
-        name: String
+        type: [{
+            id: String,
+            token: String,
+            email: String,
+            name: String
+        }]
+
     },
     _id: false
 });
@@ -70,4 +66,4 @@ userSchema.methods.validPassword = function(password) {
 // This creates our model from above schema, using mongoose's model method
 const User = mongoose.model('User', userSchema);
 // Export the User Model
-modeule.exports = User;
+module.exports = User;

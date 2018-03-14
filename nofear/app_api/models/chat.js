@@ -5,8 +5,7 @@ const Schema = mongoose.Schema;
 // This is similar to a Sequelize model
 const chatSchema = new Schema ({
     userName: {
-        title: String,
-        required: true
+        title: String
     },
     message: {
         type: String,

@@ -18,18 +18,27 @@ module.exports = {
             url: req.body.web_url
         };
         db.Article
-        .create(artcile)
-        .then(dbArticle => res.json(dbArticle))
-        .catch(err => res.status(422).json(err));
+            .create(article)
+            .then(dbArticle => {
+                return res.json(dbArticle)
+            })
+            .catch(err => {
+                return res.status(422).json(err);
+            });
     },
     update: function(req, res) {
         db.Article
-        .findOneandUpdate({ _id: req.params.id}, req.body)
-        .then(dbArticle => res.json(dbArticle))
-        .catch(err =? res.status(422).json(err));
-    }
+            .findOneAndUpdate({ _id: req.params.id}, req.body)
+            .then(function(dbArticle) {
+                return res.json(dbArticle);
+            })
+            .catch(function(err) {
+                return res.status(422).json(err);
+            });
+    },
     remove: function(req, res) {
-        db.Article.findById({ _id: req.params.id})
+        db.Article
+        .findById({ _id: req.params.id})
         .then(dbArticle => dbArticle.remove())
         .then(dbArticle => res.json(dbArticle))
         .catch(err => res.status(422).json(err))
