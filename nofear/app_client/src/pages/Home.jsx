@@ -6,35 +6,43 @@ import Events from '../components/Events';
 import Weather from '../components/Weather';
 // import CitiesDropDown from '../components/CitiesDropDown';
 
-const Home = () => 
-    <div>
-        <div className='row'>
-            <div className='col-md-10'>
-                <Events/>
-            </div>
-            <div className='col-md-2'>
-                <Weather/>
-            </div>
-        </div>
-        <hr/>
+export default class Home extends React.Component {
 
-        <div className='row'>
-            <div className='col-md-2'>
-                <Deals />
-            </div>
-            <div className='col-md-7'>
-                <News />
-            
-            </div>
-            <div className='col-md-3'>
-                <div className='row'>
-                    <div className='col-md-12'>
-                        <Chat />
-                    </div>
-                </div>               
-            </div>
-        </div>
-    </div>
     
 
-export default Home;
+render(){
+
+    let cityName = this.props.cityNameFromAppjsx
+
+    return(
+<div>
+    <div className='row'>
+        <div className='col-md-10'>
+            <Events cityNameFromHome={cityName}/>
+        </div>
+        <div className='col-md-2'>
+            <Weather cityNameFromHome={cityName}/>
+        </div>
+    </div>
+    <hr/>
+
+    <div className='row'>
+        <div className='col-md-2'>
+            <Deals cityNameFromHome={cityName}/>
+        </div>
+        <div className='col-md-7'>
+            <News cityNameFromHome={cityName}/>
+        
+        </div>
+        <div className='col-md-3'>
+            <div className='row'>
+                <div className='col-md-12'>
+                    <Chat cityNameFromHome={cityName}/>
+                </div>
+            </div>               
+        </div>
+    </div>
+</div>
+    )
+}   
+}
