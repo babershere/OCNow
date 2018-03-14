@@ -2,7 +2,7 @@
 const jwt = require("jsonwebtoken");
 
 module.exports = function(app, passport) {
-
+    console.log("sasdasdasd", jwt)
     // process the login form
     app.post('/login', 
         passport.authenticate('local-login', {

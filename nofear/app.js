@@ -22,6 +22,14 @@ app.use(express.static("public"));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+    app.get('/auth/google', 
+        function(req, res, next) {
+            console.log('hello');
+            next()
+        },
+        passport.authenticate('google', { scope: ['profile', 'email'] })
+    );
+
 app.use(express.static('app_client/build'));
 app.use("/api", apiRoutes)
 app.use(flash());
@@ -116,19 +124,19 @@ app.get("/scrape", function(req, res) {
 
 
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-app.use(express.static('app_client/build'));
-app.use("/api", apiRoutes)
+// app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.json());
+// app.use(express.static('app_client/build'));
+// app.use("/api", apiRoutes)
 
-app.get('/test', (req, res) => {
-  console.log('I am just a test');
-  const data = {
-      id: 1,
-      data: "I am a test string"
-  }  
-  res.send(data);
-})
+// app.get('/test', (req, res) => {
+//   console.log('I am just a test');
+//   const data = {
+//       id: 1,
+//       data: "I am a test string"
+//   }  
+//   res.send(data);
+// })
 
 // Listen on port
 app.listen(PORT, function() {

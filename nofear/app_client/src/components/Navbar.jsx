@@ -99,7 +99,17 @@ class Navbar extends React.Component {
                                 <button className="btn btn-success" disabled="">Sign Up</button>
                             </div>
                             <div className="form-group" onSubmit={this.handleSubmit}>
-                                <a href="/auth/google" className="btn btn-danger" >Google +</a>
+                                <a  className="btn btn-danger" onClick={
+                                    (e)=>{
+                                        e.preventDefault();
+                                        console.log("sup");
+                                        axios.get("/auth/google")
+                                        .then(function(resp) {
+                                            console.log(resp)
+                                        })
+
+                                    }
+                                } >Google +</a>
                             </div>
                         </form>
                     </div>
