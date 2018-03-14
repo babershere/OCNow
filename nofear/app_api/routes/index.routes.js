@@ -1,3 +1,21 @@
+//API ROUTES WILL BE PUSHED TO THIS MAKE IT SO ITS CLEAN AND GOOD AND WORKING LATER
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const express = require("express");
 const router = express.Router();
 const models = require("../models");

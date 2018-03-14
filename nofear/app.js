@@ -4,6 +4,7 @@ const models = require("./app_api/models");
 const PORT = process.env.PORT || 3001;
 const app = express();
 const apiRoutes = require("./app_api/routes/index.routes");
+const articleRoutes = require("./app_api/routes/api/article");
 
 const mongojs = require("mongojs");
 const mongoose = require("mongoose");
@@ -16,11 +17,20 @@ const passport = require ("passport");
 const flash = require ('connect-flash');
 const session = require('express-session');
 const configDB = require('./config/database.js');
+
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+    app.get('/auth/google', 
+        function(req, res, next) {
+            console.log('hello');
+            next()
+        },
+        passport.authenticate('google', { scope: ['profile', 'email'] })
+    );
+
 app.use(express.static('app_client/build'));
 app.use("/api", apiRoutes)
 app.use(flash());
@@ -39,12 +49,20 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 require('./app_api/routes/user.js')(app, passport); // load our routes and pass in our app and fully configured passport
 
+app.use("/api", apiRoutes);
+app.use('/', articleRoutes);
 
-// If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
+// // If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
 var MONGODB_URI =
-  process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+  process.env.MONGODB_URI || "mongodb://localhost/citystream";
 
 // Set mongoose to leverage built in JavaScript ES6 Promises
 // Connect to the Mongo DB
@@ -54,8 +72,9 @@ mongoose.connect(MONGODB_URI, {
 });
 
 // Database configuration
-let databaseUrl = "news";
-let collections = ["missonviejo"];
+let databaseUrl = "newsdb";
+let collections = ["users", "articles", "chat", "events", "deals"];
+
 
 // Hook mongojs configuration to the db variable
 const db = mongojs(databaseUrl, collections);
@@ -109,12 +128,10 @@ app.get("/scrape/:city", function(req, res) {
 
 
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-app.use(express.static('app_client/build'));
-app.use("/api", apiRoutes)
-
-
+// app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.json());
+// app.use(express.static('app_client/build'));
+// app.use("/api", apiRoutes)
 // Listen on port
 app.listen(PORT, function() {
   console.log("App running on:  "+ PORT);
