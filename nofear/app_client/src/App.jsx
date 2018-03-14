@@ -8,7 +8,9 @@ import UserProfile from "./pages/UserProfile";
 import SignUp from "./pages/SignUp";
 
 class App extends Component {
+
   render() {
+
     return (
       <div>
         <Router>
