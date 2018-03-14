@@ -25,10 +25,10 @@ class Login extends Component {
     }
     submit(e) {
         e.preventDefault();
-        axios.post("/auth/login", this.state)
+        axios.post("/login", this.state)
         .then(resp => {
             console.log(resp);
-            window.localStorage.setItem("token", resp.data.token)
+            window.localStorage.setItem("token", resp.data.jwt)
             this.props.history.push("/");
         })
         .catch(err => {
@@ -52,7 +52,21 @@ class Login extends Component {
                     </div>
                     <button type= "button" className="btn btn-default navbar-btn" onClick={this.submit}>Log In</button>
                 </form>
+                <div className="form-group" onSubmit={this.handleSubmit}>
+                    <a className="btn btn-danger" onClick={
+                        (e) => {
+                            e.preventDefault();
+                            console.log("sup");
+                            axios.get("/auth/google")
+                                .then(function (resp) {
+                                    console.log(resp)
+                                })
+
+                        }
+                    } >Google +</a>
+                </div>
             </div>
+            
         );
     }
 }
