@@ -64,9 +64,9 @@ db.on("error", function(error) {
 });
 
 
-app.get("/scrape", function(req, res) {
-  console.log('The "/scrape" route was hit')
-  request("https://www.ocregister.com/location/california/orange-county/mission-viejo/", function(error, response, html) {
+app.get("/scrape/:city", function(req, res) {
+  console.log('The "/scrape" route was hit:', req.params.city)
+  request(`https://www.ocregister.com/location/california/orange-county/${req.params.city}/`, function(error, response, html) {
 
     // Load the HTML into cheerio and save it to a variable
     // '$' becomes a shorthand for cheerio's selector commands, much like jQuery's '$'

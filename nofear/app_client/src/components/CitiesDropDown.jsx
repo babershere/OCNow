@@ -11,6 +11,8 @@ class CitiesDropDown extends React.Component {
 
   handleChange(event) {
     this.setState({value: event.target.value})
+    window.localStorage.setItem("city", event.target.value);
+    console.log('city', event.target.value)
   }
 
   handleSubmit(event) {
@@ -19,6 +21,8 @@ class CitiesDropDown extends React.Component {
   }
 
   render() {
+
+
     return (
       <form onSubmit={this.handleSubmit}>
              
@@ -28,8 +32,6 @@ class CitiesDropDown extends React.Component {
             <option value="Huntington-Beach">Huntington Beach</option>
             <option value="Newport-Beach">Newport Beach</option>
           </select>
-      
-        {/* <input type="submit" value="Submit" /> */}
       </form>
     );
   }

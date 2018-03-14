@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import CitiesDropDown from "./CitiesDropDown"
+
 
 class Navbar extends React.Component {
 
@@ -31,9 +31,10 @@ class Navbar extends React.Component {
     //     }) 
 
     //   }
-    
+
 
     render() {
+
         return(
         <nav className="navbar navbar-inverse">
             <div className="container-fluid">
@@ -58,9 +59,7 @@ class Navbar extends React.Component {
                     </li>   
                 </ul>
 
-                <div className="navbar-form navbar-left">
-                    <CitiesDropDown />>
-                </div>
+
 
                 <div className="navbar-form navbar-right">                
                     <form className="navbar-search" >

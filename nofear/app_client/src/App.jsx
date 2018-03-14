@@ -9,9 +9,6 @@ import SignUp from "./pages/SignUp";
 
 class App extends Component {
 
-  cityCallback = (cityFromNavbar) => {
-    let cityFromAppjsx = this.props.cityFromNavbar
-}
   render() {
 
     return (

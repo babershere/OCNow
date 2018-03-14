@@ -8,36 +8,32 @@ import Weather from '../components/Weather';
 
 export default class Home extends React.Component {
 
-    
 
 render(){
-
-    let cityName = this.props.cityNameFromAppjsx
-
     return(
 <div>
     <div className='row'>
         <div className='col-md-10'>
-            <Events cityNameFromHome={cityName}/>
+            <Events/>
         </div>
         <div className='col-md-2'>
-            <Weather cityNameFromHome={cityName}/>
+            <Weather/>
         </div>
     </div>
     <hr/>
 
     <div className='row'>
         <div className='col-md-2'>
-            <Deals cityNameFromHome={cityName}/>
+            <Deals/>
         </div>
         <div className='col-md-7'>
-            <News cityNameFromHome={cityName}/>
+            <News/>
         
         </div>
         <div className='col-md-3'>
             <div className='row'>
                 <div className='col-md-12'>
-                    <Chat cityNameFromHome={cityName}/>
+                    <Chat />
                 </div>
             </div>               
         </div>

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import SignUpForm from "../components/users/SignUpForm"
 import Login from "../components/users/Login"
 // import Chat from '../components/Chat';
