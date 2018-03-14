@@ -4,16 +4,16 @@ import News from '../components/News'
 import Deals from '../components/Deals';
 import Events from '../components/Events';
 import Weather from '../components/Weather';
-import CitiesDropDown from '../components/CitiesDropDown';
+// import CitiesDropDown from '../components/CitiesDropDown';
 
 const Home = () => 
     <div>
         <div className='row'>
             <div className='col-md-10'>
-                <h3>Home Page</h3>
+                <Events/>
             </div>
             <div className='col-md-2'>
-                <CitiesDropDown/>
+                <Weather/>
             </div>
         </div>
         <hr/>
@@ -29,23 +29,11 @@ const Home = () =>
             <div className='col-md-3'>
                 <div className='row'>
                     <div className='col-md-12'>
-                        <Weather />
-                    </div>
-                </div>
-                <div className='row'>
-                    <div className='col-md-12'>
-                        <Events />
-                    </div>
-                </div>
-                <div className='row'>
-                    <div className='col-md-12'>
                         <Chat />
                     </div>
                 </div>               
             </div>
         </div>
-
-
     </div>
     
 

@@ -1,9 +1,9 @@
 import React from "react";
 
-const weatherAPI_Key = 'aa9e57b161236945';
+// const weatherAPI_Key = 'aa9e57b161236945';
 
 // get location from ???  huntington_Beach, Costa_Mesa, Newport_Beach
-let location = '';
+// let location = '';
 
 class Weather extends React.Component {
 

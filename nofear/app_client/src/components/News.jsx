@@ -1,49 +1,44 @@
 import React from "react";
+import axios from "axios";
 
 class News extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            title:'',
-            description:'',
-            link:'',
-            note:''
+            articles: []
         }
-
-        // This binding is necessary to make `this` work in the callback
-        this.handleScrapeData = this.handleScrapeData.bind(this);
       }
 
-    handleScrapeData() {
-        fetch('/scrape')
-            .then((response) => {
-                console.log(response);
-                console.log('Button clicked at component level!');
-                // response.json().then((data) => {
-                //     console.log("client: ", data);
-                // });
-            })
-            .catch(err => console.log(err));
-    }
-
     componentDidMount() {
-            this.handleScrapeData
+        axios.get('/scrape')
+        .then(resp => {
+            console.log('resp.data: ', resp.data)
+            this.setState({articles: resp.data.data});
+            console.log('articles: ', this.state.articles)
+        })
+        .catch(err => {
+            console.error(err);
+        })     
         }
 
-    render() {
-        
+    render() {        
         return (
             <div>
-                <h1>News Component</h1>
+                <h3>News Component</h3>
                 <hr/>
-                <button onClick={this.handleScrapeData}>Scrape Me</button>
-            </div>
-            
-        )
-        
-    }
-    
+                {this.state.articles.map((elem, i) => {
+                    return(
+                        <div key={i}>            
+                            <h3>{elem.title}</h3>
+                            <a href ={elem.link} target="_blank">Link to Story</a>
+                            <h4>{elem.date}</h4>
+                        </div>
+                    )
+                })}
+            </div>            
+        )        
+    }    
 } 
  
 

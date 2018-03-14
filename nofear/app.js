@@ -128,16 +128,6 @@ app.get("/scrape", function(req, res) {
 // app.use(bodyParser.json());
 // app.use(express.static('app_client/build'));
 // app.use("/api", apiRoutes)
-
-// app.get('/test', (req, res) => {
-//   console.log('I am just a test');
-//   const data = {
-//       id: 1,
-//       data: "I am a test string"
-//   }  
-//   res.send(data);
-// })
-
 // Listen on port
 app.listen(PORT, function() {
   console.log("App running on:  "+ PORT);
