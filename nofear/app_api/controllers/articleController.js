@@ -5,13 +5,18 @@ const db = require('../models');
 //Go back and make sure these will grab the information --> Scrape/API
 module.exports = {
     findAll: function(req, res) {
-        db.Article
-        .find(req.query)
-        .sort({ date: -1})
-        .then(dbArticle => res.json(dbArticle))
-        .catch(err => res.status(422). json(err));
+        return new Promise((resolve, reject) => {
+            db.Article
+            .find(req.query)
+            .sort({ date: -1})
+            .then(dbArticle => {
+                resolve(dbArticle)
+            })
+            .catch(err => reject(err));
+        });
     },
     create: function(req, res) {
+        return new Promise((resolve, reject) => {
         const article = {
             _id: req.body._id,
             title: req.body.headline.main,
@@ -20,28 +25,36 @@ module.exports = {
         db.Article
             .create(article)
             .then(dbArticle => {
-                return res.json(dbArticle)
+                resolve(dbArticle)
             })
-            .catch(err => {
-                return res.status(422).json(err);
-            });
+            .catch(err => 
+                reject(err));
+        });    
     },
     update: function(req, res) {
+        return new Promise((resolve, reject) => {
         db.Article
             .findOneAndUpdate({ _id: req.params.id}, req.body)
-            .then(function(dbArticle) {
-                return res.json(dbArticle);
+            .then(dbArticle => {
+                resolve(dbArticle);
             })
-            .catch(function(err) {
-                return res.status(422).json(err);
-            });
+            .catch(err =>
+                reject(err));
+        });
     },
+        
     remove: function(req, res) {
+        return new Promise((resolve, reject) => {
         db.Article
         .findById({ _id: req.params.id})
         .then(dbArticle => dbArticle.remove())
-        .then(dbArticle => res.json(dbArticle))
-        .catch(err => res.status(422).json(err))
+        .then(dbArticle => {
+            resolve(dbArticle)
+        })
+        .catch(err => 
+            reject(err));
+
+        });
     }
 
 };

@@ -4,12 +4,17 @@ const db = require('../models');
 
 module.exports = {
     findAll: function(req, res) {
+        return new Promise((resolve, reject) => {
         db.Deal
         .find(req.query)
-        .then(dbChat => res.json(dbChat))
-        .catch(err => res. status(422).json(err));
+        .then(dbChat => {
+            resolve(dbChat)
+        })
+        .catch(err => reject(err));
+        });
     },
     create: function(req, res) {
+        return new Promise((resolve, reject) => {
         const deals = {
             _id: req.body._id,
             title: req.body.headline.main,
@@ -18,14 +23,21 @@ module.exports = {
         };
         db.Deal
         .create(deal)
-        .then(dbDeal => res.json(dbDeal))
-        .catch(err => res.status(422).json(err));
+        .then(dbDeal => {
+            resolve(dbDeal)
+        })
+        .catch(err => reject(err));
+        });
     },
     remove: function(req, res) {
+        return new Promise((resolve, reject) => {
         db.Deal
         .findById({ _id: req.params.id})
         .then(dbDeal => dbDeal.remove())
-        .then(dbDeal => res.json(dbDeal))
-        .catch(err => res.status(422).json(err));
+        .then(dbDeal => {
+            resolve(dbDeal)
+        })
+        .catch(err => reject(err));
+    });
     }
 };

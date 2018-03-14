@@ -5,32 +5,39 @@ const db = require('../models');
 
 module.exports = {
     findAll: function(req, res) {
-        db.Chat.find(req.query)
+        return new Promise((resolve, reject) => {
+        db.Chat
+        .find(req.query)
         .then(dbChat => {
-            res.json(dbChat)
+            resolve(dbChat)
         })
-        .catch(err => res. status(422).json(err));
+        .catch(err => reject(err));
+        });
     },
     create: function(req, res) {
+        return new Promise((resolve, reject) => {
         const chat = {
             _id: req.body._id,
             userName: req.body.username,
             message: req.body.message
         };
         db.Chat
-        .create(chat)
-        .then(dbChat => {
-            return res.json(dbChat))
+            .create(chat)
+            .then(dbChat => {
+                resolve(dbChat)
         })
-        .catch(err => {
-            return res.status(422).json(err));
+        .catch(err => reject(err));
         });
     },
     remove: function(req, res) {
+        return new Promise((resolve, reject) => {
         db.Chat
         .findById({ _id: req.params.id})
         .then(dbChat => dbChat.remove())
-        .then(dbChat => res.json(dbChat))
-        .catch(err => res.status(422).json(err));
+        .then(dbChat => {
+            resolve(dbChat)
+        })
+        .catch(err => reject(err));
+        });
     }
 };

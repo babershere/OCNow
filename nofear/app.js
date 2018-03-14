@@ -4,6 +4,7 @@ const models = require("./app_api/models");
 const PORT = process.env.PORT || 3001;
 const app = express();
 const apiRoutes = require("./app_api/routes/index.routes");
+const articleRoutes = require("./app_api/routes/api/article");
 
 const mongojs = require("mongojs");
 const mongoose = require("mongoose");
@@ -20,7 +21,8 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static('app_client/build'));
-app.use("/api", apiRoutes)
+app.use("/api", apiRoutes);
+app.use('/', articleRoutes);
 
 // If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
 var MONGODB_URI =
