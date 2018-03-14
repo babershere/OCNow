@@ -57,10 +57,40 @@ class News extends React.Component {
             <form onSubmit={this.handleSubmit}>                 
               <select className='form-control' value={this.state.value} onChange={this.handleChange}>
                 <option value="orange">Pick Another City</option>
+                <option value="aliso-viejo">Aliso Viejo</option>
+                <option value="anaheim">anaheim</option>
+                <option value='brea'>Brea</option>
+                <option value='buena-park'>Buena Park</option>
                 <option value="costa-mesa">Costa Mesa</option>
+                <option value='cypress'>Cypress</option>
+                <option value='dana-point'>Dana Point</option>
+                <option value='fountain-valley'>Fountain Valley</option>
+                <option value='garden-grove'>Garden Grove</option>
                 <option value="huntington-beach">Huntington Beach</option>
+                <option value='irvine'>Irvine</option>
+                <option value='la-habra'>La Habra</option>
+                <option value='la-palma'>La Palma</option>
+                <option value='laguna-beach'>Laguna Beach</option>
+                <option value='laguna-hills'>Laguna Hills</option>
+                <option value='laguna-niguel'>Laguna Niguel</option>
+                <option value='laguna-woods'>Laguna Woods</option>
+                <option value='lake-forest'>Lake Forest</option>
+                <option value='los-alamitos'>Los Alamitos</option>
+                <option value='mission-viejo'>Mission Viejo</option>
                 <option value="newport-beach">Newport Beach</option>
+                <option value='orange'>Orange</option>
+                <option value='placentia'>Placentia</option>
+                <option value='rancho-santa-margarita'>Rancho Santa Margarita</option>
               </select>
+              <option value='san-clemente'>San Clemente</option>
+              <option value='San Juan Capistrano'>San Juan Capistrano</option>
+              <option value='santa-ana'>Santa Ana</option>
+              <option value='seal-beach'>Seal Beach</option>
+              <option value='stanton'>Stanton</option>
+              <option value='tustin'>Tustin</option>
+              <option value='villa-park'>Villa Park</option>
+              <option value='westminster'>Westminster</option>
+              <option value='yorba-linda'>Yorba Linda</option>
             </form>
                
                 <hr/>
