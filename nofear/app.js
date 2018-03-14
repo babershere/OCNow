@@ -60,9 +60,9 @@ require('./app_api/routes/user.js')(app, passport); // load our routes and pass 
 app.use("/api", apiRoutes);
 app.use('/', articleRoutes);
 
-// If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
+// // If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
 var MONGODB_URI =
-  process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+  process.env.MONGODB_URI || "mongodb://localhost/citystream";
 
 // Set mongoose to leverage built in JavaScript ES6 Promises
 // Connect to the Mongo DB

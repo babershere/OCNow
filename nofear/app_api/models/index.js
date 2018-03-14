@@ -1,6 +1,6 @@
 module.exports = {
     Article: require('./Article'),
-    User: require('./User'),
+    users: require('./users'),
     Deal: require('./Deal'),
     Chat: require('./Chat'),
     Event: require('./Event')
