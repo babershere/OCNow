@@ -15,11 +15,11 @@ class News extends React.Component {
       }
     
       handleChange(event) {
-          event.preventDefault();
+        event.preventDefault();
         this.setState({value: event.target.value})
         window.localStorage.setItem("city", event.target.value);
         console.log('city', event.target.value)
-        const currentCity = window.localStorage.getItem("city") || "Mission Viejo"
+        const currentCity = window.localStorage.getItem("city") || "orange"
         axios.get('/scrape/'+currentCity)
         .then(resp => {
             console.log('resp.data: ', resp.data)
@@ -39,8 +39,8 @@ class News extends React.Component {
      
  
     componentDidMount() {
-        const currentCity = window.localStorage.getItem("city") || "Mission Viejo"
-        axios.get('/scrape/'+currentCity)
+        // const currentCity = window.localStorage.getItem("city") || 'orange';
+        axios.get('/scrape/orange')
         .then(resp => {
             console.log('resp.data: ', resp.data)
             this.setState({articles: resp.data.data});
@@ -56,7 +56,7 @@ class News extends React.Component {
             <div>
             <form onSubmit={this.handleSubmit}>                 
               <select className='form-control' value={this.state.value} onChange={this.handleChange}>
-                <option value="">Pick Another City</option>
+                <option value="orange">Pick Another City</option>
                 <option value="costa-mesa">Costa Mesa</option>
                 <option value="huntington-beach">Huntington Beach</option>
                 <option value="newport-beach">Newport Beach</option>
