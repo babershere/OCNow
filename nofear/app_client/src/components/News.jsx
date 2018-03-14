@@ -81,7 +81,6 @@ class News extends React.Component {
                 <option value='orange'>Orange</option>
                 <option value='placentia'>Placentia</option>
                 <option value='rancho-santa-margarita'>Rancho Santa Margarita</option>
-              </select>
               <option value='san-clemente'>San Clemente</option>
               <option value='San Juan Capistrano'>San Juan Capistrano</option>
               <option value='santa-ana'>Santa Ana</option>
@@ -91,6 +90,7 @@ class News extends React.Component {
               <option value='villa-park'>Villa Park</option>
               <option value='westminster'>Westminster</option>
               <option value='yorba-linda'>Yorba Linda</option>
+              </select>
             </form>
                
                 <hr/>
