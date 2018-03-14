@@ -44,13 +44,13 @@ class Login extends Component {
                 <form>
                     <div className="form-group">
                         <label>Email</label>
-                        <input className = "form-control" type="email" name="email" onChange={this.handleInputChange}/>
+                        <input className = "form-control" type="email" name="email" placeholder="Email..."  onChange={this.handleInputChange}/>
                     </div>
                     <div className="form-group">
                         <label>Password</label>
-                        <input className = "form-control" type="password" name="password" onChange={this.handleInputChange}/>
+                        <input className = "form-control" type="password" name="password" placeholder="********" onChange={this.handleInputChange}/>
                     </div>
-                    <button className = "btn btn-primary" onClick={this.submit}>Submit</button>
+                    <button type= "button" className="btn btn-default navbar-btn" onClick={this.submit}>Log In</button>
                 </form>
             </div>
         );

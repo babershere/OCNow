@@ -6,6 +6,7 @@ import EventsPage from "./pages/EventsPage";
 import UserAdd from "./pages/UserAdd";
 import UserEdit from "./pages/UserEdit";
 import UserProfile from "./pages/UserProfile";
+import SignUp from "./pages/SignUp";
 
 class App extends Component {
   render() {
@@ -20,6 +21,8 @@ class App extends Component {
               <Route exact path ="/user/edit" component={UserEdit}/>
               <Route exact path ="/user/add" component={UserAdd}/>
               <Route exact path ="/user/profile/:id" component={UserProfile}/>
+              <Route exact path ="/signup" component={SignUp}/>
+
             </div>
             {/* footer if we want one */}
           </div>
