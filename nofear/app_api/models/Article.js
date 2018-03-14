@@ -1,9 +1,9 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 // Save a reference to the Schema constructor
-var Schema = mongoose.Schema;
+const Schema = mongoose.Schema;
 // Using the Schema constructor, create a new UserSchema object
 // This is similar to a Sequelize model
-var ArticleSchema = new Schema({
+const articleSchema = new Schema({
   // `title` is required and of type String
   title: {
     type: String,
@@ -24,9 +24,19 @@ var ArticleSchema = new Schema({
   note: {
     type: Schema.Types.ObjectId,
     ref: 'Note'
-  }
+  },
+  publication: {
+    type: Date,
+    required: true
+  }, 
+  // Object array of favorite articles potentially saved
+  favorites: [{
+    title: String,
+    url: String,
+    date: Date,
+}],
 });
 // This creates our model from the above schema, using mongoose's model method
-var Article = mongoose.model('Article', ArticleSchema);
-// Export the Article model
+const Article = mongoose.model('Article', articleSchema);
+// Export the Article Model
 module.exports = Article;

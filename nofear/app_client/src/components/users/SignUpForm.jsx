@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import axios from "axios";
+
 // import FormStates from "../../helpers/FormStates";
 // import FormBtns from "./FormBtns";
 
@@ -50,6 +52,19 @@ class SignUpForm extends Component {
                     </div> */}
 
                 </form>
+                <div className="form-group" onSubmit={this.handleSubmit}>
+                    <a className="btn btn-danger" onClick={
+                        (e) => {
+                            e.preventDefault();
+                            console.log("sup");
+                            axios.get("/auth/google")
+                                .then(function (resp) {
+                                    console.log(resp)
+                                })
+
+                        }
+                    } >Google +</a>
+                </div>
             </div>
         )
     }
