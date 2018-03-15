@@ -19,13 +19,11 @@ class Deals extends React.Component {
         const data = await deals_api_call.json();
         const dealsArr = data.deals;
         this.setState({deals: dealsArr})
-        console.log("data: ", data);
         console.log("dealsArr: ", dealsArr);
     }
 
         componentDidMount() {
             this.getDeals();
-            console.log(this.data)
         }
 
         render() {
@@ -37,7 +35,6 @@ class Deals extends React.Component {
                     {this.state.deals.map((elem, i) => {
                         return(
                             <div key={i}>            
-                                
                                 <a href ={elem.deal.url} target="_blank"><h5>{elem.deal.short_title}</h5></a>
                                 <h5>{elem.deal.provider_name}</h5>
                                 <hr/>

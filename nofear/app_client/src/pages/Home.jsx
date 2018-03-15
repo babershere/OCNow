@@ -13,7 +13,8 @@ export default class Home extends React.Component {
         super(props);
         this.state = {
             articles: [],
-            value: ''
+            value: '',
+            dealsloc: ''
         }
         this.handleChange = this.handleChange.bind(this);
         // this.handleSubmit = this.handleSubmit.bind(this);
@@ -21,13 +22,16 @@ export default class Home extends React.Component {
     
       handleChange(event) {
         event.preventDefault();
+        this.setState({dealsloc: event.target.dealsloc})
+        window.localStorage.setItem('dealscity', event.target.dealsloc);
+        console.log('dealscity: ', event.target.dealsloc)
+
         this.setState({value: event.target.value})
         window.localStorage.setItem("city", event.target.value);
         console.log('city', event.target.value)
-        const currentCity = window.localStorage.getItem("city") || "orange"
+        const currentCity = window.localStorage.getItem("city") || "orange-county/"
         axios.get('/scrape/'+currentCity)
         .then(resp => {
-            console.log('resp.data: ', resp.data)
             this.setState({articles: resp.data.data});
             console.log('articles: ', this.state.articles)
         })
@@ -67,41 +71,41 @@ render(){
         <div className='col-md-3'>
         <h4>Select Your OC City:</h4>
         <form onSubmit={this.handleSubmit}>                 
-              <select className='form-control' value={this.state.value} onChange={this.handleChange}>
-                <option value="orange-county/">Orange County, CA</option>
-                <option value="aliso-viejo">Aliso Viejo</option>
-                <option value="anaheim">Anaheim</option>
-                <option value='brea'>Brea</option>
-                <option value='buena-park'>Buena Park</option>
-                <option value="costa-mesa">Costa Mesa</option>
-                <option value='cypress'>Cypress</option>
-                <option value='dana-point'>Dana Point</option>
-                <option value='fountain-valley'>Fountain Valley</option>
-                <option value='garden-grove'>Garden Grove</option>
-                <option value="huntington-beach">Huntington Beach</option>
-                <option value='irvine'>Irvine</option>
-                <option value='la-habra'>La Habra</option>
-                <option value='la-palma'>La Palma</option>
-                <option value='laguna-beach'>Laguna Beach</option>
-                <option value='laguna-hills'>Laguna Hills</option>
-                <option value='laguna-niguel'>Laguna Niguel</option>
-                <option value='laguna-woods'>Laguna Woods</option>
-                <option value='lake-forest'>Lake Forest</option>
-                <option value='los-alamitos'>Los Alamitos</option>
-                <option value='mission-viejo'>Mission Viejo</option>
-                <option value="newport-beach">Newport Beach</option>
-                <option value='orange'>Orange</option>
-                <option value='placentia'>Placentia</option>
-                <option value='rancho-santa-margarita'>Rancho Santa Margarita</option>
-              <option value='san-clemente'>San Clemente</option>
-              <option value='san-juan-capistrano'>San Juan Capistrano</option>
-              <option value='santa-ana'>Santa Ana</option>
-              <option value='seal-beach'>Seal Beach</option>
-              <option value='stanton'>Stanton</option>
-              <option value='tustin'>Tustin</option>
-              <option value='villa-park'>Villa Park</option>
-              <option value='westminster'>Westminster</option>
-              <option value='yorba-linda'>Yorba Linda</option>
+              <select className='form-control' value={this.state.value} dealsloc={this.state.dealsloc} onChange={this.handleChange}>
+                <option value="orange-county/" dealsloc='15213+linden+way+tustin+ca;radius=10'>Orange County, CA</option>
+                <option value="aliso-viejo" dealsloc='aliso+viejo+ca;radius=3'>Aliso Viejo</option>
+                <option value="anaheim" dealsloc='anaheim+ca;radius=3'>Anaheim</option>
+                <option value='brea' dealsloc='brea+ca;radius=3'>Brea</option>
+                <option value='buena-park' dealsloc='buena+park+ca;radius=3'>Buena Park</option>
+                <option value="costa-mesa" dealsloc='costa+mesa+ca;radius=3'>Costa Mesa</option>
+                <option value='cypress' dealsloc='cypress+ca;radius=3'>Cypress</option>
+                <option value='dana-point' dealsloc='dana+point+ca;radius=3'>Dana Point</option>
+                <option value='fountain-valley' dealsloc='fountain+valley+ca;radius=3'>Fountain Valley</option>
+                <option value='garden-grove' dealsloc='garden+grove+ca;radius=3'>Garden Grove</option>
+                <option value="huntington-beach" dealsloc='huntington+beach+ca;radius=3'>Huntington Beach</option>
+                <option value='irvine' dealsloc='irvine+ca;radius=3'>Irvine</option>
+                <option value='la-habra' dealsloc='la+habra+ca;radius=3'>La Habra</option>
+                <option value='la-palma' dealsloc='la+palma+ca;radius=3'>La Palma</option>
+                <option value='laguna-beach' dealsloc='laguna+beach+ca;radius=3'>Laguna Beach</option>
+                <option value='laguna-hills' dealsloc='laguna+hills+ca;radius=3'>Laguna Hills</option>
+                <option value='laguna-niguel' dealsloc='laguna+niguel+ca;radius=3'>Laguna Niguel</option>
+                <option value='laguna-woods' dealsloc='laguna+woods+ca;radius=3'>Laguna Woods</option>
+                <option value='lake-forest' dealsloc='lake+forest+ca;radius=3'>Lake Forest</option>
+                <option value='los-alamitos' dealsloc='los+alamitos+ca;radius=3'>Los Alamitos</option>
+                <option value='mission-viejo' dealsloc='mission+viejo+ca;radius=3'>Mission Viejo</option>
+                <option value="newport-beach" dealsloc='newport+beach+ca;radius=3'>Newport Beach</option>
+                <option value='orange' dealsloc='orange+ca;radius=3'>Orange</option>
+                <option value='placentia' dealsloc='placentia+ca;radius=3'>Placentia</option>
+                <option value='rancho-santa-margarita' dealsloc='rancho+santa+margarita+ca;radius=3'>Rancho Santa Margarita</option>
+              <option value='san-clemente' dealsloc='san+clemente+ca;radius=3'>San Clemente</option>
+              <option value='san-juan-capistrano' dealsloc='san+juan+capistrano+ca;radius=3'>San Juan Capistrano</option>
+              <option value='santa-ana' dealsloc='santa+ana+ca;radius=3'>Santa Ana</option>
+              <option value='seal-beach' dealsloc='seal+beach+ca;radius=3'>Seal Beach</option>
+              <option value='stanton' dealsloc='stanton+ca;radius=3'>Stanton</option>
+              <option value='tustin' dealsloc='tustin+ca;radius=3'>Tustin</option>
+              <option value='villa-park' dealsloc='villa+park+ca;radius=3'>Villa Park</option>
+              <option value='westminster' dealsloc='westminster+ca;radius=3'>Westminster</option>
+              <option value='yorba-linda' dealsloc='yorba+linda+ca;radius=3'>Yorba Linda</option>
               </select>
             </form>
             {/* <Weather/> */}
