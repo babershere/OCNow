@@ -7,15 +7,15 @@ class News extends React.Component {
     render() {        
         return (
             <div>
-            <h3>News:</h3>
+            <h4>News:</h4>
                
                 <hr/>
                 {this.props.articles.map((elem, i) => {
                     return(
-                        <div key={i}>            
-                            <h3>{elem.title}</h3>
-                            <a href ={elem.link} target="_blank">Link to Story</a>
+                        <div key={i}>       
+                            <a href ={elem.link} target="_blank"><h3>{elem.title}</h3></a>
                             <h4>{elem.date}</h4>
+                            <hr/>
                         </div>
                     )
                 })}

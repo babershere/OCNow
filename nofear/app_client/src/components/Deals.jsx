@@ -14,7 +14,7 @@ class Deals extends React.Component {
       }
 
     getDeals = async () => {
-        const deals_api_call = await fetch(`https://api.discountapi.com/v2/deals?api_key=${DEALS_API_KEY};location=15213+linden+way+tustin+ca;radius=10`);
+        const deals_api_call = await fetch(`https://api.discountapi.com/v2/deals?api_key=${DEALS_API_KEY};per_page=10;location=15213+linden+way+tustin+ca;radius=10`);
 
         const data = await deals_api_call.json();
         const dealsArr = data.deals;
@@ -36,7 +36,7 @@ class Deals extends React.Component {
                         return(
                             <div key={i}>            
                                 <a href ={elem.deal.url} target="_blank"><h5>{elem.deal.short_title}</h5></a>
-                                <h5>{elem.deal.provider_name}</h5>
+                                <h5>{elem.deal.merchant.locality}, {elem.deal.merchant.region}</h5>
                                 <hr/>
                             </div>
                         )
