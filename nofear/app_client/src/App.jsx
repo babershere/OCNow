@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router, Route} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import UserAdd from "./pages/UserAdd";
@@ -8,7 +8,9 @@ import UserProfile from "./pages/UserProfile";
 import SignUp from "./pages/SignUp";
 
 class App extends Component {
+
   render() {
+
     return (
       <div>
         <Router>

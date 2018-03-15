@@ -1,6 +1,7 @@
 module.exports = {
     Article: require('./Article'),
-    User: require('./users')
+    users: require('./users'),
+    Deal: require('./Deal'),
+    Chat: require('./Chat'),
+    Event: require('./Event')
   };
-
-// export const User = require('./user');
