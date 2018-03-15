@@ -52,7 +52,7 @@ module.exports = function (passport) {
                     // if no user is found, return the message
                     if (!user) {
                         console.log('user could not be found');
-                        return done(null, false, req.flash('loginMessage', 'No user found.'));
+                        done(null, false, req.flash('loginMessage', 'No user found.'));
 
                     }
 
@@ -92,72 +92,59 @@ module.exports = function (passport) {
                 if (!req.user) {
                     User.findOne({ 'local.email': email }, function (err, user) {
                         // if there are any errors, return the error
-                        console.log("1");
-                        if (err)
-                            return done(err);
-
+                        if (err) {
+                            done(err, null);
+                        }
                         // check to see if theres already a user with that email
                         if (user) {
-                            console.log("2")
-                            return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
+                             done('That email is already taken.', null);
                         } else {
-
                             // create the user
                             var newUser = new User();
 
                             newUser.local.email = email;
                             newUser.local.password = newUser.generateHash(password);
-                            
-                            console.log("3");
+                            newUser.local.firstName = req.body.firstName;
+                            newUser.local.lastName = req.body.lastName;
 
                             newUser.save(function (err) {
                                 if (err){
-                                    console.log("4")
-                                    return done(err);
+                                     done(err, null);
+                                } else {
+                                    done(null, newUser);
                                 }
-                                console.log("5");
-                                return done(null, newUser);
                             });
                         }
 
                     });
                     // if the user is logged in but has no local account...
                 } else if (!req.user.local.email) {
-                    console.log("6");
                     // ...presumably they're trying to connect a local account
                     // BUT let's check if the email used to connect a local account is being used by another user
                     User.findOne({ 'local.email': email }, function (err, user) {
-                       console.log("7");
                         if (err){
-                        console.log("8")
-                            return done(err);
+                            done(err, null);
                         }
                         if (user) {
-                            console.log("9");
-                            return done(null, false, req.flash('loginMessage', 'That email is already taken.'));
+                            done('That email is already taken.', null);
                             // Using 'loginMessage instead of signupMessage because it's used by /connect/local'
                         } else {
-                            console.log("10");
                             var user = req.user;
                             user.local.email = email;
                             user.local.password = user.generateHash(password);
                             user.save(function (err) {
-                                console.log("11");
                                 if (err){
-                                    console.log("12");
-                                    return done(err);
+                                    done(err, null);
+                                } else {
+                                    done(null, user);
                                 }
-                                console.log("13");
-                                return done(null, user);
                             });
                         }
                     });
                 } else {
                     // user is logged in and already has a local account. Ignore signup. (You should log out before trying to create a new account, user!)
-                    console.log("14");
-                    return done(null, req.user);
+                    done(null, req.user);
                 }
-
             });
 
         }));

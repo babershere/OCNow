@@ -60,7 +60,7 @@ class SignUpForm extends Component {
                     </div>
                     <div className="form-group">
                         <label htmlFor="password">Password</label>
-                        <input type="password" className="form-control" type="password" name="Password" placeholder="********"  onChange={this.handleInputChange}/>
+                        <input type="password" className="form-control" type="password" name="password" placeholder="********"  onChange={this.handleInputChange}/>
                     </div>
 
                     <button type="button" className="btn btn-default navbar-btn" onClick={this.submit}>Sign Up!</button>
