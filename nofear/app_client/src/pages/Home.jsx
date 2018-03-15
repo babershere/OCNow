@@ -1,11 +1,11 @@
 import React from "react";
-// import Chat from '../components/Chat';
+// import Chat from '../components/chat/Chat';
 import News from '../components/News'
 import Deals from '../components/Deals';
 import Events from '../components/Events';
-// import Weather from '../components/Weather';
+import Weather from '../components/Weather';
 import axios from "axios";
-// import CitiesDropDown from '../components/CitiesDropDown';
+
 
 export default class Home extends React.Component {
 
@@ -106,7 +106,6 @@ render(){
               <option value='yorba-linda' dealsloc='yorba+linda+ca;radius=3'>Yorba Linda</option>
               </select>
             </form>
-            {/* <Weather/> */}
         </div>
     </div>
     <hr/>
@@ -120,6 +119,11 @@ render(){
         
         </div>
         <div className='col-md-3'>
+        <div className='row'>
+                <div className='col-md-12'>
+                    <Weather city={this.state.dealsCity}/>
+                </div>
+            </div> 
             <div className='row'>
                 <div className='col-md-12'>
                 <h4>Chat Placeholder</h4>
