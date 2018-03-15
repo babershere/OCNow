@@ -3,35 +3,6 @@ import { Link } from "react-router-dom";
 
 class Navbar extends React.Component {
 
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //         searchTerm: '',
-    //         userPassword: '',
-    //         userName: ''
-    //     };
-    
-    //     this.handleChange = this.handleChange.bind(this);
-    //     this.handleSubmit = this.handleSubmit.bind(this);
-    //   }
-    
-    //   handleChange(event) {
-    //     const inputName = event.target.name;
-    //     this.setState({[inputName]: event.target.value});
-    //     console.log(this.state)
-    //   }
-    
-    //   handleSubmit(event) {
-    //     event.preventDefault();
-    //     this.setState({
-    //         // searchTerm: '',
-    //         userPassword: '',
-    //         userName: ''
-    //     }) 
-
-    //   }
-
-
     render() {
 
         return(
@@ -39,7 +10,7 @@ class Navbar extends React.Component {
             <div className="container-fluid">
                 <div className="navbar-header">
                     <Link className="navbar-brand" to="/">
-                        NEWSIE
+                        CITYSTREAM
                     </Link>
                 </div>
                 <ul className="nav navbar-nav">
