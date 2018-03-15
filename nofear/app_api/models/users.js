@@ -11,7 +11,9 @@ const userSchema = new Schema ({
     //reys schema **needed for passport**
     local: {
         email: String,
-        password: String
+        password: String,
+        firstName: String,
+        lastName: String
     },
     google: {
         id: String,
