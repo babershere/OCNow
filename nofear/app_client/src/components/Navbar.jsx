@@ -39,7 +39,7 @@ class Navbar extends React.Component {
             <div className="container-fluid">
                 <div className="navbar-header">
                     <Link className="navbar-brand" to="/">
-                        NEWSIE
+                        OC Now
                     </Link>
                 </div>
                 <ul className="nav navbar-nav">
