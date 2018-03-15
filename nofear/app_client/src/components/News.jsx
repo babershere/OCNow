@@ -7,7 +7,7 @@ class News extends React.Component {
     render() {        
         return (
             <div>
-            
+            <h3>News:</h3>
                
                 <hr/>
                 {this.props.articles.map((elem, i) => {

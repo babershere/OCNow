@@ -45,11 +45,11 @@ export default class Home extends React.Component {
  
     componentDidMount() {
         // const currentCity = window.localStorage.getItem("city") || 'orange';
-        axios.get('/scrape/orange')
+        axios.get('/scrape/orange-county/')
         .then(resp => {
-            console.log('resp.data: ', resp.data)
+            // console.log('resp.data: ', resp.data)
             this.setState({articles: resp.data.data});
-            console.log('articles: ', this.state.articles)
+            // console.log('articles: ', this.state.articles)
         })
         .catch(err => {
             console.error(err);
@@ -61,14 +61,14 @@ render(){
     return(
 <div>
     <div className='row'>
-        <div className='col-md-10'>
+        <div className='col-md-9'>
             <Events/>
         </div>
-        <div className='col-md-2'>
+        <div className='col-md-3'>
         <h4>Select Your OC City:</h4>
         <form onSubmit={this.handleSubmit}>                 
               <select className='form-control' value={this.state.value} onChange={this.handleChange}>
-                <option value="orange">Orange County, CA</option>
+                <option value="orange-county/">Orange County, CA</option>
                 <option value="aliso-viejo">Aliso Viejo</option>
                 <option value="anaheim">Anaheim</option>
                 <option value='brea'>Brea</option>
@@ -94,7 +94,7 @@ render(){
                 <option value='placentia'>Placentia</option>
                 <option value='rancho-santa-margarita'>Rancho Santa Margarita</option>
               <option value='san-clemente'>San Clemente</option>
-              <option value='San Juan Capistrano'>San Juan Capistrano</option>
+              <option value='san-juan-capistrano'>San Juan Capistrano</option>
               <option value='santa-ana'>Santa Ana</option>
               <option value='seal-beach'>Seal Beach</option>
               <option value='stanton'>Stanton</option>
