@@ -15,7 +15,8 @@ class App extends Component {
       <div>
         <Router>
           <div>
-            <Navbar />
+          <Navbar />
+            
             <div className = "container">
               <Route exact path ="/" component={Home}/>
               <Route exact path ="/user/edit" component={UserEdit}/>
@@ -25,7 +26,10 @@ class App extends Component {
 
             </div>
             {/* footer if we want one */}
+
           </div>
+            
+      
         </Router>
       </div>
     );

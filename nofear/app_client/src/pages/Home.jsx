@@ -14,7 +14,8 @@ export default class Home extends React.Component {
         this.state = {
             articles: [],
             value: '',
-            dealsCity: 'tustin'
+            dealsCity: 'tustin',
+            dropDownText: ''
         }
         this.handleChange = this.handleChange.bind(this);
         // this.handleSubmit = this.handleSubmit.bind(this);
@@ -27,7 +28,10 @@ export default class Home extends React.Component {
         // console.log('dealscity: ', event.target.dealsloc)
 
 
-        this.setState({value: event.target.value})
+        this.setState({
+            value: event.target.value,
+            dropDownText: event.target.text
+        })
         window.localStorage.setItem("city", event.target.value);
         console.log('city', event.target.value)
         const currentCity = window.localStorage.getItem("city") || "orange-county/"
@@ -41,6 +45,8 @@ export default class Home extends React.Component {
         }) 
 
         const hyphenCity = window.localStorage.getItem("city") || "tustin"
+        const spaceCity = hyphenCity.replace(/-/g, " ");
+        this.setState({dropDownText: spaceCity});
         if (hyphenCity !== "orange-county") {
             const plusCity = hyphenCity.replace(/-/g,"+");
             this.setState({dealsCity: plusCity});
@@ -115,10 +121,10 @@ render(){
 
     <div className='row'>
         <div className='col-md-2'>
-            <Deals city={this.state.dealsCity}/>
+            <Deals dropDownText={this.state.dropDownText} city={this.state.dealsCity}/>
         </div>
         <div className='col-md-7'>
-            <News articles={this.state.articles}/>
+            <News dropDownText={this.state.dropDownText} articles={this.state.articles}/>
         
         </div>
         <div className='col-md-3'>
