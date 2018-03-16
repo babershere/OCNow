@@ -1,15 +1,25 @@
 //API ROUTES WILL BE PUSHED TO THIS MAKE IT SO ITS CLEAN AND GOOD AND WORKING LATER
 const path = require("path");
 const router = require("express").Router();
-const apiRoutes = require("./api");
+// const apiRoutes = require("./api");
+const user = require('./api/user');
+const event = require('./api/event');
+const chat = require('./api/chat');
+const deal = require('./api/deal');
+const article = require('./api/article');
 
 
-router.use('/api', apiRoutes);
+router.use('/api', user);
+router.use('/api', event);
+router.use('/api', chat);
+router.use('/api', deal);
+router.use('/api', article);
 
 // If no API routes are hit, send the React app
 router.use((req, res) =>
 res.sendFile(path.join(__dirname, "../client/build/index.html"))
 );
+
 module.exports = router;
 
 
