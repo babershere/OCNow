@@ -33,18 +33,18 @@ module.exports = function(app, passport) {
     );
 
 
-    // SIGNUP =================================
-    // show the signup form
-    app.get('/signup', function (req, res) {
-        res.status(200).send( { message: req.flash('signupMessage') });
-    });
+    // // SIGNUP =================================
+    // // show the signup form
+    // app.get('/signup', function (req, res) {
+    //     res.status(200).send( { message: req.flash('signupMessage') });
+    // });
 
 
     // process the signup form
     app.post('/signup',
         function(req, res) {
             console.log('hell')
-            passport.authenticate('local-signup', function (err, user) {
+            passport.authenticate('local-signup',function (err, user) {
                 console.log('ow')
                 if (err) {
                     res.status(400).send({ message: err });

@@ -38,6 +38,7 @@ class Navbar extends React.Component {
                                 
                             </div>
                         </form> */}
+                        <Link className="btn btn-danger" to="/signup">Sign Up</Link>
                         <button className="btn btn-danger" disabled="">Log Out</button>
                     </div>
 
