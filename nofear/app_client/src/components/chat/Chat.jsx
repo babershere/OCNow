@@ -1,51 +1,60 @@
 import React, { Component } from "react";
 
 class Chat extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            username : "",
+            textarea: ""
+
+        } 
+        this.submit = this.submit.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this);    
 
     render() {
 
         return (
 
-        <div>
+            <div>
 
-<div className="row">
-            <div className="col-md-6 offset-md-3 col-sm-12">
-                <h1 className="text-center">
-                    MongoChat
+                <div className="row">
+                    <div className="col-md-6 offset-md-3 col-sm-12">
+                        <h1 className="text-center">
+                            MongoChat
                 </h1>
 
-                <div id="status"></div>
-                <div id="chat">
-                    <input type="text" id="username" className="form-control" placeholder="Enter Name..."/>
-                    <br>
+                        <div id="status"></div>
+                        <div id="chat">
+                            <input type="text" id="username" className="form-control" placeholder="Enter Name..." />
+                            <br>
 
-                    <div className="card">
-                        <div id="messages" className="card-block"> </div>
-                    </div>
+                                <div className="card">
+                                    <div id="messages" className="card-block"> </div>
+                                </div>
 
-                    <br>
+                                <br>
 
-                    <textarea id="textarea" className="form-control" placeholder="Enter Message..."></textarea>
+                                    <textarea id="textarea" className="form-control" placeholder="Enter Message..."></textarea>
                 </div>
 
             </div>
-        </div>
+                        </div>
 
 
-        </div>
+                    </div>
 
-    )
-    }
-
-}
-
-
-
-
-
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+                    )
+                    }
+                
+                }
+                
+                
+                
+                
+                
+                
+                
+    {/* <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
     <script>
         (function () {
         var element = function (id) {
@@ -116,9 +125,9 @@ class Chat extends Component {
             messages.textContent = '';
         });
         }
-    })();
+    })(); */}
 
 
 
 
-export default Chat;
+                    export default Chat;
