@@ -7,7 +7,7 @@ class News extends React.Component {
     render() {        
         return (
             <div>
-            <h4>News:</h4>
+            <h4>{this.props.dropDownText} News:</h4>
                
                 <hr/>
                 {this.props.articles.map((elem, i) => {

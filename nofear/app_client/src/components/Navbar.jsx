@@ -1,6 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+const buttonStyle = {
+    // border: '0px',
+    // padding: '8px 0px',
+    // margin: '0 2px'
+}
+
 class Navbar extends React.Component {
 
     constructor(props) {
@@ -13,7 +19,7 @@ class Navbar extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
       }
 
-      handleChange(event) {
+    handleChange(event) {
         const target = event.target;
         const value = target.value;
         const name = target.name;
@@ -24,11 +30,9 @@ class Navbar extends React.Component {
       }
   
 
-  handleSubmit(event) {
-    alert('User loggin in: ' + this.state.userEmail);
-    alert('Password used: ' + this.state.userPassword);
-    event.preventDefault();
-  }
+    handleSubmit(event) {
+        event.preventDefault();
+    }
 
     render() {
 
@@ -60,16 +64,15 @@ class Navbar extends React.Component {
                         <form onSubmit={this.handleSubmit} className="navbar-search" >
                             <div className="form-group" onSubmit={this.handleSubmit}>
                                 <input name="userEmail" type="text" className="form-control" placeholder="email" value={this.state.userEmail} onChange={this.handleChange} />
-                                <input name="userPassword" type="password" className="form-control" placeholder="Password" value={this.state.userPassword} onChange={this.handleChange} />
-                                <button className="btn btn-primary" disabled="">Log In</button>
-                                <button className="btn btn-danger" disabled="">Log Out</button>   
-                                {/* <Link className="btn btn-danger" to="/signup">Sign Up</Link> */}                              
+                                <input name="userPassword" type="password" className="form-control" placeholder="password" value={this.state.userPassword} onChange={this.handleChange} />
+                                <button style={buttonStyle} className="btn btn-primary" disabled="">Log In</button>                              
                             </div>
-                        </form>                       
+                        </form>   
+                        <button style={buttonStyle} className="btn btn-danger" disabled="">Log Out</button>                    
                     </div>
 
-                    <div className="navbar-form navbar-right">
-                        <form className="navbar-search pull-left" >
+                    <div className="navbar-form navbar-left">
+                        <form className="navbar-search" >
                             <div className="form-group" onSubmit={this.handleSubmit}>
                                 <Link to='/signup' className="btn btn-success" disabled="">Sign Up</Link>
                             </div>
