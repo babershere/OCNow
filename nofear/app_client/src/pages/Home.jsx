@@ -4,7 +4,6 @@ import News from '../components/News'
 import Deals from '../components/Deals';
 import Events from '../components/Events';
 import Weather from '../components/Weather';
-// import Weatherwidget from '../components/Weatherwidget';
 import axios from "axios";
 
 
@@ -42,8 +41,13 @@ export default class Home extends React.Component {
         }) 
 
         const hyphenCity = window.localStorage.getItem("city") || "tustin"
-        const plusCity = hyphenCity.replace(/-/g,"+");
-        this.setState({dealsCity: plusCity});
+        if (hyphenCity !== "orange-county") {
+            const plusCity = hyphenCity.replace(/-/g,"+");
+            this.setState({dealsCity: plusCity});
+        } else {
+            this.setState({dealsCity: "tustin"})
+        }
+        
       }
       
     componentDidMount() {
@@ -57,6 +61,7 @@ export default class Home extends React.Component {
         })     
         }
 
+
 render(){
     return(
 <div>
@@ -67,8 +72,8 @@ render(){
         <div className='col-md-3'>
         <h4>Select Your OC City:</h4>
         <form onSubmit={this.handleSubmit}>                 
-              <select className='form-control' value={this.state.value} dealsloc={this.state.dealsloc} onChange={this.handleChange}>
-                <option value="orange-county/" dealsloc='15213+linden+way+tustin+ca;radius=10'>Orange County, CA</option>
+              <select className='form-control' value={this.state.value} onChange={this.handleChange}>
+                <option value="orange-county" >Orange County, CA</option>
                 <option value="aliso-viejo" dealsloc='aliso+viejo+ca;radius=3'>Aliso Viejo</option>
                 <option value="anaheim" dealsloc='anaheim+ca;radius=3'>Anaheim</option>
                 <option value='brea' dealsloc='brea+ca;radius=3'>Brea</option>
