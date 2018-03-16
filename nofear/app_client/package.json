@@ -5,7 +5,23 @@
   "proxy": {
     "/auth/google": {
       "target": "http://localhost:3001"
-    }
+    },
+    "/signup": {
+      "target": "http://localhost:3001"
+    },
+    "/scrape": {
+      "target": "http://localhost:3001"
+    },
+    "/user/*": {
+      "target": "http://localhost:3001"
+    },
+    "/login": {
+      "target": "http://localhost:3000"
+    },
+      "/": {
+        "target": "http://localhost:3001"
+      }
+    
   },
 
   "dependencies": {

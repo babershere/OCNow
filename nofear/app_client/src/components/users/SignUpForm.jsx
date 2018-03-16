@@ -30,7 +30,10 @@ class SignUpForm extends Component {
         axios.post("/signup", this.state)
             .then(resp => {
                 console.log(resp);
-                this.props.history.push("/login");
+                console.log(this.props)
+                window.localStorage.setItem("token", resp.data.jwt)
+                window.location="/";
+                // this.props.history.push("/");
             })
             .catch(err => {
                 console.error(err);
