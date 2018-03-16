@@ -17,13 +17,13 @@ router.post('/chat', (req, res) => {
     res.send('Post the Chat: ');
 });
 
-router.put('/chat', (req, res) => {
+router.put('/chat/:id', (req, res) => {
     const updateChat = chatController.update(req, res);
     console.log('Update the Chat: ', updateChat);
     res.send('Update the Chat: ');
 });
 
-router.delete('/chat', (req, res) => {
+router.delete('/chat/:id', (req, res) => {
     const deleteChat = chatController.remove(req, res);
     console.log('Delete the Chat: ', deleteChat);
     res.send('Delete the Chat: ');
