@@ -2,11 +2,7 @@
   "name": "nofear",
   "version": "0.1.0",
   "private": true,
-  "proxy": {
-    "/auth/google": {
-      "target": "http://localhost:3001"
-    }
-  },
+  "proxy": "http://localhost:3001",
 
   "dependencies": {
     "body-parser": "^1.18.2",
