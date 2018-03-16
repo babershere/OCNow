@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const articleController = require('../../controllers/articleController');
+const chatController = require('../../controllers/chatController');
 // const models = require("../models");
 
 //Grab Controller's
@@ -11,16 +11,18 @@ router.get('/chat', (req, res) => {
 });
 
 router.post('/chat', (req, res) => {
-    const chatPost = chatController.create(req, res);
-    console.log('Post the Chat: ', chatPost);
+    const postChat = chatController.create(req, res);
+    console.log('Post the Chat: ', postChat);
 });
 
 router.put('/chat', (req, res) => {
-    const chatUpdate = chatController.update(req, res);
-    console.log('Update the Chat: ', chatUpdate)
+    const updateChat = chatController.update(req, res);
+    console.log('Update the Chat: ', updateChat)
 });
 
 router.delete('/chat', (req, res) => {
-    const chatDelete = chatController.remove(req, res);
-    console.log('Delete the Chat: ', chatDelete);
+    const deleteChat = chatController.remove(req, res);
+    console.log('Delete the Chat: ', deleteChat);
 });
+
+module.exports = router;

@@ -18,8 +18,8 @@ router.get('/article', (req, res) => {
 });
 
 router.post('/article', (req, res) => {
-    const articlePost = articleController.create(req, res);
-    console.log("Posted articles", articlePost);
+    const postArticle = articleController.create(req, res);
+    console.log("Posted articles", postArticle);
 });
 
 router.put('/article/:id', (req, res) => {
