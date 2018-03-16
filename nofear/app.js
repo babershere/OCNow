@@ -17,7 +17,7 @@ const passport = require ("passport");
 const flash = require ('connect-flash');
 const session = require('express-session');
 const configDB = require('./config/database.js');
-
+require('../nofear/app_api/routes/user')(app, passport);
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
 
