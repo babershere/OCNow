@@ -53,17 +53,19 @@ class Login extends Component {
                     <button type= "button" className="btn btn-default navbar-btn" onClick={this.submit}>Log In</button>
                 </form>
                 <div className="form-group" onSubmit={this.handleSubmit}>
-                    <a className="btn btn-danger" onClick={
-                        (e) => {
-                            e.preventDefault();
-                            console.log("sup");
-                            axios.get("/auth/google")
-                                .then(function (resp) {
-                                    console.log(resp)
-                                })
+                    <a className="btn btn-danger" href="/auth/google"
+                    // onClick={
+                    //     (e) => {
+                    //         e.preventDefault();
+                    //         console.log("sup");
+                    //         // axios.get("/auth/google")
+                    //         //     .then(function (resp) {
+                    //         //         console.log(resp)
+                    //             })
 
-                        }
-                    } >Google +</a>
+                    //     }
+                    // } 
+                    >Google +</a>
                 </div>
             </div>
             
