@@ -4,6 +4,7 @@ import News from '../components/News'
 import Deals from '../components/Deals';
 import Events from '../components/Events';
 import Weather from '../components/Weather';
+// import Weatherwidget from '../components/Weatherwidget';
 import axios from "axios";
 
 
@@ -34,19 +35,17 @@ export default class Home extends React.Component {
         axios.get('/scrape/'+currentCity)
         .then(resp => {
             this.setState({articles: resp.data.data});
-            console.log('articles: ', this.state.articles)
+            // console.log('articles: ', this.state.articles)
         })
         .catch(err => {
             console.error(err);
         }) 
 
-        const hyphenCity = window.localStorage.getItem("city") || "orange-county/"
+        const hyphenCity = window.localStorage.getItem("city") || "tustin"
         const plusCity = hyphenCity.replace(/-/g,"+");
         this.setState({dealsCity: plusCity});
       }
-    
-     
- 
+      
     componentDidMount() {
         // const currentCity = window.localStorage.getItem("city") || 'orange';
         axios.get('/scrape/orange-county/')
@@ -57,7 +56,6 @@ export default class Home extends React.Component {
             console.error(err);
         })     
         }
-
 
 render(){
     return(
@@ -122,6 +120,7 @@ render(){
         <div className='row'>
                 <div className='col-md-12'>
                     <Weather city={this.state.dealsCity}/>
+                    
                 </div>
             </div> 
             <div className='row'>
