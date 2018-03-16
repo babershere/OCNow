@@ -1,7 +1,7 @@
 // load all the things we need
 var LocalStrategy = require('passport-local').Strategy;
 
-var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+var GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 // load up the user model
 var User = require('../app_api/models/users');
@@ -158,8 +158,8 @@ module.exports = function (passport) {
 
         clientID: configAuth.googleAuth.clientID,
         clientSecret: configAuth.googleAuth.clientSecret,
-        callbackURL: configAuth.googleAuth.callbackURL,
-        passReqToCallback: true // allows us to pass in the req from our route (lets us check if a user is logged in or not)
+        callbackURL: '/auth/google/callback',
+        proxy: true // allows us to pass in the req from our route (lets us check if a user is logged in or not)
 
     },
         function (req, token, refreshToken, profile, done) {

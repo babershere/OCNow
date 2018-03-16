@@ -2,10 +2,16 @@
   "name": "nofear",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3001",
+  "proxy": {
+    "/auth/google": {
+      "target": "http://localhost:3001"
+    }
+  },
+
   "dependencies": {
     "body-parser": "^1.18.2",
     "cheerio": "^1.0.0-rc.2",
+    "passport-google-oauth20": "^1.0.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-router": "^4.2.0",
