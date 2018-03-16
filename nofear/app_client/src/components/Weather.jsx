@@ -1,31 +1,65 @@
 import React from "react";
 
-// const weatherAPI_Key = 'aa9e57b161236945';
+const WEATHER_API_Key = '5286c4ca96fdd98641a1184d6fc3a285';
 
-// get location from ???  huntington_Beach, Costa_Mesa, Newport_Beach
-// let location = '';
+
 
 class Weather extends React.Component {
 
-    // getWeather = async (location) => {
+    constructor(props) {
+        super(props);
+        this.state = {
+            city: undefined,
+            temp: undefined,
+            high: undefined,
+            low: undefined,
+            humidity: undefined,
+            cond: undefined
+        }
+        this.getWeather = this.getWeather.bind(this);
+      } 
         
-    //     const api_call = await fetch(`http://api.wunderground.com/api/${weatherAPI_Key}/conditions/q/CA/Costa_Mesa.json`)
+    getWeather = async () => {
+        const weather_api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${this.props.city},ca,us&units=imperial&APPID=${WEATHER_API_Key}`);
 
-    //     const data = await api_call.json();
-    //     console.log(data);
-    // }
+        const data = await weather_api_call.json();
+        // const weatherArr = data.deals;
+        this.setState({
+            city: data.name,
+            temp: data.main.temp,
+            high: data.main.temp_max,
+            low: data.main.temp_min,
+            humidity: data.main.humidity,
+            cond: data.weather[0].description
+        })
+        console.log("data: ", data);
+    }
 
-    // componentDidMount() {
-    //     this.getWeather
-    // }
+        componentDidMount() {
+            this.getWeather();
+        }
 
-    render() {
-        return (
-        <h1>Weather Component</h1>
+        componentWillReceiveProps(nextProps) {
+            if (nextProps) {
+                this.getWeather();
+            }
+        }
+
+        render() {
+            return(
+                <div>
+                <h4>{this.state.city} Weather: </h4>
+                <h5>Current Temp: {this.state.temp} F</h5>
+                <h5>Current Condition: {this.state.cond}</h5>
+                <h6>Humidity: {this.state.humidity}%</h6>
+                <h6>High: {this.state.high} F</h6>
+                <h6>Low: {this.state.low} F</h6>                
+                   
+                    <hr/>
+
+                </div> 
         )
     }
-}  
-
-    
+}    
 
 export default Weather;
