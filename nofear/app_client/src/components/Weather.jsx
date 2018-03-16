@@ -2,14 +2,12 @@ import React from "react";
 
 const WEATHER_API_Key = '5286c4ca96fdd98641a1184d6fc3a285';
 
-
-
 class Weather extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            city: undefined,
+            cityjson: undefined,
             temp: undefined,
             high: undefined,
             low: undefined,
@@ -25,7 +23,7 @@ class Weather extends React.Component {
         const data = await weather_api_call.json();
         // const weatherArr = data.deals;
         this.setState({
-            city: data.name,
+            cityjson: data.name,
             temp: data.main.temp,
             high: data.main.temp_max,
             low: data.main.temp_min,
@@ -48,7 +46,7 @@ class Weather extends React.Component {
         render() {
             return(
                 <div>
-                <h4>{this.state.city} Weather: </h4>
+                <h4>{this.state.cityjson} Weather: </h4>
                 <h5>Current Temp: {this.state.temp} F</h5>
                 <h5>Current Condition: {this.state.cond}</h5>
                 <h6>Humidity: {this.state.humidity}%</h6>
@@ -56,10 +54,12 @@ class Weather extends React.Component {
                 <h6>Low: {this.state.low} F</h6>                
                    
                     <hr/>
+                    
 
                 </div> 
         )
     }
+   
 }    
 
 export default Weather;
