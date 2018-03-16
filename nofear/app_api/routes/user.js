@@ -41,15 +41,18 @@ module.exports = function(app, passport) {
 
 
     // process the signup form
-    app.post('/signup', 
-    // function(req, res){
-    //     console.log("Hello");
-    // },
-        passport.authenticate('local-signup', {
-            successRedirect: '/profile', // redirect to the secure profile section
-            failureRedirect: '/signup', // redirect back to the signup page if there is an error
-            failureFlash: true, // allow flash messages
-        })
+    app.post('/signup',
+        function(req, res) {
+            console.log('hell')
+            passport.authenticate('local-signup', (err, user) => {
+                console.log('ow')
+                if (err) {
+                    res.status(400).send({ message: err });
+                } else {
+                    res.status(200).send({ user: user });
+                }
+            })(req)
+        } 
     );
 
 
@@ -68,8 +71,8 @@ module.exports = function(app, passport) {
     // the callback after google has authenticated the user
     app.get('/auth/google/callback',
         passport.authenticate('google', {
-            successRedirect: '/profile',
-            failureRedirect: '/'
+            successRedirect: '/',
+            failureRedirect: '/signup'
         })
     );
 

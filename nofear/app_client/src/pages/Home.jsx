@@ -1,11 +1,11 @@
 import React from "react";
-// import Chat from '../components/Chat';
+// import Chat from '../components/chat/Chat';
 import News from '../components/News'
 import Deals from '../components/Deals';
 import Events from '../components/Events';
-// import Weather from '../components/Weather';
+import Weather from '../components/Weather';
 import axios from "axios";
-// import CitiesDropDown from '../components/CitiesDropDown';
+
 
 export default class Home extends React.Component {
 
@@ -14,7 +14,7 @@ export default class Home extends React.Component {
         this.state = {
             articles: [],
             value: '',
-            dealsloc: ''
+            dealsCity: 'tustin'
         }
         this.handleChange = this.handleChange.bind(this);
         // this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,9 +22,10 @@ export default class Home extends React.Component {
     
       handleChange(event) {
         event.preventDefault();
-        this.setState({dealsloc: event.target.dealsloc})
-        window.localStorage.setItem('dealscity', event.target.dealsloc);
-        console.log('dealscity: ', event.target.dealsloc)
+        // this.setState({dealsloc: event.target.dealsloc})
+        // window.localStorage.setItem('dealscity', event.target.dealsloc);
+        // console.log('dealscity: ', event.target.dealsloc)
+
 
         this.setState({value: event.target.value})
         window.localStorage.setItem("city", event.target.value);
@@ -38,12 +39,11 @@ export default class Home extends React.Component {
         .catch(err => {
             console.error(err);
         }) 
+
+        const hyphenCity = window.localStorage.getItem("city") || "orange-county/"
+        const plusCity = hyphenCity.replace(/-/g,"+");
+        this.setState({dealsCity: plusCity});
       }
-    
-    //   handleSubmit(event) {
-    //     alert('Now scraping: ' + this.state.value);
-    //     event.preventDefault();
-    //   }
     
      
  
@@ -51,9 +51,7 @@ export default class Home extends React.Component {
         // const currentCity = window.localStorage.getItem("city") || 'orange';
         axios.get('/scrape/orange-county/')
         .then(resp => {
-            // console.log('resp.data: ', resp.data)
             this.setState({articles: resp.data.data});
-            // console.log('articles: ', this.state.articles)
         })
         .catch(err => {
             console.error(err);
@@ -108,20 +106,24 @@ render(){
               <option value='yorba-linda' dealsloc='yorba+linda+ca;radius=3'>Yorba Linda</option>
               </select>
             </form>
-            {/* <Weather/> */}
         </div>
     </div>
     <hr/>
 
     <div className='row'>
         <div className='col-md-2'>
-            <Deals/>
+            <Deals city={this.state.dealsCity}/>
         </div>
         <div className='col-md-7'>
             <News articles={this.state.articles}/>
         
         </div>
         <div className='col-md-3'>
+        <div className='row'>
+                <div className='col-md-12'>
+                    <Weather city={this.state.dealsCity}/>
+                </div>
+            </div> 
             <div className='row'>
                 <div className='col-md-12'>
                 <h4>Chat Placeholder</h4>
