@@ -3,6 +3,33 @@ import { Link } from "react-router-dom";
 
 class Navbar extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            userEmail: '',
+            userPassword: ''
+        }
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+      }
+
+      handleChange(event) {
+        const target = event.target;
+        const value = target.value;
+        const name = target.name;
+    
+        this.setState({
+          [name]: value
+        });
+      }
+  
+
+  handleSubmit(event) {
+    alert('User loggin in: ' + this.state.userEmail);
+    alert('Password used: ' + this.state.userPassword);
+    event.preventDefault();
+  }
+
     render() {
 
         return(
@@ -30,24 +57,23 @@ class Navbar extends React.Component {
                 </ul>
 
                     <div className="navbar-form navbar-right">
-                        {/* <form onSubmit={this.handleSubmit} className="navbar-search" >
+                        <form onSubmit={this.handleSubmit} className="navbar-search" >
                             <div className="form-group" onSubmit={this.handleSubmit}>
-                                <input name="email" type="text" className="form-control" placeholder="email" value={this.state.userName} onChange={this.handleChange} />
-                                <input name="password" type="password" className="form-control" placeholder="Password" value={this.state.userPassword} onChange={this.handleChange} />
+                                <input name="userEmail" type="text" className="form-control" placeholder="email" value={this.state.userEmail} onChange={this.handleChange} />
+                                <input name="userPassword" type="password" className="form-control" placeholder="Password" value={this.state.userPassword} onChange={this.handleChange} />
                                 <button className="btn btn-primary" disabled="">Log In</button>
-                                
+                                <button className="btn btn-danger" disabled="">Log Out</button>   
+                                {/* <Link className="btn btn-danger" to="/signup">Sign Up</Link> */}                              
                             </div>
-                        </form> */}
-                        <Link className="btn btn-danger" to="/signup">Sign Up</Link>
-                        <button className="btn btn-danger" disabled="">Log Out</button>
+                        </form>                       
                     </div>
 
-                    {/* <div className="navbar-form navbar-right">
-                        <form className="navbar-search pull-right" >
+                    <div className="navbar-form navbar-right">
+                        <form className="navbar-search pull-left" >
                             <div className="form-group" onSubmit={this.handleSubmit}>
-                                <button className="btn btn-success" disabled="">Sign Up</button>
+                                <Link to='/signup' className="btn btn-success" disabled="">Sign Up</Link>
                             </div>
-                            <div className="form-group" onSubmit={this.handleSubmit}>
+                            {/* <div className="form-group" onSubmit={this.handleSubmit}>
                                 <a  className="btn btn-danger" onClick={
                                     (e)=>{
                                         e.preventDefault();
@@ -59,9 +85,9 @@ class Navbar extends React.Component {
 
                                     }
                                 } >Google +</a>
-                            </div>
+                            </div> */}
                         </form>
-                    </div> */}
+                    </div>
                 </div>
             </nav>
         )
