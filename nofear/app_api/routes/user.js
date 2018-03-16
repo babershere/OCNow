@@ -44,17 +44,21 @@ module.exports = function(app, passport) {
     app.post('/signup',
         function(req, res) {
             console.log('hell')
-            passport.authenticate('local-signup', (err, user) => {
+            passport.authenticate('local-signup', function (err, user) {
                 console.log('ow')
                 if (err) {
                     res.status(400).send({ message: err });
                 } else {
                     res.status(200).send({ user: user });
                 }
-            })(req)
+     
+            })
+            
         } 
     );
-
+app.get("/", function (req, res){
+    res.send("hello you")
+})
 
 
     // google ---------------------------------

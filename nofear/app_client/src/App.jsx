@@ -21,7 +21,7 @@ class App extends Component {
               <Route exact path ="/user/edit" component={UserEdit}/>
               <Route exact path ="/user/add" component={UserAdd}/>
               <Route exact path ="/user/profile/:id" component={UserProfile}/>
-              <Route exact path ="/signup" component={SignUp}/>
+              <Route exact path ="/register" component={SignUp}/>
 
             </div>
             {/* footer if we want one */}
