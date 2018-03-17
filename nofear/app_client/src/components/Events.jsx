@@ -22,7 +22,7 @@ class Events extends React.Component {
       } 
         
     getEvents = async () => {
-        const events_api_call = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?&size=${numResults}&apikey=${backupAPI_KEY}&countryCode=us&stateCode=${stateCode}&city=anaheim&radius=${radius}&unit=miles`);
+        const events_api_call = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?&size=${numResults}&apikey=${backupAPI_KEY}&countryCode=us&stateCode=${stateCode}&city=costa+mesa&radius=${radius}&unit=miles`);
 
         const data = await events_api_call.json();
         const eventsArr = data._embedded.events;
@@ -47,7 +47,7 @@ class Events extends React.Component {
                     <div className="col-md-3">
                         <div className="panel panel-default" style={titleStyle}>   
                             <div className="panel-body" style={titleStyle}>
-                                <h6>{this.props.dropDownText} Events: </h6>
+                                <h4 className='weather__value'>{this.props.dropDownText} Events: </h4>
                             </div>
                         </div>
                     </div>

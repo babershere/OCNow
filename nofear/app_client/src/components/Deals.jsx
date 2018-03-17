@@ -40,7 +40,7 @@ class Deals extends React.Component {
         render() {
             return(
                 <div>
-                <h4>{this.props.dropDownText} Deals: </h4>
+                <h4 className='weather__value'>{this.props.dropDownText} Deals: </h4>
                    
                     <hr/>
                     {this.state.deals.map((elem, i) => {
