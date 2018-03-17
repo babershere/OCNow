@@ -39,32 +39,42 @@ module.exports = function (passport) {
         passReqToCallback: true // allows us to pass in the req from our route (lets us check if a user is logged in or not)
     },
         function (req, email, password, done) {
-            if (email)
+            console.log("1")
+            if (email) {
+                console.log("2")
                 email = email.toString().toLowerCase(); // Use lower-case e-mails to avoid case-sensitive e-mail matching
+            }
+            console.log("3")
 
             // asynchronous
             process.nextTick(function () {
                 User.findOne({ 'local.email': email }, function (err, user) {
+                    console.log("4")
+
                     // if there are any errors, return the error
-                    if (err)
-                        return done(err);
+                    if (err){
+                        console.log("4")
+
+                        done(err, null);
+
+                    }
 
                     // if no user is found, return the message
                     if (!user) {
                         console.log('user could not be found');
-                        done(null, false, req.flash('loginMessage', 'No user found.'));
+                        done('No user found.', null);
 
                     }
 
                     if (!user.validPassword(password)) {
-                        console.log('user found, and passord matches');
-                        return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.'));
+                        console.log('user found, and passord does not matches');
+                        done('Oops! Wrong password.', null);
                     }
 
                     // all is well, return user
                     else {
                         console.log('success');
-                        return done(null, user);
+                        done(null, user);
 
                     }
                 });
@@ -106,7 +116,7 @@ module.exports = function (passport) {
                             newUser.local.password = newUser.generateHash(password);
                             newUser.local.firstName = req.body.firstName;
                             newUser.local.lastName = req.body.lastName;
-
+                            newUser.local.city = req.body.city;
                             newUser.save(function (err) {
                                 if (err){
                                      done(err, null);

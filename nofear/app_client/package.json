@@ -2,7 +2,8 @@
   "name": "nofear",
   "version": "0.1.0",
   "private": true,
-  "proxy": {
+  "proxy": 
+  {
     "/auth/google": {
       "target": "http://localhost:3001"
     },
@@ -10,6 +11,9 @@
       "target": "http://localhost:3001"
     },
     "/user/*": {
+      "target": "http://localhost:3001"
+    },
+    "/login": {
       "target": "http://localhost:3001"
     }
     

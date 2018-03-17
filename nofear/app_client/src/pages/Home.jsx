@@ -5,6 +5,8 @@ import Deals from '../components/Deals';
 import Events from '../components/Events';
 import Weather from '../components/Weather';
 import axios from "axios";
+import { Route, Redirect } from "react-router-dom";
+
 
 
 export default class Home extends React.Component {
@@ -57,7 +59,6 @@ export default class Home extends React.Component {
       }
       
     componentDidMount() {
-        // const currentCity = window.localStorage.getItem("city") || 'orange';
         axios.get('/scrape/orange-county/')
         .then(resp => {
             this.setState({articles: resp.data.data});

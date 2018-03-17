@@ -17,25 +17,24 @@ const passport = require ("passport");
 const flash = require ('connect-flash');
 const session = require('express-session');
 const configDB = require('./config/database.js');
-require('../nofear/app_api/routes/user')(app, passport);
+require('./config/passport')(passport); // pass passport for configuration
+
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-    app.get('/auth/google', 
-        function(req, res, next) {
-            console.log('hello');
-            next()
-        },
-        passport.authenticate('google', { scope: ['profile', 'email'] })
-    );
+app.get('/auth/google', 
+    function(req, res, next) {
+        console.log('hello');
+        next()
+    },
+    passport.authenticate('google', { scope: ['profile', 'email'] })
+);
 
 app.use(express.static('app_client/build'));
 app.use("/api", apiRoutes)
-app.use(flash());
 //Configuration for user authentication
-require('./config/passport')(passport); // pass passport for configuration
 mongoose.connect(configDB.url); // connect to our database
 
 
@@ -46,8 +45,6 @@ app.use(session({
   saveUninitialized: true
 }));
 app.use(passport.initialize());
-app.use(passport.session()); // persistent login sessions
-app.use(flash()); // use connect-flash for flash messages stored in session
 
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");

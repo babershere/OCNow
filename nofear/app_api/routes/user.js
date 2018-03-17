@@ -5,9 +5,19 @@ module.exports = function(app, passport) {
     console.log("sasdasdasd", jwt)
     // process the login form
     app.post('/login', 
-        passport.authenticate('local-login', {
-            failureFlash: true // allow flash messages
-        }),
+
+        function(req, res, next) {
+            console.log('hello')
+            passport.authenticate('local-login', function (err, user) {
+                console.log('ow')
+                if (err) {
+                    res.status(400).send({ message: err });
+                } else {
+                   next()
+                }
+            });
+        },
+
         function(req, res) {
             if(req.user) {
 
@@ -44,6 +54,7 @@ module.exports = function(app, passport) {
     app.post('/signup',
         function(req, res) {
             console.log('hell')
+            console.log(passport)
             passport.authenticate('local-signup',function (err, user) {
                 console.log('ow')
                 if (err) {
@@ -56,9 +67,6 @@ module.exports = function(app, passport) {
             
         } 
     );
-app.get("/", function (req, res){
-    res.send("hello you")
-})
 
 
     // google ---------------------------------

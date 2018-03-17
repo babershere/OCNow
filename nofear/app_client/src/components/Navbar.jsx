@@ -60,22 +60,11 @@ class Navbar extends React.Component {
                     </li>   
                 </ul>
 
-                    <div className="navbar-form navbar-right">
-                        <form onSubmit={this.handleSubmit} className="navbar-search" >
-                            <div className="form-group" onSubmit={this.handleSubmit}>
-                                <input name="userEmail" type="text" className="form-control" placeholder="email" value={this.state.userEmail} onChange={this.handleChange} />
-                                <input name="userPassword" type="password" className="form-control" placeholder="password" value={this.state.userPassword} onChange={this.handleChange} />
-                                <button style={buttonStyle} className="btn btn-primary" disabled="">Log In</button>                              
-                            </div>
-                        </form>   
-                        <button style={buttonStyle} className="btn btn-danger" disabled="">Log Out</button>                    
-                    </div>
+                   
 
                     <div className="navbar-form navbar-left">
                         <form className="navbar-search" >
-                            <div className="form-group" onSubmit={this.handleSubmit}>
-                                <Link to='/signup' className="btn btn-success" disabled="">Sign Up</Link>
-                            </div>
+                            
                             {/* <div className="form-group" onSubmit={this.handleSubmit}>
                                 <a  className="btn btn-danger" onClick={
                                     (e)=>{
@@ -90,6 +79,20 @@ class Navbar extends React.Component {
                                 } >Google +</a>
                             </div> */}
                         </form>
+                    </div>
+
+                    <div className="navbar-form navbar-right">
+                        <form onSubmit={this.handleSubmit} className="navbar-search" >
+                            <div className="form-group" onSubmit={this.handleSubmit}>
+                                <input name="userEmail" type="text" className="form-control" placeholder="email" value={this.state.userEmail} onChange={this.handleChange} />
+                                <input name="userPassword" type="password" className="form-control" placeholder="password" value={this.state.userPassword} onChange={this.handleChange} />
+                                <button style={buttonStyle} className="btn btn-primary" disabled="">Log In</button>
+                            </div>
+                        </form>
+                        <div className="form-group" onSubmit={this.handleSubmit}>
+                            <Link to='/signup' className="btn btn-success" disabled="">Sign Up</Link>
+                        </div>
+                        <button style={buttonStyle} className="btn btn-danger" disabled="">Log Out</button>
                     </div>
                 </div>
             </nav>
