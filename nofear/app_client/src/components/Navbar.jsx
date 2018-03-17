@@ -68,7 +68,7 @@ class Navbar extends React.Component {
                         <Link to='/signup' className="btn btn-success" disabled="">Sign Up</Link>
                     </div>
                 </div>
-                <div className="col-md-5">
+                <div className="col-md-5 nav navbar-nav:">
                     <div className="navbar-form navbar-right">
                         <form onSubmit={this.handleSubmit} className="navbar-search" >
                             <div className="form-group" onSubmit={this.handleSubmit}>

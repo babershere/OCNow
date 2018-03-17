@@ -2,8 +2,6 @@ import React from "react";
 
 const DEALS_API_KEY = `xSiFMfbT`;
 
-
-
 class Deals extends React.Component {
 
     constructor(props) {
@@ -14,9 +12,7 @@ class Deals extends React.Component {
         }
         this.getDeals = this.getDeals.bind(this);
         // this.handleSubmit = this.handleSubmit.bind(this);
-      }
-
- 
+      } 
         
     getDeals = async () => {
         const deals_api_call = await fetch(`https://api.discountapi.com/v2/deals?api_key=${DEALS_API_KEY};per_page=10;location=${this.props.city}+ca;radius=1`);
@@ -26,7 +22,6 @@ class Deals extends React.Component {
         this.setState({deals: dealsArr})
         // console.log("dealsArr: ", dealsArr);
     }
-
         componentDidMount() {
             this.getDeals();
         }
@@ -44,10 +39,7 @@ class Deals extends React.Component {
                         <div className='panel-body'>
                         <h4 className='weather__value'>{this.props.dropDownText} Deals: </h4>
                     </div>
-                </div>
-                           
-                   
-           
+                </div>                          
                     {this.state.deals.map((elem, i) => {
                         return(
                             <div key={i}>            
