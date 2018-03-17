@@ -13,13 +13,15 @@ const userSchema = new Schema ({
         email: String,
         password: String,
         firstName: String,
-        lastName: String
+        lastName: String,
+        city: String
     },
     google: {
         id: String,
         token: String,
         email: String,
-        name: String
+        name: String,
+        city: String
     }
 
 

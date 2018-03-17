@@ -29,7 +29,7 @@ router.put('/user/:id', (req, res) => {
     res.send('Updated Chat: ');
 });
 
-router.delete('/article/:id', (req, res) => {
+router.delete('/user/:id', (req, res) => {
     const deleteUser = userController.remove(req, res);
     console.log('Deleted User: ', deleteUser);
     res.send('Deleted User: ');

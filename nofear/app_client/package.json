@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "proxy": {
-    "/": {
+    "/socket.io": {
       "target": "http://localhost:3001"
     },
     "/auth/google": {
@@ -13,6 +13,9 @@
       "target": "http://localhost:3001"
     },
     "/user/*": {
+      "target": "http://localhost:3001"
+    },
+    "/login": {
       "target": "http://localhost:3001"
     }
   },
