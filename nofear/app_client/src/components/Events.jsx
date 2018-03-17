@@ -66,10 +66,8 @@ class Events extends React.Component {
 
                     
 
-                </div> 
-        )
-    }
+//                 </div> 
+//         )
+//     }
    
-}    
-
-export default Events;
+// } ;   
