@@ -30,14 +30,10 @@ export default class Home extends React.Component {
         // console.log('dealscity: ', event.target.dealsloc)
 
 
-<<<<<<< HEAD
-        this.setState({ value: event.target.value })
-=======
         this.setState({
             value: event.target.value,
             dropDownText: event.target.text
         })
->>>>>>> 1df6ed83e6b6541a8636d6f6425e2c1522c8f879
         window.localStorage.setItem("city", event.target.value);
         console.log('city', event.target.value)
         const currentCity = window.localStorage.getItem("city") || "orange-county/"
