@@ -30,7 +30,7 @@ class Weather extends React.Component {
             humidity: data.main.humidity,
             cond: data.weather[0].description
         })
-        console.log("data: ", data);
+        // console.log("data: ", data);
     }
 
         componentDidMount() {
