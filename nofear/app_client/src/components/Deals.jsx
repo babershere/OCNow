@@ -24,7 +24,7 @@ class Deals extends React.Component {
         const data = await deals_api_call.json();
         const dealsArr = data.deals;
         this.setState({deals: dealsArr})
-        console.log("dealsArr: ", dealsArr);
+        // console.log("dealsArr: ", dealsArr);
     }
 
         componentDidMount() {
@@ -40,9 +40,14 @@ class Deals extends React.Component {
         render() {
             return(
                 <div>
-                <h4>Local Deals: </h4>
+                    <div className='panel panel-default'>
+                        <div className='panel-body'>
+                        <h4 className='weather__value'>{this.props.dropDownText} Deals: </h4>
+                    </div>
+                </div>
+                           
                    
-                    <hr/>
+           
                     {this.state.deals.map((elem, i) => {
                         return(
                             <div key={i}>            

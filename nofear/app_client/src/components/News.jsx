@@ -1,15 +1,20 @@
 import React from "react";
 
-// import CitiesDropDown from "./CitiesDropDown"
+const titleStyle = {
+    textAlign: "center"
+}
 
 class News extends React.Component {
 
     render() {        
         return (
-            <div>
-            <h4>News:</h4>
+        <div>
+            <div className='panel panel-default'>
+                <div className='panel-body'>
+                    <h1 style={titleStyle} className='weather__value'>{this.props.dropDownText} News</h1>
+                </div>
+            </div>                  
                
-                <hr/>
                 {this.props.articles.map((elem, i) => {
                     return(
                         <div key={i}>       
@@ -19,7 +24,7 @@ class News extends React.Component {
                         </div>
                     )
                 })}
-            </div>            
+        </div>            
         )        
     }    
 } 

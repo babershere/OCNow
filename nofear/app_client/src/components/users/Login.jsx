@@ -23,13 +23,15 @@ class Login extends Component {
             [name]: value
         });
     }
-    submit(e) {
+    submit = (e) =>{
         e.preventDefault();
         axios.post("/login", this.state)
         .then(resp => {
             console.log(resp);
+            console.log(this.props);
             window.localStorage.setItem("token", resp.data.jwt)
-            this.props.history.push("/");
+            window.location = "/";
+            // this.props.history.push("/");
         })
         .catch(err => {
             console.error(err);
@@ -50,7 +52,7 @@ class Login extends Component {
                         <label>Password</label>
                         <input className = "form-control" type="password" name="password" placeholder="********" onChange={this.handleInputChange}/>
                     </div>
-                    <button type= "button" className="btn btn-default navbar-btn" onClick={this.submit}>Log In</button>
+                    <button type= "button" className="btn btn-default navbar-btn" onClick={(e)=>this.submit(e)}>Log In</button>
                 </form>
                 <div className="form-group" onSubmit={this.handleSubmit}>
                     <a className="btn btn-danger" href="/auth/google"

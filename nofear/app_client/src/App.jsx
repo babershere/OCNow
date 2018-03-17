@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import {BrowserRouter as Router, Route,} from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import UserAdd from "./pages/UserAdd";
@@ -15,7 +15,8 @@ class App extends Component {
       <div>
         <Router>
           <div>
-            <Navbar />
+          <Navbar />
+            
             <div className = "container">
               <Route exact path ="/" component={Home}/>
               <Route exact path ="/user/edit" component={UserEdit}/>
@@ -25,7 +26,10 @@ class App extends Component {
 
             </div>
             {/* footer if we want one */}
+
           </div>
+            
+      
         </Router>
       </div>
     );
