@@ -11,6 +11,12 @@ const topRowStyle = {
 const titleStyle = {
     height: '100%'
 }
+
+const aStyle = {
+    width: '100px',
+    height: '56px'
+}
+
 class Events extends React.Component {
 
     constructor(props) {
@@ -32,7 +38,7 @@ class Events extends React.Component {
             })
         } else {
             const eventsArr = data._embedded.events;
-            console.log("eventsArr",typeof events_api_call);
+            // console.log("eventsArr",eventsArr);
             this.setState({
                 events: eventsArr
             })
@@ -45,7 +51,7 @@ class Events extends React.Component {
         }
 
         componentWillReceiveProps(nextProps) {
-            console.log(nextProps)
+            // console.log(nextProps)
             if (nextProps) {
                 this.getEvents();
             }
@@ -61,13 +67,19 @@ class Events extends React.Component {
                         </div>
                     </div> */}
     
-                {this.state.events === null ? <div className='col-md-12'><h3>No events found for {this.props.dropDownText}, choose another city for events.</h3>
+                {this.state.events === null ? <div className='col-md-12'><h3>Select another city for events.</h3>
                 </div> : this.state.events.map((elem, i) => {
                     return(
                         <div className="col-md-2">
                             <a href ={elem.url} target="_blank"><h5>{elem.name}</h5></a>
+                            <a  href="#">
+                                <img style={aStyle} src={elem.images[3].url} alt=""/>
+                            </a>
                             <h6>{elem.dates.start.localDate}</h6>
                             <h6>{elem._embedded.venues[0].name}</h6>
+                            
+
+                            
                         </div>
                             
                     )

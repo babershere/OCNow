@@ -2,6 +2,11 @@ import React from "react";
 
 const DEALS_API_KEY = `xSiFMfbT`;
 
+const aStyle = {
+    width: '100px',
+    height: '56px'
+}
+
 class Deals extends React.Component {
 
     constructor(props) {
@@ -20,7 +25,7 @@ class Deals extends React.Component {
         const data = await deals_api_call.json();
         const dealsArr = data.deals;
         this.setState({deals: dealsArr})
-        // console.log("dealsArr: ", dealsArr);
+        console.log("dealsArr: ", dealsArr);
     }
         componentDidMount() {
             this.getDeals();
@@ -44,7 +49,11 @@ class Deals extends React.Component {
                         return(
                             <div key={i}>            
                                 <a href ={elem.deal.url} target="_blank"><h5>{elem.deal.short_title}</h5></a>
+                                <a  href="#">
+                                    <img style={aStyle} src={elem.deal.image_url} alt=""/>
+                                </a>
                                 <h5>{elem.deal.merchant.locality}, {elem.deal.merchant.region}</h5>
+
                                 <hr/>
                             </div>
                         )

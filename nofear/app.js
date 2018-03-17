@@ -82,7 +82,6 @@ db.on("error", function (error) {
     console.log("Database Error:", error);
 });
 
-
 app.get("/scrape/:city", function (req, res) {
     console.log('The "/scrape" route was hit:', req.params.city)
     request(`https://www.ocregister.com/location/california/orange-county/${req.params.city}/`, function (error, response, html) {
