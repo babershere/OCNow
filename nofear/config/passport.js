@@ -102,11 +102,13 @@ module.exports = function (passport) {
                 if (!req.user) {
                     User.findOne({ 'local.email': email }, function (err, user) {
                         // if there are any errors, return the error
+                        console.log("1");
                         if (err) {
                             done(err, null);
                         }
                         // check to see if theres already a user with that email
                         if (user) {
+                            console.log("2")
                              done('That email is already taken.', null);
                         } else {
                             // create the user

@@ -2,14 +2,14 @@
 const jwt = require("jsonwebtoken");
 
 module.exports = function(app, passport) {
-    console.log("sasdasdasd", jwt)
+    console.log("JWT Token", jwt)
     // process the login form
     app.post('/login', 
 
         function(req, res, next) {
-            console.log('hello')
+            console.log('user js line 10')
             passport.authenticate('local-login', function (err, user) {
-                console.log('ow')
+                console.log('user js line 12')
                 if (err) {
                     res.status(400).send({ message: err });
                 } else {
@@ -53,10 +53,10 @@ module.exports = function(app, passport) {
     // process the signup form
     app.post('/signup',
         function(req, res) {
-            console.log('hell')
-            console.log(passport)
+            console.log('user js line 56')
+            console.log("passport user js line 57:")
             passport.authenticate('local-signup',function (err, user) {
-                console.log('ow')
+                console.log('line 59')
                 if (err) {
                     res.status(400).send({ message: err });
                 } else {
