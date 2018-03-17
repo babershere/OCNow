@@ -10,7 +10,6 @@ module.exports = function(app, passport) {
         }),
         function(req, res) {
             if(req.user) {
-
                 const expTime = new Date();
                 expTime.setDate(expTime.getDate() + 7);
                 const signedJWT = jwt.sign({
