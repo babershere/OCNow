@@ -1,7 +1,15 @@
 import React from "react";
 
-const UserProfile = () => 
 
-    <h1>UserProfile Page</h1>
+class UserProfile extends React.Component {
+
+    render() {
+        return(
+            <h5>User Profile Page</h5>
+        )
+    }
+} 
+
+
 
 export default UserProfile;
