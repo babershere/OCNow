@@ -9,7 +9,6 @@ const selectStyle = {
     textAlign: "right"
 }
 
-
 export default class Home extends React.Component {
 
     constructor(props) {
@@ -18,7 +17,7 @@ export default class Home extends React.Component {
             articles: [],
             value: '',
             dealsCity: 'tustin',
-            dropDownText: 'Orange County, CA'
+            dropDownText: 'Orange County'
         }
         this.handleChange = this.handleChange.bind(this);
         // this.handleSubmit = this.handleSubmit.bind(this);
@@ -142,7 +141,7 @@ render(){
         <div className='col-md-3'>
         <div className='row'>
                 <div className='col-md-12'>
-                    <Weather city={this.state.dealsCity}/>
+                    <Weather dropDownText={this.state.dropDownText} city={this.state.dealsCity} />
                     
                 </div>
             </div> 

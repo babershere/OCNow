@@ -48,7 +48,7 @@ class Weather extends React.Component {
                 <div>
                 <div className='panel panel-default'>
                 <div className='panel-body'>
-                <h3 className='weather__value'>{this.state.cityjson} Weather: </h3>
+                <h3 className='weather__value'>{this.props.dropDownText} Weather: </h3>
                 </div>
                 </div>
                 <h4 className='weather__key'>Current Temp: <span className='weather__value'>{this.state.temp} F</span> </h4>
