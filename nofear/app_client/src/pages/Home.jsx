@@ -21,9 +21,9 @@ export default class Home extends React.Component {
         }
         this.handleChange = this.handleChange.bind(this);
         // this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    handleChange(event) {
+      }
+    
+      handleChange(event) {
         event.preventDefault();
         // this.setState({dealsloc: event.target.dealsloc})
         // window.localStorage.setItem('dealscity', event.target.dealsloc);
@@ -37,14 +37,14 @@ export default class Home extends React.Component {
         window.localStorage.setItem("city", event.target.value);
         console.log('city', event.target.value)
         const currentCity = window.localStorage.getItem("city") || "orange-county/"
-        axios.get('/scrape/' + currentCity)
-            .then(resp => {
-                this.setState({ articles: resp.data.data });
-                // console.log('articles: ', this.state.articles)
-            })
-            .catch(err => {
-                console.error(err);
-            })
+        axios.get('/scrape/'+currentCity)
+        .then(resp => {
+            this.setState({articles: resp.data.data});
+            // console.log('articles: ', this.state.articles)
+        })
+        .catch(err => {
+            console.error(err);
+        }) 
 
         const hyphenCity = window.localStorage.getItem("city") || "tustin"
         const spaceCity = hyphenCity.replace(/-/g, " ");
@@ -144,49 +144,16 @@ render(){
                     <Weather dropDownText={this.state.dropDownText} city={this.state.dealsCity} />
                     
                 </div>
-                <hr />
-
-                <div className='row'>
-                    <div className='col-md-2'>
-                        <Deals city={this.state.dealsCity} />
-                    </div>
-                    <div className='col-md-7'>
-                        <News articles={this.state.articles} />
-
-                    </div>
-                    <div className='col-md-3'>
-                        <div className='row'>
-                            <div className='col-md-12'>
-                                <Weather city={this.state.dealsCity} />
-
-                            </div>
-                            <hr />
-
-                            <div className='row'>
-                                <div className='col-md-2'>
-                                    <Deals city={this.state.dealsCity} />
-                                </div>
-                                <div className='col-md-7'>
-                                    <News articles={this.state.articles} />
-                                </div>
-                                <div className='col-md-3'>
-                                    <div className='row'>
-                                        <div className='col-md-12'>
-                                            <Weather city={this.state.dealsCity} />
-                                        </div>
-                                    </div>
-                                    <div className='row'>
-                                        <div className='col-md-12'>
-                                            <h4>Chat Placeholder</h4>
-                                            {/* <Chat /> */}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            </div> 
+            <div className='row'>
+                <div className='col-md-12'>
+                <h4>Chat Placeholder</h4>
+                    {/* <Chat /> */}
                 </div>
-            </div>
-        );
-    }
+            </div>               
+        </div>
+    </div>
+</div>
+    )
+}   
 }
