@@ -5,9 +5,6 @@ import Deals from '../components/Deals';
 import Events from '../components/Events';
 import Weather from '../components/Weather';
 import axios from "axios";
-const topRowStyle = {
-    
-}
 
 
 export default class Home extends React.Component {
@@ -75,8 +72,8 @@ export default class Home extends React.Component {
 render(){
     return(
 <div>
-    <div className='row' style={topRowStyle}>
-        <div className='col-md-9'>
+    <div className='row'>
+        <div className='col-md-9' >
             <Events dropDownText={this.state.dropDownText} city={this.state.dealsCity}/>
         </div>
         <div className='col-md-3'>
