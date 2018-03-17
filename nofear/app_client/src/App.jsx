@@ -6,6 +6,8 @@ import UserAdd from "./pages/UserAdd";
 import UserEdit from "./pages/UserEdit";
 import UserProfile from "./pages/UserProfile";
 import SignUp from "./pages/SignUp";
+import Landing from "./pages/Landing";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 class App extends Component {
 
@@ -18,10 +20,11 @@ class App extends Component {
           <Navbar />
             
             <div className = "container">
-              <Route exact path ="/" component={Home}/>
+              <Route exact path ="/" component={Landing}/>
+              <Route exact path="/home" component={Home} />
               <Route exact path ="/user/edit" component={UserEdit}/>
               <Route exact path ="/user/add" component={UserAdd}/>
-              <Route exact path ="/user/profile/:id" component={UserProfile}/>
+              <ProtectedRoute exact path ="/user/profile/:id" component={UserProfile}/>
               <Route exact path ="/signup" component={SignUp}/>
 
             </div>
