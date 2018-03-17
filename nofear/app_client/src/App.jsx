@@ -21,7 +21,7 @@ class App extends Component {
             
             <div className = "container">
               <Route exact path ="/" component={Landing}/>
-              <ProtectedRoute exact path="/home" component={Home} />
+              <Route exact path="/home" component={Home} />
               <Route exact path ="/user/edit" component={UserEdit}/>
               <Route exact path ="/user/add" component={UserAdd}/>
               <ProtectedRoute exact path ="/user/profile/:id" component={UserProfile}/>

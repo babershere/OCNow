@@ -96,7 +96,7 @@ input[type="text"], input[type="password"] {
   letter-spacing: 2px;
   margin-bottom: 30px;
   margin-right: 20px;
-  font-size: 20px;
+  font-size: 16px;
   outline: none;
 }
 
@@ -116,7 +116,7 @@ button {
   border-radius: 0px;
   font-weight: lighter;
   letter-spacing: 1px;
-  font-size: 15px;
+  font-size: 12px;
   cursor: pointer;
   background-color: #f16051;
   color: #fff;

@@ -2,7 +2,7 @@ import React from "react";
 
 const TKMS_API_Key = 'ZVGbXAY1XYuASRLrVAdARfZ4yikEatFL';
 const backupAPI_KEY = 'BZAkAGm6c4G9IYugsrmGfucSP3F5PcSf'
-const numResults = 3;
+const numResults = 6;
 const stateCode = 'ca'
 const radius = 20;
 const topRowStyle = {
@@ -44,14 +44,7 @@ class Events extends React.Component {
         render() {
             return(
                 <div className='row' style={topRowStyle}>
-                    <div className="col-md-3">
-                        <div className="panel panel-default" style={titleStyle}>   
-                            <div className="panel-body" style={titleStyle}>
-                                <h4 className='weather__value'>{this.props.dropDownText} Events: </h4>
-                            </div>
-                        </div>
-                    </div>
-                       
+                                           
                     {/* <div className="panel panel-default">   
                         <div className="panel-body">
                             <img src="../tcktmstr.png" alt=""/>
@@ -60,14 +53,10 @@ class Events extends React.Component {
     
                 {this.state.events.map((elem, i) => {
                     return(
-                        <div className="col-md-3">
-                            <div className="panel panel-default" key={i}>   
-                                <div className="panel-body">    
-                                    <a href ={elem.url} target="_blank"><h5>{elem.name}</h5></a>
-                                    <h6>{elem.dates.start.localDate}</h6>
-                                    <h6>{elem._embedded.venues[0].name}</h6>
-                                </div>
-                            </div>
+                        <div className="col-md-2">
+                            <a href ={elem.url} target="_blank"><h5>{elem.name}</h5></a>
+                            <h6>{elem.dates.start.localDate}</h6>
+                            <h6>{elem._embedded.venues[0].name}</h6>
                         </div>
                             
                     )
