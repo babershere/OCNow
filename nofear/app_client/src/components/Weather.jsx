@@ -46,7 +46,11 @@ class Weather extends React.Component {
         render() {
             return(
                 <div>
+                <div className='panel panel-default'>
+                <div className='panel-body'>
                 <h3 className='weather__value'>{this.state.cityjson} Weather: </h3>
+                </div>
+                </div>
                 <h4 className='weather__key'>Current Temp: <span className='weather__value'>{this.state.temp} F</span> </h4>
                 <h4 className='weather__key'>Condition: <span className='weather__value'>{this.state.cond}</span> </h4>
                 <h4 className='weather__key'>Humidity: <span className='weather__value'>{this.state.humidity}%</span></h4>
