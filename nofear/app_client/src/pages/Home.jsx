@@ -1,5 +1,5 @@
 import React from "react";
-// import Chat from '../components/chat/Chat';
+import Chat from '../components/chat/Chat';
 import News from '../components/News'
 import Deals from '../components/Deals';
 import Events from '../components/Events';
@@ -147,8 +147,8 @@ render(){
             </div> 
             <div className='row'>
                 <div className='col-md-12'>
-                <h4>Chat Placeholder</h4>
-                    {/* <Chat /> */}
+               
+                    <Chat />
                 </div>
             </div>               
         </div>
