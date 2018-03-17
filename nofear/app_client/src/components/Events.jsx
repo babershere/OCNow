@@ -45,7 +45,7 @@ class Events extends React.Component {
                     </div>   
                     <div className="panel panel-default">   
                         <div className="panel-body">
-                            <img src="../tcktmstr.png" alt=""/>
+                            {/* <img src="../tcktmstr.png" alt=""/> */}
                         </div>
                     </div>
     
