@@ -18,7 +18,6 @@ module.exports = {
     create: function(req, res) {
         return new Promise((resolve, reject) => {
         const article = {
-            _id: req.body._id,
             title: req.body.headline.main,
             url: req.body.web_url
         };

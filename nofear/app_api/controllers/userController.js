@@ -1,12 +1,12 @@
-const db = require('../models');
+const User = require('../models/users');
 
 //Define Methods for the Controller for the article
 
 module.exports = {
     findbyId: function(req, res) {
         return new Promise((resolve, reject) => {
-        db.User
-        .find(req.params.id)
+        User
+        .find({_id: req.params.id})
         .then(dbUser => {
             resolve(dbUser)
         })
@@ -14,12 +14,12 @@ module.exports = {
         });
     },
     create: function(req, res) {
+        console.log(User);
         return new Promise((resolve, reject) => {
         const event = {
-            _id: req.body._id,
-            userName: req.body.username
+            email: req.body.email
         };
-        db.User
+        User
             .create(event)
             .then(dbUser => {
                 resolve(dbUser)
@@ -29,7 +29,7 @@ module.exports = {
     },
     remove: function(req, res) {
         return new Promise((resolve, reject) => {
-        db.User
+        User
         .findById({ _id: req.params.id})
         .then(dbUser => dbUser.remove())
         .then(dbUser => {

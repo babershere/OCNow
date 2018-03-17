@@ -9,11 +9,11 @@ const deal = require('./api/deal');
 const article = require('./api/article');
 
 
-router.use('/api', user);
-router.use('/api', event);
-router.use('/api', chat);
-router.use('/api', deal);
-router.use('/api', article);
+router.use('/user', user);
+router.use('/event', event);
+router.use('/chat', chat);
+router.use('/deal', deal);
+router.use('/article', article);
 
 // If no API routes are hit, send the React app
 router.use((req, res) =>

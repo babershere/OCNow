@@ -5,34 +5,54 @@ const dealController = require('../../controllers/dealController');
 
 //Grab Controller's
 
-router.get('/deal/:id', (req, res) => {
-    const uniqDeal = dealController.findOne(req, res);
-    console.log('Unique Deal: ', uniqDeal);
-    res.send('Unique Deal: ');
+router.get('/:id', (req, res) => {
+    dealController.findOne(req, res)
+    .then(resp => {
+        res.json(resp);
+    })
+    .catch(err => {
+        res.status(400).json(err);
+    })
 });
 
-router.get('/deal', (req, res) => {
-    const allDeals = dealController.findAll(req, res);
-    console.log('All of the Deals: ', allDeals);
-    res.send('All of the Deals: ');
+router.get('/', (req, res) => {
+    dealController.findAll(req, res)
+    .then(resp => {
+        res.json(resp);
+    })
+    .catch(err => {
+        res.status(400).json(err);
+    })
 });
 
-router.post('/deal', (req, res) => {
-    const postDeal = dealController.create(req, res);
-    console.log('Posted Deals: ', postDeal);
-    res.send('Posted Deals: ');
+router.post('/', (req, res) => {
+    dealController.create(req, res)
+    .then(resp => {
+        res.json(resp);
+    })
+    .catch(err => {
+        res.status(400).json(err);
+    })
 });
 
-router.put('/deal/:id', (req, res) => {
-    const updateDeal = dealController.update(req, res);
-    console.log('Updated Deals: ', updateDeal);
-    res.send('Updated Deals: ');
+router.put('/:id', (req, res) => {
+    dealController.update(req, res)
+    .then(resp => {
+        res.json(resp);
+    })
+    .catch(err => {
+        res.status(400).json(err);
+    })
 });
 
-router.delete('/deal/:id', (req, res) => {
-    const deleteDeal = dealController.remove(req, res);
-    console.log('Deleted Deal: ', deleteDeal);
-    res.send('Deleted Deal: ');
+router.delete('/:id', (req, res) => {
+    const deleteDeal = dealController.remove(req, res)
+    .then(resp => {
+        res.json(resp);
+    })
+    .catch(err => {
+        res.status(400).json(err);
+    })
 });
 
 module.exports = router;
