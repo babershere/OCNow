@@ -11,7 +11,7 @@ class News extends React.Component {
         <div>
             <div className='panel panel-default'>
                 <div className='panel-body'>
-                    <h1 style={titleStyle} className='weather__value'>{this.props.dropDownText} News</h1>
+                    <h2 style={titleStyle} className='weather__value'>{this.props.dropDownText} News</h2>
                 </div>
             </div>                  
                

@@ -5,7 +5,7 @@ import Deals from '../components/Deals';
 import Events from '../components/Events';
 import Weather from '../components/Weather';
 import axios from "axios";
-import { Route, Redirect } from "react-router-dom";
+// import { Route, Redirect } from "react-router-dom";
 
 
 const selectStyle = {
@@ -148,8 +148,7 @@ render(){
                 </div>
             </div> 
             <div className='row'>
-                <div className='col-md-12'>
-               
+                <div className='col-md-12'>               
                     <Chat />
                 </div>
             </div>               

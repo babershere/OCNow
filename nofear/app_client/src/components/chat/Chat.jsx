@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import io from "socket.io-client";
-
+const titleStyle = {
+    textAlign: "center"
+}
 
 class Chat extends Component {
     constructor (props) {
@@ -9,8 +11,7 @@ class Chat extends Component {
         this.state = {
             username: '',
             message:'',
-            messages:[]
-        };
+            messages: []        };
     
     this.socket = io('http://localhost:3000');
 
@@ -34,35 +35,28 @@ class Chat extends Component {
 
     }
 }
+
 render(){
     return (
-        <div className="container">
-            <div className="row">
-                <div className="col-md-6">
-                    <div className="card">
-                        <div className="card-body">
-                            <div className="card-title"><h1>Chat</h1></div>
+
+                    <div className="panel panel-default">                    
+                        <div className="panel-body">
+                            <h2 className='weather__value' style={titleStyle}>OC Chat</h2>
+                            <input type="text" placeholder="Username" value={this.state.username} onChange={ev => this.setState({username: ev.target.value})} className="form-control"/>                            
+                            <textarea type='text' placeholder="Message" className="form-control" value={this.state.message} onChange={ev => this.setState({message: ev.target.value})}/>
+                            <button onClick={this.sendMessage} className="btn form-control">Send</button>
                             <hr/>
                             <div className="messages">
-                                {this.state.messages.map(message => {
+                    
+                                {this.state.messages === null ? <div></div> : 
+                                    this.state.messages.map(message => {
                                     return (
-                                        <div>{message.author}: {message.message}</div>
+                                        <div>{message.author}:   {message.message}</div>
                                     )
                                 })}
                             </div>
-
-                        </div>
-                        <div className="card-footer">
-                            <input type="text" placeholder="Username" value={this.state.username} onChange={ev => this.setState({username: ev.target.value})} className="form-control"/>
-                            <br/>
-                            <textarea placeholder="Message" className="form-control" value={this.state.message} onChange={ev => this.setState({message: ev.target.value})}/>
-                            <br/>
-                            <button onClick={this.sendMessage} className="btn form-control">Send</button>
-                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
     );
 }
 }
