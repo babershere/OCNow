@@ -1,6 +1,6 @@
 import React from "react";
 import SignUpForm from "../components/users/SignUpForm"
-import Login from "../components/users/Login"
+// import Login from "../components/users/Login"
 // import Chat from '../components/Chat';
 // import News from '../components/News'
 // import Deals from '../components/Deals';
@@ -18,16 +18,16 @@ const SignUp = () =>
             </div>
 
             <div className='row'>
-                <div className='col-md-6 col-md-offset-4'>
+                <div className='col-md-4 col-md-offset-4'>
                     <SignUpForm />
                 </div>
             </div>
 
-            <div className='row'>
+            {/* <div className='row'>
                 <div className='col-md-6 col-md-offset-4'>
                     <Login />
                 </div>
-            </div>
+            </div> */}
 
         </div>
         <hr />

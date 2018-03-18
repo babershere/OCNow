@@ -51,19 +51,19 @@ class SignUpForm extends Component {
                     {/*  PENDING TO MODIFY ON CHANGE */}
                     <div className="form-group">
                         <label htmlFor="firstName">First Name</label>
-                        <input type="text" className="form-control" name="firstName" placeholder="First Name..." onChange={this.handleInputChange}/>
+                        <input type="text" className="form-control" name="firstName" placeholder="First Name" onChange={this.handleInputChange}/>
                     </div>
                     <div className="form-group">
                         <label htmlFor="lastName">Last Name</label>
-                        <input type="text" className="form-control" name="lastName" placeholder="Last Name..." onChange={this.handleInputChange}/>
+                        <input type="text" className="form-control" name="lastName" placeholder="Last Name" onChange={this.handleInputChange}/>
                     </div>
                     <div className="form-group">
                         <label htmlFor="email">Email</label>
-                        <input type="email" className="form-control" type="email" name="email" placeholder="Email..." onChange={this.handleInputChange}/>
+                        <input type="email" className="form-control" type="email" name="email" placeholder="email" onChange={this.handleInputChange}/>
                     </div>
                     <div className="form-group">
                         <label htmlFor="password">Password</label>
-                        <input type="password" className="form-control" type="password" name="password" placeholder="********"  onChange={this.handleInputChange}/>
+                        <input type="password" className="form-control" type="password" name="password" placeholder="password"  onChange={this.handleInputChange}/>
                     </div>
 
                     <button type="button" className="btn btn-default navbar-btn" onClick={this.submit}>Sign Up!</button>

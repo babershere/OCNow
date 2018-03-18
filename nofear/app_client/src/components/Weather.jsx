@@ -2,6 +2,10 @@ import React from "react";
 
 const WEATHER_API_Key = '5286c4ca96fdd98641a1184d6fc3a285';
 
+const fixHeight = {
+    minHeight: "115px"
+}
+
 class Weather extends React.Component {
 
     constructor(props) {
@@ -46,7 +50,7 @@ class Weather extends React.Component {
         render() {
             return(
                 <div>
-                <div className='panel panel-default'>
+                <div className='panel panel-default' style={fixHeight}>
                 <div className='panel-body'>
                 <h3 className='weather__value'>{this.props.dropDownText} Weather: </h3>
                 </div>

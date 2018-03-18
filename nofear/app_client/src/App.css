@@ -52,6 +52,7 @@ body {
   margin: 0 auto;
 }
 
+
 .title-container {
   height: 90vh;
   /* background: url("img/bg.jpg") center center no-repeat; */
@@ -85,6 +86,9 @@ body {
   padding-left: 50px;
 }
 
+#navbrand {
+  color: rgb(247, 164, 10)
+}
 
 input[type="navtext"], input[type="password"] {
   background-color: transparent;
@@ -100,8 +104,8 @@ input[type="navtext"], input[type="password"] {
   font-size: 16px;
   outline: none;
 }
-input[type="text"], input[type="password"], input[type="email"]{
-  background-color:  #4e4d4c;
+input[type="text"], input[type="password"], input[type="email"], input[type='formControl']{
+  background-color:  rgb(247, 164, 10);
   border: 0;
   border-bottom: solid 1px #f16051;
   width: 100%;
@@ -116,7 +120,7 @@ input[type="text"], input[type="password"], input[type="email"]{
 }
 
 textarea[type="text"] {
-  background-color:  #4e4d4c;
+  background-color:  rgb(247, 164, 10);
   border: 0;
   border-bottom: solid 1px #f16051;
   /* width: 30%; */

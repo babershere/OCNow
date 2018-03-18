@@ -9,6 +9,7 @@ import SignUp from "./pages/SignUp";
 import Landing from "./pages/Landing";
 import ProtectedRoute from "./components/ProtectedRoute";
 
+
 class App extends Component {
 
   render() {

@@ -7,6 +7,9 @@ import Weather from '../components/Weather';
 import axios from "axios";
 // import { Route, Redirect } from "react-router-dom";
 
+const eventsStyle = {
+    minHeight: "160px"
+}
 
 const selectStyle = {
     textAlign: "right"
@@ -126,7 +129,7 @@ render(){
     </div>
         <hr/>
     <div className='row'>
-        <div className='col-md-12' >
+        <div className='col-md-12' style={eventsStyle} >
             <Events dropDownText={this.state.dropDownText} city={this.state.dealsCity}/>
         </div>
     </div>
