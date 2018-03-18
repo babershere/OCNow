@@ -17,9 +17,9 @@ class Navbar extends React.Component {
         return(
 
         <nav className="navbar navbar-inverse">
-            <div className="container-fluid">
+            <div className="container">
                     <div className="navbar-header">
-                        <Link className="navbar-brand" to="/home">OC Now</Link>
+                        <Link id='navbrand' className="navbar-brand" to="/home">OC Now</Link>
                         </div>
                     <ul className="nav navbar-nav">
                         <li
@@ -38,7 +38,7 @@ class Navbar extends React.Component {
                     </ul>
                     
 
-                <div className="nav navbar-nav">
+                <div className="nav navbar-nav navbar-right">
                     <div className='nav navbar-nav'>
                         <button type="button" class="btn btn-default navbar-btn">Log Out</button>
                     </div>
