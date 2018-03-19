@@ -30,7 +30,6 @@ const SignUp = () =>
             </div> */}
 
         </div>
-        <hr />
 
 
 

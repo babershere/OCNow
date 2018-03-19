@@ -2,7 +2,7 @@ import React from "react";
 
 const TKMS_API_Key = 'ZVGbXAY1XYuASRLrVAdARfZ4yikEatFL';
 const backupAPI_KEY = 'BZAkAGm6c4G9IYugsrmGfucSP3F5PcSf'
-const numResults = 6;
+const numResults = 5;
 const stateCode = 'ca'
 const radius = 20;
 const topRowStyle = {
@@ -15,6 +15,15 @@ const titleStyle = {
 const aStyle = {
     width: '100px',
     height: '56px'
+}
+
+const tcktStyle = {
+    width: '110px',
+    height: '110px'
+}
+
+const italic = {
+    fontStyle: 'italic'
 }
 
 class Events extends React.Component {
@@ -60,14 +69,13 @@ class Events extends React.Component {
         render() {
             return(
                 <div className='row' style={topRowStyle}>
-                                           
-                    {/* <div className="panel panel-default">   
-                        <div className="panel-body">
-                            <img src="../tcktmstr.png" alt=""/>
-                        </div>
-                    </div> */}
+                    <div className="col-md-2">
+                    <h6 style={italic}>  powered by</h6>
+                        <a href=""><img style={tcktStyle} src="./images/tcktmstr.png" alt=""/></a>                       
+                    </div>
+
     
-                {this.state.events === null ? <div className='col-md-12'><h3>Select another city for events.</h3>
+                {this.state.events === null ? <div className='col-md-10'><h3>Select another city for events.</h3>
                 </div> : this.state.events.map((elem, i) => {
                     return(
                         <div className="col-md-2">
