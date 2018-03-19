@@ -23,7 +23,9 @@ const tcktStyle = {
 }
 
 const italic = {
-    fontStyle: 'italic'
+    fontStyle: 'italic',
+    letterSpacing: '4px',
+    color: 'gray'
 }
 
 class Events extends React.Component {
