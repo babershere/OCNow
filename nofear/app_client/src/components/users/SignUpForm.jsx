@@ -59,11 +59,11 @@ class SignUpForm extends Component {
                     </div>
                     <div className="form-group">
                         <label htmlFor="email">Email</label>
-                        <input type="email" className="form-control" type="email" name="email" placeholder="email" onChange={this.handleInputChange}/>
+                        <input type="email" className="form-control" name="email" placeholder="email" onChange={this.handleInputChange}/>
                     </div>
                     <div className="form-group">
                         <label htmlFor="password">Password</label>
-                        <input type="password" className="form-control" type="password" name="password" placeholder="password"  onChange={this.handleInputChange}/>
+                        <input type="password" className="form-control" name="password" placeholder="password"  onChange={this.handleInputChange}/>
                     </div>
 
                     <button type="button" className="btn btn-default navbar-btn" onClick={this.submit}>Sign Up!</button>
