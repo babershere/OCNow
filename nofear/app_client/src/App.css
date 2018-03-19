@@ -169,7 +169,7 @@ button:active {
 }
 
 .weather__key {
-  color: #fa2b14;
+  color:rgba(241, 159, 7, 0.918);
   border-bottom: solid 2px rgba(255,255,255,0.06);
   padding: 2px 0 2px 0;
   font-weight: 700;
@@ -189,4 +189,17 @@ button:active {
   font-size: 20px;
   letter-spacing: 1px;
   font-weight: 200;
+}
+
+.form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgb(75, 72, 72);
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: rgb(88, 86, 86);
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: rgb(83, 80, 80);
 }

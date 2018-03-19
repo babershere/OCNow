@@ -15,6 +15,11 @@ const selectStyle = {
     textAlign: "right"
 }
 
+const aStyle = {
+    width: '100px',
+    height: '100px'
+}
+
 export default class Home extends React.Component {
 
     constructor(props) {

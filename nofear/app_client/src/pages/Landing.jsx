@@ -62,7 +62,7 @@ class Landing extends React.Component {
                             <div class="panel-body">
                             <h3>Or Sign Up:</h3>     
                             <br/>
-                    <Link to='/signup' className="btn btn-success" disabled="">Sign Up</Link>
+                    <Link to='/signup' className="btn btn-default" disabled="">Sign Up</Link>
                     </div>
                     </div>
                 </div>
