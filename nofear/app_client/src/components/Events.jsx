@@ -1,15 +1,12 @@
 import React from "react";
 
 const TKMS_API_Key = 'ZVGbXAY1XYuASRLrVAdARfZ4yikEatFL';
-const backupAPI_KEY = 'BZAkAGm6c4G9IYugsrmGfucSP3F5PcSf'
+// const backupAPI_KEY = 'BZAkAGm6c4G9IYugsrmGfucSP3F5PcSf'
 const numResults = 5;
 const stateCode = 'ca'
 const radius = 20;
 const topRowStyle = {
     height: "30px"
-}
-const titleStyle = {
-    height: '100%'
 }
 
 const aStyle = {
@@ -39,7 +36,7 @@ class Events extends React.Component {
       } 
         
     getEvents = async () => {
-        const events_api_call = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?&size=${numResults}&apikey=${backupAPI_KEY}&radius=${radius}&unit=miles&countryCode=us&stateCode=${stateCode}&city=${this.props.city}`);
+        const events_api_call = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?&size=${numResults}&apikey=${TKMS_API_Key}&radius=${radius}&unit=miles&countryCode=us&stateCode=${stateCode}&city=${this.props.city}`);
 
         const data = await events_api_call.json();
         if (data.page.totalElements === 0) {
@@ -82,7 +79,7 @@ class Events extends React.Component {
                     return(
                         <div className="col-md-2">
                             <a href ={elem.url} target="_blank"><h5>{elem.name}</h5></a>
-                            <a  href="#">
+                            <a>
                                 <img style={aStyle} src={elem.images[3].url} alt=""/>
                             </a>
                             <h6>{elem.dates.start.localDate}</h6>

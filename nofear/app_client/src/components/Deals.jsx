@@ -53,7 +53,7 @@ class Deals extends React.Component {
                         return(
                             <div key={i}>            
                                 <a href ={elem.deal.url} target="_blank"><h5>{elem.deal.short_title}</h5></a>
-                                <a  href="#">
+                                <a>
                                     <img style={aStyle} src={elem.deal.image_url} alt=""/>
                                 </a>
                                 <h5>{elem.deal.merchant.locality}, {elem.deal.merchant.region}</h5>
