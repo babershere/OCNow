@@ -147,14 +147,14 @@ io.on('connection', (socket) => {
     socket.on('SEND_MESSAGE', function (data) {
 
 
-        console.log(models);
-        models.Chat.create({ message: data.message, username: data.username })
-            .then(function (dbChat) {
-                console.log(dbChat);
-            })
-            .catch(function (err) {
-                console.log(err.message);
-            });
+        // console.log(models);
+        // models.Chat.create({ message: data.message, username: data.username })
+        //     .then(function (dbChat) {
+        //         console.log(dbChat);
+        //     })
+        //     .catch(function (err) {
+        //         console.log(err.message);
+        //     });
 
 
         // END CHAT // 
