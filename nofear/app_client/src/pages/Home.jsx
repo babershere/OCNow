@@ -5,6 +5,12 @@ import Deals from '../components/Deals';
 import Events from '../components/Events';
 import Weather from '../components/Weather';
 import axios from "axios";
+// import { Route, Redirect } from "react-router-dom";
+
+const eventsStyle = {
+    minHeight: "160px"
+}
+
 const selectStyle = {
     textAlign: "right"
 }
@@ -59,7 +65,6 @@ export default class Home extends React.Component {
       }
       
     componentDidMount() {
-        // const currentCity = window.localStorage.getItem("city") || 'orange';
         axios.get('/scrape/orange-county/')
         .then(resp => {
             this.setState({articles: resp.data.data});
@@ -124,7 +129,7 @@ render(){
     </div>
         <hr/>
     <div className='row'>
-        <div className='col-md-12' >
+        <div className='col-md-12' style={eventsStyle} >
             <Events dropDownText={this.state.dropDownText} city={this.state.dealsCity}/>
         </div>
     </div>
@@ -146,8 +151,7 @@ render(){
                 </div>
             </div> 
             <div className='row'>
-                <div className='col-md-12'>
-               
+                <div className='col-md-12'>               
                     <Chat />
                 </div>
             </div>               

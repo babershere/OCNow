@@ -4,14 +4,18 @@ const titleStyle = {
     textAlign: "center"
 }
 
+const fixHeight = {
+    minHeight: "115px"
+}
+
 class News extends React.Component {
 
     render() {        
         return (
         <div>
-            <div className='panel panel-default'>
+            <div className='panel panel-default' style={fixHeight}>
                 <div className='panel-body'>
-                    <h1 style={titleStyle} className='weather__value'>{this.props.dropDownText} News</h1>
+                    <h2 style={titleStyle} className='weather__value'>{this.props.dropDownText} News</h2>
                 </div>
             </div>                  
                

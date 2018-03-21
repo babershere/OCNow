@@ -2,6 +2,10 @@ import React from "react";
 
 const WEATHER_API_Key = '5286c4ca96fdd98641a1184d6fc3a285';
 
+const fixHeight = {
+    minHeight: "115px"
+}
+
 class Weather extends React.Component {
 
     constructor(props) {
@@ -46,16 +50,16 @@ class Weather extends React.Component {
         render() {
             return(
                 <div>
-                <div className='panel panel-default'>
+                <div className='panel panel-default' style={fixHeight}>
                 <div className='panel-body'>
                 <h3 className='weather__value'>{this.props.dropDownText} Weather: </h3>
                 </div>
                 </div>
-                <h4 className='weather__key'>Current Temp: <span className='weather__value'>{this.state.temp} F</span> </h4>
-                <h4 className='weather__key'>Condition: <span className='weather__value'>{this.state.cond}</span> </h4>
-                <h4 className='weather__key'>Humidity: <span className='weather__value'>{this.state.humidity}%</span></h4>
-                <h4 className='weather__key'>High: <span className='weather__value'>{this.state.high} F</span> </h4>
-                <h4 className='weather__key'>Low: <span className='weather__value'>{this.state.low} F</span></h4>                
+                <h4 className='weather__key'>Currently: <span className='weather__value'> {this.state.temp} F</span> </h4>
+                <h4 className='weather__key'>Condition: <span className='weather__value'> {this.state.cond}</span> </h4>
+                <h4 className='weather__key'>Humidity: <span className='weather__value'> {this.state.humidity}%</span></h4>
+                <h4 className='weather__key'>High: <span className='weather__value'> {this.state.high} F</span> </h4>
+                <h4 className='weather__key'>Low: <span className='weather__value'> {this.state.low} F</span></h4>                
                    
                     <hr/>
                     

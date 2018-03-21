@@ -14,6 +14,12 @@
     },
     "/user/*": {
       "target": "http://localhost:3001"
+    },
+    "/login": {
+      "target": "http://localhost:3001"
+    },
+    "/api/signup": {
+      "target": "http://localhost:3001"
     }
   },
   "dependencies": {

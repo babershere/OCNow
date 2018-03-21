@@ -2,12 +2,22 @@
 const jwt = require("jsonwebtoken");
 
 module.exports = function(app, passport) {
-    console.log("sasdasdasd", jwt)
+    console.log("JWT Token", jwt)
     // process the login form
     app.post('/login', 
-        passport.authenticate('local-login', {
-            failureFlash: true // allow flash messages
-        }),
+
+        function(req, res, next) {
+            console.log('user js line 10')
+            passport.authenticate('local-login', function (err, user) {
+                console.log('user js line 12')
+                if (err) {
+                    res.status(400).send({ message: err });
+                } else {
+                   next()
+                }
+            });
+        },
+
         function(req, res) {
             if(req.user) {
                 const expTime = new Date();
@@ -39,25 +49,12 @@ module.exports = function(app, passport) {
     // });
 
 
-    // process the signup form
-    app.post('/signup',
-        function(req, res) {
-            console.log('hell')
-            passport.authenticate('local-signup',function (err, user) {
-                console.log('ow')
-                if (err) {
-                    res.status(400).send({ message: err });
-                } else {
-                    res.status(200).send({ user: user });
-                }
-     
-            })
-            
-        } 
-    );
-app.get("/", function (req, res){
-    res.send("hello you")
-})
+    // process the signup form  
+    app.post('/api/signup' ,
+    passport.authenticate('local', {failureRedirect: '/signup'}),
+    function(req, res) {
+        res.send(req.body);
+    })
 
 
     // google ---------------------------------

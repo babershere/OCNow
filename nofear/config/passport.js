@@ -1,15 +1,18 @@
 // load all the things we need
-var LocalStrategy = require('passport-local').Strategy;
+const passport = require('passport');
 
-var GoogleStrategy = require('passport-google-oauth20').Strategy;
+const LocalStrategy = require('passport-local');
+
+
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 // load up the user model
-var User = require('../app_api/models/users');
+const User = require('../app_api/models/users');
 
 // load the auth variables
-var configAuth = require('./auth'); // use this one for testing
+const configAuth = require('./auth'); // use this one for testing
 
-module.exports = function (passport) {
+
 
     // =========================================================================
     // passport session setup ==================================================
@@ -29,57 +32,18 @@ module.exports = function (passport) {
         });
     });
 
-    // =========================================================================
-    // LOCAL LOGIN =============================================================
-    // =========================================================================
-    passport.use('local-login', new LocalStrategy({
-        // by default, local strategy uses username and password, we will override with email
-        usernameField: 'email',
-        passwordField: 'password',
-        passReqToCallback: true // allows us to pass in the req from our route (lets us check if a user is logged in or not)
-    },
-        function (req, email, password, done) {
-            if (email)
-                email = email.toString().toLowerCase(); // Use lower-case e-mails to avoid case-sensitive e-mail matching
+    
 
-            // asynchronous
-            process.nextTick(function () {
-                User.findOne({ 'local.email': email }, function (err, user) {
-                    // if there are any errors, return the error
-                    if (err)
-                        return done(err);
-
-                    // if no user is found, return the message
-                    if (!user) {
-                        console.log('user could not be found');
-                        done(null, false, req.flash('loginMessage', 'No user found.'));
-
-                    }
-
-                    if (!user.validPassword(password)) {
-                        console.log('user found, and passord matches');
-                        return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.'));
-                    }
-
-                    // all is well, return user
-                    else {
-                        console.log('success');
-                        return done(null, user);
-
-                    }
-                });
-            });
-
-        }));
 
     // =========================================================================
     // LOCAL SIGNUP ============================================================
     // =========================================================================
-    passport.use('local-signup', new LocalStrategy({
+    passport.use(new LocalStrategy({
         // by default, local strategy uses username and password, we will override with email
         usernameField: 'email',
         passwordField: 'password',
-        passReqToCallback: true // allows us to pass in the req from our route (lets us check if a user is logged in or not)
+        passReqToCallback: true, 
+        proxy: true
     },
         function (req, email, password, done) {
             if (email)
@@ -92,11 +56,13 @@ module.exports = function (passport) {
                 if (!req.user) {
                     User.findOne({ 'local.email': email }, function (err, user) {
                         // if there are any errors, return the error
+                        console.log("1");
                         if (err) {
                             done(err, null);
                         }
                         // check to see if theres already a user with that email
                         if (user) {
+                            console.log("2")
                              done('That email is already taken.', null);
                         } else {
                             // create the user
@@ -106,7 +72,7 @@ module.exports = function (passport) {
                             newUser.local.password = newUser.generateHash(password);
                             newUser.local.firstName = req.body.firstName;
                             newUser.local.lastName = req.body.lastName;
-
+                            newUser.local.city = req.body.city;
                             newUser.save(function (err) {
                                 if (err){
                                      done(err, null);
@@ -230,4 +196,4 @@ module.exports = function (passport) {
 
         }));
 
-};
+

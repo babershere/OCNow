@@ -43,16 +43,16 @@ class Login extends Component {
     render() {
         return (
             <div>
-                <form>
+                <form onSubmit={this.submit}>
                     <div className="form-group">
                         <label>Email</label>
-                        <input className = "form-control" type="email" name="email" placeholder="Email..."  onChange={this.handleInputChange}/>
+                        <input id="email" className = "form-control" type="email" name="email" placeholder="email"  onChange={this.handleInputChange}/>
                     </div>
                     <div className="form-group">
                         <label>Password</label>
-                        <input className = "form-control" type="password" name="password" placeholder="********" onChange={this.handleInputChange}/>
+                        <input id="password" className = "form-control" type="password" name="password" placeholder="password" onChange={this.handleInputChange}/>
                     </div>
-                    <button type= "button" className="btn btn-default navbar-btn" onClick={(e)=>this.submit(e)}>Log In</button>
+                    <button type= "button" className="btn btn-default navbar-btn">Log In</button>
                 </form>
                 <div className="form-group" onSubmit={this.handleSubmit}>
                     <a className="btn btn-danger" href="/auth/google"
