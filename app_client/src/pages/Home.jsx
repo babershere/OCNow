@@ -41,7 +41,6 @@ export default class Home extends React.Component {
             dropDownText: event.target.text
         })
         window.localStorage.setItem("city", event.target.value);
-        console.log('city', event.target.value)
         const currentCity = window.localStorage.getItem("city") || "orange-county/"
         axios.get('/scrape/'+currentCity)
         .then(resp => {

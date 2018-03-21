@@ -13,7 +13,7 @@ class Chat extends Component {
             message:'',
             messages: []        };
     
-    this.socket = io('https://localhost:3000');
+    this.socket = io('https://intense-inlet-80206.herokuapp.com');
 
     this.socket.on('RECEIVE_MESSAGE', function(data){
         addMessage(data);

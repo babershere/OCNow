@@ -29,7 +29,6 @@ class Deals extends React.Component {
         const data = await deals_api_call.json();
         const dealsArr = data.deals;
         this.setState({deals: dealsArr})
-        console.log("dealsArr: ", dealsArr);
     }
         componentDidMount() {
             this.getDeals();
