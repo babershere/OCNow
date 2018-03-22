@@ -5,7 +5,6 @@ import Deals from '../components/Deals';
 import Events from '../components/Events';
 import Weather from '../components/Weather';
 import axios from "axios";
-// import { Route, Redirect } from "react-router-dom";
 
 const eventsStyle = {
     minHeight: "160px"
@@ -41,7 +40,6 @@ export default class Home extends React.Component {
             dropDownText: event.target.text
         })
         window.localStorage.setItem("city", event.target.value);
-        console.log('city', event.target.value)
         const currentCity = window.localStorage.getItem("city") || "orange-county/"
         axios.get('/scrape/'+currentCity)
         .then(resp => {
@@ -151,11 +149,12 @@ render(){
                 </div>
             </div> 
             <div className='row'>
-                <div className='col-md-12'>               
+                <div className='col-md-12 fixed-to-bottom'>               
                     <Chat />
                 </div>
             </div>               
-        </div>
+        </div>    
+        
     </div>
 </div>
     )

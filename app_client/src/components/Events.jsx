@@ -40,13 +40,11 @@ class Events extends React.Component {
 
         const data = await events_api_call.json();
         if (data.page.totalElements === 0) {
-            console.log("error dude");
             this.setState({
                 events: null
             })
         } else {
             const eventsArr = data._embedded.events;
-            // console.log("eventsArr",eventsArr);
             this.setState({
                 events: eventsArr
             })
