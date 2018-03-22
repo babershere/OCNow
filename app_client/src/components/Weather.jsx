@@ -57,9 +57,14 @@ class Weather extends React.Component {
                 </div>
                 <h4 className='weather__key'>Currently: <span className='weather__value'> {this.state.temp} F</span> </h4>
                 <h4 className='weather__key'>Condition: <span className='weather__value'> {this.state.cond}</span> </h4>
-                <h4 className='weather__key'>Humidity: <span className='weather__value'> {this.state.humidity}%</span></h4>
-                <h4 className='weather__key'>High: <span className='weather__value'> {this.state.high} F</span> </h4>
-                <h4 className='weather__key'>Low: <span className='weather__value'> {this.state.low} F</span></h4>                
+                {/* <h4 className='weather__key'>Humidity: <span className='weather__value'> {this.state.humidity}%</span></h4> */}
+                <h4 className='weather__key'>High: 
+                    <span className='weather__value'> {this.state.high} F </span> 
+                    <span className='weather__key'>| Low: 
+                    <span className='weather__value'> {this.state.low} F</span></span>
+                
+                </h4>
+                                
                    
                     <hr/>
                     

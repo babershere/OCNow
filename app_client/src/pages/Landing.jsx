@@ -39,7 +39,7 @@ class Landing extends React.Component {
 
                         <div className="panel panel-default">                        
                                 
-                            <div class="panel-body">
+                            <div className="panel-body">
                             <h3>Please Log In:</h3>
                             <Login />
                             {/* <form onSubmit={this.handleSubmit} >
@@ -59,7 +59,7 @@ class Landing extends React.Component {
                 <div className="col-md-4"></div>
                     <div className="col-md-4">
                     <div className="panel panel-default"> 
-                            <div class="panel-body">
+                            <div className="panel-body">
                             <h3>Or Sign Up:</h3>     
                             <br/>
                     <Link to='/signup' className="btn btn-default" disabled="">Sign Up</Link>
