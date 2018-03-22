@@ -5,7 +5,6 @@ import Deals from '../components/Deals';
 import Events from '../components/Events';
 import Weather from '../components/Weather';
 import axios from "axios";
-// import { Route, Redirect } from "react-router-dom";
 
 const eventsStyle = {
     minHeight: "160px"
@@ -150,11 +149,12 @@ render(){
                 </div>
             </div> 
             <div className='row'>
-                <div className='col-md-12'>               
+                <div className='col-md-12 fixed-to-bottom'>               
                     <Chat />
                 </div>
             </div>               
-        </div>
+        </div>    
+        
     </div>
 </div>
     )

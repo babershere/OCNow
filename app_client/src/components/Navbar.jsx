@@ -16,7 +16,7 @@ class Navbar extends React.Component {
 
         return(
 
-        <nav className="navbar navbar-inverse">
+        <nav className="navbar navbar-inverse navbar-fixed-top">
             <div className="container">
                     <div className="navbar-header">
                         <Link id='navbrand' className="navbar-brand" to="/home">OC Now</Link>
@@ -40,7 +40,7 @@ class Navbar extends React.Component {
 
                 <div className="nav navbar-nav navbar-right">
                     <div className='nav navbar-nav'>
-                        <button type="button" class="btn btn-default navbar-btn">Log Out</button>
+                        <button type="button" className="btn btn-default navbar-btn">Log Out</button>
                     </div>
                 </div>
             </div>        

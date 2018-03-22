@@ -13,7 +13,7 @@ class Chat extends Component {
             message:'',
             messages: []        };
     
-    this.socket = io('https://intense-inlet-80206.herokuapp.com');
+    this.socket = io('https://intense-inlet-80206.herokuapp.com/');
 
     this.socket.on('RECEIVE_MESSAGE', function(data){
         addMessage(data);
@@ -39,7 +39,7 @@ class Chat extends Component {
 render(){
     return (
 
-                    <div className="panel panel-default">                    
+                    <div className="panel panel-default fixed-bottom">                    
                         <div className="panel-body">
                             <h2 className='weather__value' style={titleStyle}>OC Chat</h2>
                             <input type="text" placeholder="Username" value={this.state.username} onChange={ev => this.setState({username: ev.target.value})} className="form-control"/>                            
