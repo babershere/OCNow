@@ -73,7 +73,7 @@ class Events extends React.Component {
                 {this.state.events === null ? <div className='col-md-10'><h3>Select another city for events.</h3>
                 </div> : this.state.events.map((elem, i) => {
                     return (
-                        <div className="col-md-2">
+                        <div key={i} className="col-md-2">                        
                             <a href={elem.url} target="_blank"><h5>{elem.name}</h5></a>
                             <a>
                                 <img style={aStyle} src={elem.images[3].url} alt="" />
