@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import logo from "./Asset3.svg";
 
 
 class Navbar extends React.Component {
@@ -26,7 +27,7 @@ class Navbar extends React.Component {
             <nav className="navbar navbar-inverse navbar-fixed-top">
                 <div className="container">
                     <div className="navbar-header">
-                        <Link id='navbrand' className="navbar-brand" to="/home">OC Now</Link>
+                        <Link id='navbrand' className="navbar-brand" to="/home"><img src={logo} alt="OCNowLogo"/></Link>
                     </div>
                     <ul className="nav navbar-nav">
                         <li
