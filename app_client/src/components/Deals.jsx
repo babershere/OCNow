@@ -8,7 +8,8 @@ const aStyle = {
 }
 
 const fixHeight = {
-    minHeight: "115px"
+    minHeight: "115px",
+    maxHeight: '115px'
 }
 
 class Deals extends React.Component {
