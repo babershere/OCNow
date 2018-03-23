@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 // Using the schema constructor, create a new Userchema Object
 // This is similar to a Sequelize model
-const dealsSchema = new Schema ({
+const dealsSchema = new Schema({
     // Make sure everything is required except Favorites that is optional
     title: {
         type: String,

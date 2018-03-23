@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 // Using the Schema constructor, create a new UserSchema object
 // This is similar to a Sequelize model
-const chatSchema = new Schema ({
+const chatSchema = new Schema({
     username: {
         title: String
     },
