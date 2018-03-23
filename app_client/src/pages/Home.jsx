@@ -30,9 +30,6 @@ export default class Home extends React.Component {
     
       handleChange(event) {
         event.preventDefault();
-        // this.setState({dealsloc: event.target.dealsloc})
-        // window.localStorage.setItem('dealscity', event.target.dealsloc);
-        // console.log('dealscity: ', event.target.dealsloc)
 
 
         this.setState({

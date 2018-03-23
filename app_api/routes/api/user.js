@@ -5,34 +5,51 @@ const userController = require('../../controllers/userController');
 
 //Grab Controller's
 
-router.get('/user/:id', (req, res) => {
-    const uniqUser = userController.findOne(req, res);
-    console.log('Unique User: ', uniqUser);
-    res.send('Unique User: ');
+router.get('/:id', (req, res) => {
+    userController.findbyId(req, res).then(resp => {
+        res.json(resp);
+    })
+    .catch(err => {
+        res.status(400).json(err);
+    })
 });
 
-router.get('/user', (req, res) => {
-    const allUsers = userController.findAll(req, res);
-    console.log('All of the Users: ', allUsers);
-    res.send('All of the Users: ');
+router.get('/', (req, res) => {
+    userController.findAll(req, res).then(resp => {
+        res.json(resp);
+    })
+    .catch(err => {
+        res.status(400).json(err);
+    })
 });
 
-router.post('/user', (req, res) => {
-    const postUser = userController.create(req, res);
-    console.log('Posted User: ', postUser);
-    res.send('Posted User: ');
+router.post('/', (req, res) => {
+    userController.create(req, res)
+    .then(resp => {
+        res.json(resp);
+    })
+    .catch(err => {
+        res.status(400).json(err);
+    })
 });
 
-router.put('/user/:id', (req, res) => {
-    const updateUser = userController.update(req, res);
-    console.log('Updated Chat: ', updateUser);
-    res.send('Updated Chat: ');
+router.put('/:id', (req, res) => {
+    userController.update(req, res).then(resp => {
+        res.json(resp);
+    })
+    .catch(err => {
+        res.status(400).json(err);
+    })
 });
 
-router.delete('/user/:id', (req, res) => {
-    const deleteUser = userController.remove(req, res);
-    console.log('Deleted User: ', deleteUser);
-    res.send('Deleted User: ');
+router.delete('/:id', (req, res) => {
+    userController.remove(req, res)
+    .then(resp => {
+        res.json(resp);
+    })
+    .catch(err => {
+        res.status(400).json(err);
+    })
 });
 
 module.exports = router;

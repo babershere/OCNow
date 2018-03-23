@@ -4,35 +4,55 @@ const articleController = require('../../controllers/articleController');
 // const models = require('../models');
 
 //Grab Controller's
-
-router.get('/article/:id', (req, res) => {
-    const uniqArticle = articleController.findOne(req, res);
-    console.log('Unique Articles: ', uniqArticle);
-    res.send('Unique Articles: ');
+router.get('/', (req, res) => {
+    articleController.findAll(req, res)
+    .then(resp => {
+        res.json(resp);
+    })
+    .catch(err => {
+        res.status(400).json(err);
+    })
+});
+router.get('/:id', (req, res) => {
+    articleController.findOne(req, res)
+    .then(resp => {
+        res.json(resp);
+    })
+    .catch(err => {
+        res.status(400).json(err);
+    })
 });
 
-router.get('/article', (req, res) => {
-    const allArticles = articleController.findAll(req, res);
-    console.log('All of the articles are mine', allArticles);
-    res.send('Get the Articles: ');
+
+
+router.post('/', (req, res) => {
+    articleController.create(req, res)
+    .then(resp => {
+        res.json(resp);
+    })
+    .catch(err => {
+        res.status(400).json(err);
+    })
 });
 
-router.post('/article', (req, res) => {
-    const postArticle = articleController.create(req, res);
-    console.log('Posted articles: ', postArticle);
-    res.send('Posted articles: ');
+router.put('/:id', (req, res) => {
+    articleController.update(req, res)
+    .then(resp => {
+        res.json(resp);
+    })
+    .catch(err => {
+        res.status(400).json(err);
+    })
 });
 
-router.put('/article/:id', (req, res) => {
-    const updateArticle = articleController.update(req, res);
-    console.log('Updated Article: ', updateArticle);
-    res.send('Updated Article: ');
-});
-
-router.delete('/article/:id', (req, res) => {
-    const deleteArticle = articleController.remove(req, res);
-    console.log('Deleted Article: ', deleteArticle);
-    res.send('Deleted Article: ');
+router.delete('/:id', (req, res) => {
+    articleController.remove(req, res)
+    .then(resp => {
+        res.json(resp);
+    })
+    .catch(err => {
+        res.status(400).json(err);
+    })
 });
 
 module.exports = router;
