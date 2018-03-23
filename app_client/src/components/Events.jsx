@@ -50,7 +50,6 @@ class Events extends React.Component {
             })
             
         }
-        console.log('events',this.state.events)
     }
         componentDidMount() {
             this.getEvents();

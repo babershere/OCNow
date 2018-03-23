@@ -10,7 +10,7 @@ const makeSticky = {
     position: 'fixed',
     bottom: 0,
     right: 180,
-    minWidth: 200
+    minWidth: 200,
 }
 
 class Chat extends Component {
@@ -76,7 +76,7 @@ render(){
           <Panel.Heading>
             <Panel.Title>
                 <Row>
-                    <Col md={2}><Panel.Toggle componentClass="a"><span class="glyphicon glyphicon-chevron-up"></span></Panel.Toggle></Col>
+                    <Col md={2}><Panel.Toggle componentClass="a"><span className="glyphicon glyphicon-chevron-up"></span></Panel.Toggle></Col>
                     <Col md={10}><h4 className='weather__value' style={titleStyle}>OC Chat</h4></Col>
                 </Row>
                 
