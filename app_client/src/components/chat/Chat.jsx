@@ -64,7 +64,7 @@ class Chat extends Component {
                                 })}
                         </div>
 
-                        <hr />
+                        <br />
                         <input type="text" placeholder="Username" value={this.state.username} onChange={ev => this.setState({ username: ev.target.value })} className="form-control" />
                         <textarea type='text' placeholder="Message" className="form-control" value={this.state.message} onChange={ev => this.setState({ message: ev.target.value })} />
                         <button onClick={this.sendMessage} className="btn btn-default form-control">Send</button>

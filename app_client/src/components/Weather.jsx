@@ -3,7 +3,8 @@ import React from "react";
 const WEATHER_API_Key = process.env.REACT_APP_WEATHER_API_KEY;
 
 const fixHeight = {
-    minHeight: "115px"
+    minHeight: "115px",
+    maxHeight: '115px'
 }
 
 class Weather extends React.Component {
