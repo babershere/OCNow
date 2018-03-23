@@ -1,6 +1,6 @@
 import React from "react";
 
-const DEALS_API_KEY = `xSiFMfbT`;
+const DEALS_API_KEY = process.env.REACT_APP_DEALS_API_KEY;
 
 const aStyle = {
     width: '100px',
