@@ -9,8 +9,8 @@ const titleStyle = {
 const makeSticky = {
     position: 'fixed',
     bottom: 0,
-    right: 180,
-    minWidth: 200,
+    right: 50,
+    minWidth: 200
 }
 
 class Chat extends Component {
