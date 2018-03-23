@@ -146,8 +146,8 @@ var server = app.listen(PORT, function () {
 var io = socket(server);
 
 io.on('connection', (socket) => {
-    console.log("ello world")
-    console.log(socket.id);
+    // console.log("ello world")
+    // console.log(socket.id);
 
     socket.on('SEND_MESSAGE', function (data) {
 

@@ -6,20 +6,12 @@ module.exports = function(app, passport) {
     // process the login form
     app.post('/login', 
 
-        function(req, res, next) {
-            console.log('user js line 10')
-            passport.authenticate('local-login', function (err, user) {
-                console.log('user js line 12')
-                if (err) {
-                    res.status(400).send({ message: err });
-                } else {
-                   next()
-                }
-            });
-        },
+        passport.authenticate('local-login', {
+            failureFlash: true // allow flash messages
+        }),
+        function (req, res) {
+            if (req.user) {
 
-        function(req, res) {
-            if(req.user) {
                 const expTime = new Date();
                 expTime.setDate(expTime.getDate() + 7);
                 const signedJWT = jwt.sign({
@@ -39,6 +31,39 @@ module.exports = function(app, passport) {
                 })
             }
         }
+        // function(req, res, next) {
+        //     console.log('user js line 10')
+        //     passport.authenticate('local-login', function (err, user) {
+        //         console.log('user js line 12')
+        //         if (err) {
+        //             res.status(400).send({ message: err });
+        //         } else {
+        //            next()
+        //         }
+        //     });
+        // },
+
+        // function(req, res) {
+        //     if(req.user) {
+        //         const expTime = new Date();
+        //         expTime.setDate(expTime.getDate() + 7);
+        //         const signedJWT = jwt.sign({
+        //             userID: req.user._id,
+        //             email: req.user.local.email,
+        //             exp: parseInt(expTime.getTime() / 1000)
+        //         }, 'assandtitties');
+
+        //         delete req.user.local.password;
+        //         res.status(200).send({
+        //             jwt: signedJWT,
+        //             user: req.user
+        //         })
+        //     } else {
+        //         res.status(400).send({
+        //             message: 'Wrong username or password'
+        //         })
+        //     }
+        // }
     );
 
 
