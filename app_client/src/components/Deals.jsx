@@ -24,7 +24,7 @@ class Deals extends React.Component {
       } 
         
     getDeals = async () => {
-        const deals_api_call = await fetch(`https://api.discountapi.com/v2/deals?api_key=${DEALS_API_KEY};per_page=10;location=${this.props.city}+ca;radius=1`);
+        const deals_api_call = await fetch(`https://api.discountapi.com/v2/deals?api_key=${DEALS_API_KEY};per_page=7;location=${this.props.city}+ca;radius=1`);
 
         const data = await deals_api_call.json();
         const dealsArr = data.deals;
