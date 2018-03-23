@@ -5,28 +5,44 @@ const chatController = require('../../controllers/chatController');
 
 //Grab Controller's
 
-router.get('/chat', (req, res) => {
-    const getChat = chatController.findAll(req, res);
-    console.log('Get the Chat: ', getChat);
-    res.send('Get the Chat: ');
+router.get('/', (req, res) => {
+    chatController.findAll(req, res)
+    .then(resp => {
+        res.json(resp);
+    })
+    .catch(err => {
+        res.status(400).json(err);
+    })
 });
 
-router.post('/chat', (req, res) => {
-    const postChat = chatController.create(req, res);
-    console.log('Post the Chat: ', postChat);
-    res.send('Post the Chat: ');
+router.post('/', (req, res) => {
+    chatController.create(req, res)
+    .then(resp => {
+        res.json(resp);
+    })
+    .catch(err => {
+        res.status(400).json(err);
+    })
 });
 
-router.put('/chat/:id', (req, res) => {
-    const updateChat = chatController.update(req, res);
-    console.log('Update the Chat: ', updateChat);
-    res.send('Update the Chat: ');
+router.put('/:id', (req, res) => {
+    chatController.update(req, res)
+    .then(resp => {
+        res.json(resp);
+    })
+    .catch(err => {
+        res.status(400).json(err);
+    })
 });
 
 router.delete('/chat/:id', (req, res) => {
-    const deleteChat = chatController.remove(req, res);
-    console.log('Delete the Chat: ', deleteChat);
-    res.send('Delete the Chat: ');
+    chatController.remove(req, res)
+    .then(resp => {
+        res.json(resp);
+    })
+    .catch(err => {
+        res.status(400).json(err);
+    })
 });
 
 module.exports = router;

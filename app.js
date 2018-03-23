@@ -17,10 +17,16 @@ const passport = require("passport");
 const flash = require('connect-flash');
 const session = require('express-session');
 const configDB = require('./config/database.js');
-require('./config/passport')(passport); // pass passport for configuration
+require('./config/passport'); // pass passport for configuration
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Serve static content for the app from the "public" directory in the application directory.
-app.use(express.static("public"));
+
+
+
+// app.use(express.static("public"));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -44,7 +50,6 @@ app.use(session({
     resave: true,
     saveUninitialized: true
 }));
-app.use(passport.initialize());
 
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -141,8 +146,8 @@ var server = app.listen(PORT, function () {
 var io = socket(server);
 
 io.on('connection', (socket) => {
-    console.log("ello world")
-    console.log(socket.id);
+    // console.log("ello world")
+    // console.log(socket.id);
 
     socket.on('SEND_MESSAGE', function (data) {
 

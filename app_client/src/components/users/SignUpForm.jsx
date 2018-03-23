@@ -27,8 +27,9 @@ class SignUpForm extends Component {
     }
     submit(e) {
         e.preventDefault();
-        axios.post("/signup", this.state)
-            .then(resp => {
+        console.log('SUBMIT FORM');
+        console.log('this: ', this.state)
+        axios.post("/api/signup", this.state).then(resp => {
                 console.log(resp);
                 console.log(this.props)
                 window.localStorage.setItem("token", resp.data.jwt)
@@ -47,26 +48,26 @@ class SignUpForm extends Component {
         // }
         return (
             <div>
-                <form> 
+                <form onSubmit={this.submit}> 
                     {/*  PENDING TO MODIFY ON CHANGE */}
                     <div className="form-group">
                         <label htmlFor="firstName">First Name</label>
-                        <input type="text" className="form-control" name="firstName" placeholder="First Name" onChange={this.handleInputChange}/>
+                        <input id="firstName" type="text" className="form-control" name="firstName" placeholder="First Name" onChange={this.handleInputChange}/>
                     </div>
                     <div className="form-group">
                         <label htmlFor="lastName">Last Name</label>
-                        <input type="text" className="form-control" name="lastName" placeholder="Last Name" onChange={this.handleInputChange}/>
+                        <input id ="lastName" type="text" className="form-control" name="lastName" placeholder="Last Name" onChange={this.handleInputChange}/>
                     </div>
                     <div className="form-group">
                         <label htmlFor="email">Email</label>
-                        <input type="email" className="form-control" name="email" placeholder="email" onChange={this.handleInputChange}/>
+                        <input id ="email" type="email" className="form-control" name="email" placeholder="email" onChange={this.handleInputChange}/>
                     </div>
                     <div className="form-group">
                         <label htmlFor="password">Password</label>
-                        <input type="password" className="form-control" name="password" placeholder="password"  onChange={this.handleInputChange}/>
+                        <input id="password" type="password" className="form-control" name="password" placeholder="password"  onChange={this.handleInputChange}/>
                     </div>
 
-                    <button type="button" className="btn btn-default navbar-btn" onClick={this.submit}>Sign Up!</button>
+                    <button className="btn btn-default navbar-btn">Sign Up!</button>
 
                     {/* <div className="clearfix">
                         <FormBtns handleDelete = {this.props.handleDelete} 

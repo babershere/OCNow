@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+
 class Navbar extends React.Component {
 
     constructor(props) {
@@ -8,13 +9,24 @@ class Navbar extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
       }  
 
-    handleSubmit(event) {
-        event.preventDefault();
+    handleSubmit() {
+        
+
+            window.localStorage.clear();
+            window.location="/";
+           console.log("user logged out")
+
     }
 
+
+
     render() {
+        const firstName = window.localStorage.getItem('firstName');
 
         return(
+//create a function that will clear the local storage and add it to the button
+//then redict to login/landing page
+
 
         <nav className="navbar navbar-inverse navbar-fixed-top">
             <div className="container">
@@ -39,8 +51,9 @@ class Navbar extends React.Component {
                     
 
                 <div className="nav navbar-nav navbar-right">
+                    {firstName ? <p style={{color: 'white'}}>Hello {firstName}!</p> : null}
                     <div className='nav navbar-nav'>
-                        <button type="button" className="btn btn-default navbar-btn">Log Out</button>
+                        <button  onClick={() => {this.handleSubmit()}} className="btn btn-default navbar-btn">Log Out</button>
                     </div>
                 </div>
             </div>        

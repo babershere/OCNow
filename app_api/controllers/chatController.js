@@ -17,7 +17,6 @@ module.exports = {
     create: function(req, res) {
         return new Promise((resolve, reject) => {
         const chat = {
-            _id: req.body._id,
             userName: req.body.username,
             message: req.body.message
         };

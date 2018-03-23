@@ -16,7 +16,6 @@ module.exports = {
     create: function(req, res) {
         return new Promise((resolve, reject) => {
         const deals = {
-            _id: req.body._id,
             title: req.body.headline.main,
             image: req.body.image,
             description: req.body.description
