@@ -1,7 +1,7 @@
 import React from "react";
 
-const TKMS_API_Key = 'ZVGbXAY1XYuASRLrVAdARfZ4yikEatFL';
-// const backupAPI_KEY = 'BZAkAGm6c4G9IYugsrmGfucSP3F5PcSf'
+const TKMS_API_Key = process.env.REACT_APP_EVENTS_API_KEY;
+
 const numResults = 5;
 const stateCode = 'ca'
 const radius = 20;

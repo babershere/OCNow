@@ -1,6 +1,6 @@
 import React from "react";
 
-const WEATHER_API_Key = '96e71088ba19930323b9f8f679fd5787';
+const WEATHER_API_Key = process.env.REACT_APP_WEATHER_API_KEY;
 
 const fixHeight = {
     minHeight: "115px"
