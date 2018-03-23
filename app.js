@@ -1,22 +1,26 @@
+// load and require all the technologies needed
 const express = require("express");
 const bodyParser = require("body-parser");
-const models = require("./app_api/models");
-const PORT = process.env.PORT || 3001;
-const app = express();
-const apiRoutes = require("./app_api/routes/index.routes");
-const articleRoutes = require("./app_api/routes/api/article");
 const socket = require("socket.io");
 const mongojs = require("mongojs");
 const mongoose = require("mongoose");
-// Require request and cheerio. This makes the scraping possible
 const request = require("request");
 const cheerio = require("cheerio");
-const router = express.Router();
 const axios = require('axios');
 const passport = require("passport");
 const flash = require('connect-flash');
 const session = require('express-session');
+
+//load up all the models, routes and express handlers
+const models = require("./app_api/models");
+const apiRoutes = require("./app_api/routes/index.routes");
+const articleRoutes = require("./app_api/routes/api/article");
+
 const configDB = require('./config/database.js');
+const app = express();
+const router = express.Router();
+
+const PORT = process.env.PORT || 3001;
 require('./config/passport'); // pass passport for configuration
 
 app.use(passport.initialize());
@@ -24,18 +28,18 @@ app.use(passport.session());
 
 // Serve static content for the app from the "public" directory in the application directory.
 
-
-
-// app.use(express.static("public"));
-
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
 app.use(bodyParser.json());
 app.get('/auth/google',
     function (req, res, next) {
         console.log('hello');
         next()
     },
-    passport.authenticate('google', { scope: ['profile', 'email'] })
+    passport.authenticate('google', {
+        scope: ['profile', 'email']
+    })
 );
 
 app.use(express.static('app_client/build'));
@@ -77,7 +81,6 @@ mongoose.connect(MONGODB_URI, {
 let databaseUrl = "newsdb";
 let collections = ["users", "articles", "chat", "events", "deals"];
 
-
 // Hook mongojs configuration to the db variable
 const db = mongojs(databaseUrl, collections);
 db.on("error", function (error) {
@@ -94,7 +97,6 @@ app.get("/scrape/:city", function (req, res) {
 
         // Select each element in the HTML body from which you want information.
         // NOTE: Cheerio selectors function similarly to jQuery's selectors,
-        // but be sure to visit the package's npm page to see how it works
         let justScraped = [];
 
         $("article.archive-view").each(function (i, element) {
@@ -114,57 +116,37 @@ app.get("/scrape/:city", function (req, res) {
                         link: link,
                         date: date
                     })
-
                 }
             }
         });
-
-        res.status(200).send({ data: justScraped });
+        res.status(200).send({
+            data: justScraped
+        });
         console.log('Number of Stories Scraped: ' + justScraped.length)
     });
 });
 
 // Serve static content for the app from the "public" directory in the application directory.
-// app.use(express.static("public"));
 
-
-
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
 app.use(bodyParser.json());
 app.use(express.static('app_client/build'));
 app.use("/api", apiRoutes)
-
-
-
-
-// Listen on port
-var server = app.listen(PORT, function () {
-    console.log("App running on:  " + PORT);
-});
 
 // CHAT //
 var io = socket(server);
 
 io.on('connection', (socket) => {
-    // console.log("ello world")
-    // console.log(socket.id);
-
     socket.on('SEND_MESSAGE', function (data) {
-
-
-        // console.log(models);
-        // models.Chat.create({ message: data.message, username: data.username })
-        //     .then(function (dbChat) {
-        //         console.log(dbChat);
-        //     })
-        //     .catch(function (err) {
-        //         console.log(err.message);
-        //     });
-
-
         // END CHAT // 
-
         console.log(data)
         io.emit('RECEIVE_MESSAGE', data);
     })
+});
+
+// Listen on port
+var server = app.listen(PORT, function () {
+    console.log("App running on:  " + PORT);
 });

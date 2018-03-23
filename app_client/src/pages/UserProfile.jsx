@@ -28,7 +28,7 @@ class UserProfile extends React.Component {
     render() {
         return(
             <div>
-                <h1 className="text-center">Employee View</h1>
+                <h1 className="text-center">My Profile</h1>
                 <div className="col-md-8 col-md-offset-2" style={formContainerStyle}>
                 <div className="form-group">
                         <label htmlFor="firstName">First Name</label>
@@ -52,9 +52,4 @@ class UserProfile extends React.Component {
     }
 } 
 
-
-
 export default UserProfile;
-
-
-
