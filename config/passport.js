@@ -55,13 +55,13 @@ passport.use('local-login', new LocalStrategy({
                 // if no user is found, return the message
                 if (!user) {
                     console.log('user could not be found');
-                    done(null, false, req.flash('loginMessage', 'No user found.'));
+                    done(null, false, 'loginMessage', 'No user found.');
 
                 }
 
                 if (!user.validPassword(password)) {
                     console.log('user found, and passord matches');
-                    return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.'));
+                    return done(null, false, 'loginMessage', 'Oops! Wrong password.');
                 }
 
                 // all is well, return user

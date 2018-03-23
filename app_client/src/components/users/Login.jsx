@@ -27,11 +27,16 @@ class Login extends Component {
         e.preventDefault();
         axios.post("/login", this.state)
         .then(resp => {
-            console.log(resp);
+            console.log("response" , resp);
             console.log(this.props);
             window.localStorage.setItem("token", resp.data.jwt)
-            window.location = "/home";
-            // this.props.history.push("/");
+            window.localStorage.setItem("firstName", resp.data.user.local.firstName)
+
+            // this.props.getdata(resp.data.user.local.firstName);
+            // window.location = "/home";
+
+
+            this.props.history.push("/home");
         })
         .catch(err => {
             console.error(err);

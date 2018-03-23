@@ -107,7 +107,7 @@ module.exports = function(app, passport) {
 
     // locally --------------------------------
     app.get('/connect/local', function (req, res) {
-        res.render('connect-local.ejs', { message: req.flash('loginMessage') });
+        res.render('connect-local.ejs', { message: ('loginMessage') });
     });
 
     app.post('/connect/local', 
@@ -142,14 +142,28 @@ module.exports = function(app, passport) {
     // user account will stay active in case they want to reconnect in the future
 
     // local -----------------------------------
-    app.get('/unlink/local', isLoggedIn, function (req, res) {
-        var user = req.user;
-        user.local.email = undefined;
-        user.local.password = undefined;
-        user.save(function (err) {
-            res.redirect('/profile');
+
+    var logout = function (req, res, next) {
+        // Get rid of the session token. Then call `logout`; it does no harm.
+        req.logout();
+        req.session.destroy(function (err) {
+            if (err) { return next(err); }
+            // The response should indicate that the user is no longer authenticated.
+            return res.send({ authenticated: req.isAuthenticated() });
         });
-    });
+    };
+
+
+    app.get('/unlink/local', logout, function (req, res) {
+        var user = req.user;
+        console.log(user)
+        req.logout();
+       req.session.destroy(function(err){
+           res.redirect('/');
+       })
+         
+        });
+    
 
     // google ---------------------------------
     app.get('/unlink/google', isLoggedIn, function (req, res) {

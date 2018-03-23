@@ -41,7 +41,7 @@ class Landing extends React.Component {
                                 
                             <div className="panel-body">
                             <h3>Please Log In:</h3>
-                            <Login />
+                            <Login history={this.props.history}/>
                             {/* <form onSubmit={this.handleSubmit} >
                                 <div className="form-group" onSubmit={this.handleSubmit}>
                                     <input name="userEmail" type="text" className="form-control" placeholder="email" value={this.state.userEmail} onChange={this.handleChange} />
