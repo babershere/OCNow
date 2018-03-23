@@ -30,7 +30,7 @@ class Login extends Component {
             console.log(resp);
             console.log(this.props);
             window.localStorage.setItem("token", resp.data.jwt)
-            window.location = "/";
+            window.location = "/home";
             // this.props.history.push("/");
         })
         .catch(err => {
@@ -52,7 +52,7 @@ class Login extends Component {
                         <label>Password</label>
                         <input id="password" className = "form-control" type="password" name="password" placeholder="password" onChange={this.handleInputChange}/>
                     </div>
-                    <button type= "button" className="btn btn-default navbar-btn">Log In</button>
+                    <button  className="btn btn-default navbar-btn">Log In</button>
                 </form>
                 <div className="form-group" onSubmit={this.handleSubmit}>
                     <a className="btn btn-danger" href="/auth/google"
