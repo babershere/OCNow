@@ -23,53 +23,6 @@ const userSchema = new Schema ({
         name: String,
         city: String
     }
-
-
-    //johns schema:
-
-    // _id: {
-    //     type: Schema.Types.ObjectId,
-    //     required: true
-    // },
-    // firstName: {
-    //     type: String,
-    //     required: true
-    // },
-    // lastName: {
-    //     type: String,
-    //     required: true
-    // },
-    // local: {
-    //     type: [{
-    //         email: {
-    //             type: String,
-    //             unique: true,
-    //             required: true
-    //         },
-    //         password: {
-    //             type: String,
-    //             required: true
-    //         }
-    //     }],
-    // },
-    // salt: {
-    //     type: String,
-    //     required: true
-    // },
-    // hash: {
-    //     type: String,
-    //     required: true
-    // },
-    // google: {
-    //     type: [{
-    //         id: String,
-    //         token: String,
-    //         email: String,
-    //         name: String
-    //     }]
-
-    // },
-    // _id: false
 });
 
 // generating a hash
@@ -81,7 +34,6 @@ userSchema.methods.generateHash = function(password) {
 userSchema.methods.validPassword = function(password) {
     return bcrypt.compareSync(password, this.local.password);
 };
-
 
 // This creates our model from above schema, using mongoose's model method
 const User = mongoose.model('User', userSchema);

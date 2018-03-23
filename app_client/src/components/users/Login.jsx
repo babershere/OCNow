@@ -12,8 +12,6 @@ class Login extends Component {
         this.handleInputChange = this.handleInputChange.bind(this);
     }
 
-// NEED TO REVIEW ROUTES // 
-
     handleInputChange(event) {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -27,50 +25,39 @@ class Login extends Component {
         e.preventDefault();
         axios.post("/login", this.state)
         .then(resp => {
-            console.log(resp);
+            console.log("response" , resp);
             console.log(this.props);
             window.localStorage.setItem("token", resp.data.jwt)
-            window.location = "/";
-            // this.props.history.push("/");
+            window.localStorage.setItem("firstName", resp.data.user.local.firstName)
+
+            // this.props.getdata(resp.data.user.local.firstName);
+            // window.location = "/home";
+
+            this.props.history.push("/home");
         })
         .catch(err => {
             console.error(err);
         })
     }
 
-    // NEED TO MAKE SURE ONCHANGE IS CORRECT // 
-    
     render() {
         return (
             <div>
-                <form>
+                <form onSubmit={this.submit}>
                     <div className="form-group">
                         <label>Email</label>
-                        <input className = "form-control" type="email" name="email" placeholder="email"  onChange={this.handleInputChange}/>
+                        <input id="email" className = "form-control" type="email" name="email" placeholder="email"  onChange={this.handleInputChange}/>
                     </div>
                     <div className="form-group">
                         <label>Password</label>
-                        <input className = "form-control" type="password" name="password" placeholder="password" onChange={this.handleInputChange}/>
+                        <input id="password" className = "form-control" type="password" name="password" placeholder="password" onChange={this.handleInputChange}/>
                     </div>
-                    <button type= "button" className="btn btn-default navbar-btn" onClick={(e)=>this.submit(e)}>Log In</button>
+                    <button  className="btn btn-default navbar-btn">Log In</button>
                 </form>
                 <div className="form-group" onSubmit={this.handleSubmit}>
-                    <a className="btn btn-danger" href="/auth/google"
-                    // onClick={
-                    //     (e) => {
-                    //         e.preventDefault();
-                    //         console.log("sup");
-                    //         // axios.get("/auth/google")
-                    //         //     .then(function (resp) {
-                    //         //         console.log(resp)
-                    //             })
-
-                    //     }
-                    // } 
-                    >Google +</a>
+                    <a className="btn btn-danger" href="/auth/google">Google +</a>
                 </div>
             </div>
-            
         );
     }
 }

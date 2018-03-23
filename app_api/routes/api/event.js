@@ -5,34 +5,54 @@ const eventController = require('../../controllers/eventController');
 
 //Grab Controller's
 
-router.get('/event/:id', (req, res) => {
-    const uniqueEvent = eventController.findOne(req, res);
-    console.log("Unique Event: ", uniqueEvent);
-    res.send('Unique Event: ');
+router.get('/:id', (req, res) => {
+    eventController.findOne(req, res)
+        .then(resp => {
+            res.json(resp);
+        })
+        .catch(err => {
+            res.status(400).json(err);
+        })
 });
 
-router.get('/event', (req, res) => {
-    const allEvents = eventController.findAll(req, res);
-    console.log("All of the Events: ", allEvents);
-    res.send('All of the Events: ');
+router.get('/', (req, res) => {
+    eventController.findAll(req, res)
+        .then(resp => {
+            res.json(resp);
+        })
+        .catch(err => {
+            res.status(400).json(err);
+        })
 });
 
-router.post('/event', (req, res) => {
-    const postEvent = eventController.create(req, res);
-    console.log('Posted events: ', postEvent);
-    res.send('Posted events: ');
+router.post('/', (req, res) => {
+    eventController.create(req, res)
+        .then(resp => {
+            res.json(resp);
+        })
+        .catch(err => {
+            res.status(400).json(err);
+        })
 });
 
-router.put('/event/:id', (req, res) => {
-    const updateEvent = eventController.update(req, res);
-    console.log('Updated Events: ', updateEvent);
-    res.send('Updated Events: ');
+router.put('/:id', (req, res) => {
+    const updateEvent = eventController.update(req, res)
+        .then(resp => {
+            res.json(resp);
+        })
+        .catch(err => {
+            res.status(400).json(err);
+        })
 });
 
-router.delete('/event/:id', (req, res) => {
-    const deleteEvent = eventController.remove(req, res);
-    console.log('Deleted Event: ', deleteEvent);
-    res.send('Deleted Event: ');
+router.delete('/:id', (req, res) => {
+    const deleteEvent = eventController.remove(req, res)
+        .then(resp => {
+            res.json(resp);
+        })
+        .catch(err => {
+            res.status(400).json(err);
+        })
 });
 
 module.exports = router;

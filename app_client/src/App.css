@@ -105,12 +105,16 @@ input[type="navtext"], input[type="password"] {
   outline: none;
 }
 input[type="text"], input[type="password"], input[type="email"], input[type='formControl']{
-  background-color:  rgb(247, 164, 10);
+  box-shadow: 0 6px 10px 0 rgba(0,0,0,0.14), 0 1px 18px 0 rgba(0,0,0,0.12), 0 3px 5px -1px rgba(0,0,0,0.3);
+  background-color: #F6F6F6;
+  border: black;
+
+  /* background-color:  rgb(117, 117, 117);
   border: 0;
-  border-bottom: solid 1px #f16051;
+  border-bottom: solid 1px #f16051; */
   width: 100%;
   padding-bottom: 4px;
-  color: rgb(248, 245, 245) !important;
+  color: rgb(7, 7, 7) !important;
   font-weight: lighter;
   letter-spacing: 2px;
   margin-bottom: 30px;
@@ -120,12 +124,15 @@ input[type="text"], input[type="password"], input[type="email"], input[type='for
 }
 
 textarea[type="text"] {
-  background-color:  rgb(247, 164, 10);
+  box-shadow: 0 6px 10px 0 rgba(0,0,0,0.14), 0 1px 18px 0 rgba(0,0,0,0.12), 0 3px 5px -1px rgba(0,0,0,0.3);
+  background-color: #F6F6F6;
+  border: black;
+  /* background-color:  rgb(117, 117, 117);
   border: 0;
-  border-bottom: solid 1px #f16051;
+  border-bottom: solid 1px #f16051; */
   /* width: 30%; */
   padding-bottom: 4px;
-  color: rgb(248, 245, 245) !important;
+  color: rgb(7, 7, 7) !important;
   font-weight: lighter;
   letter-spacing: 2px;
   margin-bottom: 30px;
@@ -202,4 +209,11 @@ button:active {
 
 ::-ms-input-placeholder { /* Microsoft Edge */
   color: rgb(83, 80, 80);
+}
+
+.panel {
+  box-shadow: 0 6px 10px 0 rgba(0,0,0,0.14), 0 1px 18px 0 rgba(0,0,0,0.12), 0 3px 5px -1px rgba(0,0,0,0.3);
+  background-color: rgb(255, 255, 255);
+  border: black;
+  padding: 0.5em 0.75em 0.625em
 }
