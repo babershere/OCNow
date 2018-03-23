@@ -12,8 +12,6 @@ class Login extends Component {
         this.handleInputChange = this.handleInputChange.bind(this);
     }
 
-// NEED TO REVIEW ROUTES // 
-
     handleInputChange(event) {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -35,7 +33,6 @@ class Login extends Component {
             // this.props.getdata(resp.data.user.local.firstName);
             // window.location = "/home";
 
-
             this.props.history.push("/home");
         })
         .catch(err => {
@@ -43,8 +40,6 @@ class Login extends Component {
         })
     }
 
-    // NEED TO MAKE SURE ONCHANGE IS CORRECT // 
-    
     render() {
         return (
             <div>
@@ -60,22 +55,9 @@ class Login extends Component {
                     <button  className="btn btn-default navbar-btn">Log In</button>
                 </form>
                 <div className="form-group" onSubmit={this.handleSubmit}>
-                    <a className="btn btn-danger" href="/auth/google"
-                    // onClick={
-                    //     (e) => {
-                    //         e.preventDefault();
-                    //         console.log("sup");
-                    //         // axios.get("/auth/google")
-                    //         //     .then(function (resp) {
-                    //         //         console.log(resp)
-                    //             })
-
-                    //     }
-                    // } 
-                    >Google +</a>
+                    <a className="btn btn-danger" href="/auth/google">Google +</a>
                 </div>
             </div>
-            
         );
     }
 }

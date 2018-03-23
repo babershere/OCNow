@@ -19,8 +19,8 @@ class Weather extends React.Component {
             cond: undefined
         }
         this.getWeather = this.getWeather.bind(this);
-      } 
-        
+    }
+
     getWeather = async () => {
         const weather_api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${this.props.city},ca,us&units=imperial&APPID=${WEATHER_API_Key}`);
 
@@ -37,42 +37,36 @@ class Weather extends React.Component {
         console.log("WEATHER data: ", data);
     }
 
-        componentDidMount() {
+    componentDidMount() {
+        this.getWeather();
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps) {
             this.getWeather();
         }
+    }
 
-        componentWillReceiveProps(nextProps) {
-            if (nextProps) {
-                this.getWeather();
-            }
-        }
-
-        render() {
-            return(
-                <div>
+    render() {
+        return (
+            <div>
                 <div className='panel panel-default' style={fixHeight}>
-                <div className='panel-body'>
-                <h3 className='weather__value'>{this.props.dropDownText} Weather: </h3>
-                </div>
+                    <div className='panel-body'>
+                        <h3 className='weather__value'>{this.props.dropDownText} Weather: </h3>
+                    </div>
                 </div>
                 <h4 className='weather__key'>Currently: <span className='weather__value'> {this.state.temp} F</span> </h4>
                 <h4 className='weather__key'>Condition: <span className='weather__value'> {this.state.cond}</span> </h4>
                 <h4 className='weather__key'>Humidity: <span className='weather__value'> {this.state.humidity}%</span></h4>
-                <h4 className='weather__key'>High: 
-                    <span className='weather__value'> {this.state.high} F </span> 
-                    <span className='weather__key'>| Low: 
+                <h4 className='weather__key'>High:
+                    <span className='weather__value'> {this.state.high} F </span>
+                    <span className='weather__key'>| Low:
                     <span className='weather__value'> {this.state.low} F</span></span>
-                
                 </h4>
-                                
-                   
-                    <hr/>
-                    
-
-                </div> 
+                <hr />
+            </div>
         )
     }
-   
-}    
+}
 
 export default Weather;
