@@ -1,7 +1,6 @@
 {
   "name": "nofear",
   "version": "1.0.0",
-  "description": "",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -36,5 +35,7 @@
     "setprototypeof": "^1.1.0",
     "socket.io": "^2.0.4",
     "vary": "^1.1.2"
-  }
+  },
+  "devDependencies": {},
+  "description": ""
 }

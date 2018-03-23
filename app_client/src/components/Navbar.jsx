@@ -1,55 +1,59 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+
 class Navbar extends React.Component {
 
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
-      }  
+    }
 
-    handleSubmit(event) {
-        event.preventDefault();
+    handleSubmit() {
+        window.localStorage.clear();
+        window.location = "/";
+        console.log("user logged out")
     }
 
     render() {
+        const firstName = window.localStorage.getItem('firstName');
 
-        return(
+        return (
+            //create a function that will clear the local storage and add it to the button
+            //then redict to login/landing page
 
-        <nav className="navbar navbar-inverse navbar-fixed-top">
-            <div className="container">
+
+            <nav className="navbar navbar-inverse navbar-fixed-top">
+                <div className="container">
                     <div className="navbar-header">
                         <Link id='navbrand' className="navbar-brand" to="/home">OC Now</Link>
-                        </div>
+                    </div>
                     <ul className="nav navbar-nav">
                         <li
-                        className={
-                            window.location.pathname === "/home"
-                            ? "active"
-                            : ""
-                        }
+                            className={
+                                window.location.pathname === "/home"
+                                    ? "active"
+                                    : ""
+                            }
                         >
-                        <Link to="/home">Home</Link>
+                            <Link to="/home">Home</Link>
                         </li>
-
                         <li className={window.location.pathname === "/user/profile/:id" ? "active" : ""}>
-                        <Link to="/user/profile/:id">My Profile</Link>
-                        </li>   
+                            <Link to="/user/profile/:id">    {firstName ? <p style={{ color: 'white' }}>Hello {firstName}!</p> : null}</Link>
+                        </li>
                     </ul>
-                    
 
-                <div className="nav navbar-nav navbar-right">
-                    <div className='nav navbar-nav'>
-                        <button type="button" className="btn btn-default navbar-btn">Log Out</button>
+                    <div className="nav navbar-nav navbar-right">
+
+                        <div className='nav navbar-nav'>
+
+                            <button onClick={() => { this.handleSubmit() }} className="btn btn-default navbar-btn">Log Out</button>
+                        </div>
                     </div>
                 </div>
-            </div>        
-        </nav>
+            </nav>
         )
     }
-
-
 }
-
 
 export default Navbar;

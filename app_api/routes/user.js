@@ -1,25 +1,15 @@
-
 const jwt = require("jsonwebtoken");
 
-module.exports = function(app, passport) {
+module.exports = function (app, passport) {
     console.log("JWT Token", jwt)
     // process the login form
-    app.post('/login', 
+    app.post('/login',
 
-        function(req, res, next) {
-            console.log('user js line 10')
-            passport.authenticate('local-login', function (err, user) {
-                console.log('user js line 12')
-                if (err) {
-                    res.status(400).send({ message: err });
-                } else {
-                   next()
-                }
-            });
-        },
-
-        function(req, res) {
-            if(req.user) {
+        passport.authenticate('local-login', {
+            failureFlash: true // allow flash messages
+        }),
+        function (req, res) {
+            if (req.user) {
 
                 const expTime = new Date();
                 expTime.setDate(expTime.getDate() + 7);
@@ -50,34 +40,27 @@ module.exports = function(app, passport) {
     // });
 
 
-    // process the signup form
-    app.post('/signup',
-        function(req, res) {
-            console.log('user js line 56')
-            console.log("passport user js line 57:")
-            passport.authenticate('local-signup',function (err, user) {
-                console.log('line 59')
-                if (err) {
-                    res.status(400).send({ message: err });
-                } else {
-                    res.status(200).send({ user: user });
-                }
-     
-            })
-            
-        } 
-    );
+    // process the signup form  
+    app.post('/api/signup',
+        passport.authenticate('local', {
+            failureRedirect: '/signup'
+        }),
+        function (req, res) {
+            res.send(req.body);
+        })
 
 
     // google ---------------------------------
 
     // send to google to do the authentication
-    app.get('/auth/google', 
-        function(req, res, next) {
+    app.get('/auth/google',
+        function (req, res, next) {
             console.log('hello');
             next()
         },
-        passport.authenticate('google', { scope: ['profile', 'email'] })
+        passport.authenticate('google', {
+            scope: ['profile', 'email']
+        })
     );
 
     // the callback after google has authenticated the user
@@ -94,10 +77,12 @@ module.exports = function(app, passport) {
 
     // locally --------------------------------
     app.get('/connect/local', function (req, res) {
-        res.render('connect-local.ejs', { message: req.flash('loginMessage') });
+        res.render('connect-local.ejs', {
+            message: ('loginMessage')
+        });
     });
 
-    app.post('/connect/local', 
+    app.post('/connect/local',
         passport.authenticate('local-signup', {
             successRedirect: '/profile', // redirect to the secure profile section
             failureRedirect: '/connect/local', // redirect back to the signup page if there is an error
@@ -109,8 +94,10 @@ module.exports = function(app, passport) {
     // google ---------------------------------
 
     // send to google to do the authentication
-    app.get('/connect/google', 
-        passport.authorize('google', { scope: ['profile', 'email'] })
+    app.get('/connect/google',
+        passport.authorize('google', {
+            scope: ['profile', 'email']
+        })
     );
 
     // the callback after google has authorized the user
@@ -129,14 +116,32 @@ module.exports = function(app, passport) {
     // user account will stay active in case they want to reconnect in the future
 
     // local -----------------------------------
-    app.get('/unlink/local', isLoggedIn, function (req, res) {
-        var user = req.user;
-        user.local.email = undefined;
-        user.local.password = undefined;
-        user.save(function (err) {
-            res.redirect('/profile');
+
+    var logout = function (req, res, next) {
+        // Get rid of the session token. Then call `logout`; it does no harm.
+        req.logout();
+        req.session.destroy(function (err) {
+            if (err) {
+                return next(err);
+            }
+            // The response should indicate that the user is no longer authenticated.
+            return res.send({
+                authenticated: req.isAuthenticated()
+            });
         });
+    };
+
+
+    app.get('/unlink/local', logout, function (req, res) {
+        var user = req.user;
+        console.log(user)
+        req.logout();
+        req.session.destroy(function (err) {
+            res.redirect('/');
+        })
+
     });
+
 
     // google ---------------------------------
     app.get('/unlink/google', isLoggedIn, function (req, res) {
@@ -155,4 +160,3 @@ module.exports = function(app, passport) {
         res.redirect('/');
     }
 }
-
