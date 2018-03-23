@@ -1,7 +1,15 @@
 import React, { Component } from "react";
 import io from "socket.io-client";
+import { Panel, Row, Col } from 'react-bootstrap';
+
 const titleStyle = {
     textAlign: "center"
+}
+
+const makeSticky = {
+    position: 'fixed',
+    bottom: 0,
+    right: 5
 }
 
 class Chat extends Component {
@@ -11,7 +19,9 @@ class Chat extends Component {
         this.state = {
             username: '',
             message:'',
-            messages: []        };
+            messages: [],
+            open: false        
+        };
     
     this.socket = io('https://intense-inlet-80206.herokuapp.com/');
 
@@ -39,24 +49,41 @@ class Chat extends Component {
 render(){
     return (
 
-                    <div className="panel panel-default fixed-bottom">                    
-                        <div className="panel-body">
-                            <h2 className='weather__value' style={titleStyle}>OC Chat</h2>
-                            <input type="text" placeholder="Username" value={this.state.username} onChange={ev => this.setState({username: ev.target.value})} className="form-control"/>                            
-                            <textarea type='text' placeholder="Message" className="form-control" value={this.state.message} onChange={ev => this.setState({message: ev.target.value})}/>
-                            <button onClick={this.sendMessage} className="btn form-control">Send</button>
-                            <hr/>
-                            <div className="messages">
-                    
-                                {this.state.messages === null ? <div></div> : 
-                                    this.state.messages.map(message => {
-                                    return (
-                                        <div>{message.author}:   {message.message}</div>
-                                    )
-                                })}
-                            </div>
-                    </div>
+        <Panel id="collapsible-panel-example-3" style={makeSticky}>
+
+          <Panel.Collapse>
+            <Panel.Body>
+
+            <div className="messages">                    
+                    {this.state.messages === null ? <div></div> : 
+                        this.state.messages.map(message => {
+                        return (
+                            <div>{message.author}:   {message.message}</div>
+                        )
+                    })}
                 </div>
+
+            <hr/>
+                <input type="text" placeholder="Username" value={this.state.username} onChange={ev => this.setState({username: ev.target.value})} className="form-control"/>                            
+                <textarea type='text' placeholder="Message" className="form-control" value={this.state.message} onChange={ev => this.setState({message: ev.target.value})}/>
+                <button onClick={this.sendMessage} className="btn btn-default form-control">Send</button>
+                           
+                            
+
+            </Panel.Body>
+          </Panel.Collapse>
+          <Panel.Heading>
+            <Panel.Title>
+                <Row>
+                    <Col md={2}><Panel.Toggle componentClass="a"><span class="glyphicon glyphicon-chevron-up"></span></Panel.Toggle></Col>
+                    <Col md={10}><h4 className='weather__value' style={titleStyle}>OC Chat</h4></Col>
+                </Row>
+                
+                
+            </Panel.Title>
+            
+          </Panel.Heading>
+        </Panel>
     );
 }
 }
