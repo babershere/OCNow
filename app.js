@@ -17,10 +17,6 @@ const passport = require("passport");
 const flash = require('connect-flash');
 const session = require('express-session');
 
-//load up all the models, routes and express handlers
-
-// const apiRoutes = require("./app_api/routes/index.routes");
-// const articleRoutes = require("./app_api/routes/api/article");
 
 const configDB = require('./config/database.js');
 require('./config/passport')
@@ -54,7 +50,7 @@ app.use(session({
 app.use(passport.initialize());
 
 app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", 'http://localhost:3000');
+    res.header("Access-Control-Allow-Origin", 'https://intense-inlet-80206.herokuapp.com/');
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
