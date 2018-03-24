@@ -18,8 +18,8 @@ const flash = require('connect-flash');
 const session = require('express-session');
 
 //load up all the models, routes and express handlers
-const models = require("./app_api/models");
-const apiRoutes = require("./app_api/routes/index.routes");
+// const models = require("./app_api/models");
+// const apiRoutes = require("./app_api/routes/index.routes");
 // const articleRoutes = require("./app_api/routes/api/article");
 
 const configDB = require('./config/database.js');
@@ -54,7 +54,7 @@ app.use(session({
 app.use(passport.initialize());
 
 app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", 'https://ocnow.herokuapp.com/home');
+    res.header("Access-Control-Allow-Origin", 'https://intense-inlet-80206.herokuapp.com/home');
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
