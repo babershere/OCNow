@@ -50,7 +50,7 @@ class Weather extends React.Component {
     render() {
         return (
             <div>
-                <div className='panel panel-default' style={fixHeight}>
+                <div className='panel panel-default' id='banner-weather' style={fixHeight}>
                     <div className='panel-body'>
                         <h3 className='weather__value'>{this.props.dropDownText} Weather: </h3>
                     </div>

@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Login from "../components/users/Login"
+import Login from "../components/users/Login";
+import css from "./assets/style.css";
 
 class Landing extends React.Component {
 
@@ -31,7 +32,7 @@ class Landing extends React.Component {
 
     render() {
         return (
-            <div className='container'>
+            <div className='container' id='landing-bg'>
                 <div className='row'>
                     <div className="col-md-4"></div>
                     <div className="col-md-4">
