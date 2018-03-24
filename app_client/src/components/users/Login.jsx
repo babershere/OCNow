@@ -56,9 +56,9 @@ class Login extends Component {
                     </div>
                     <button  className="btn btn-default navbar-btn">Log In</button>
                 </form>
-                <div className="form-group" onSubmit={this.handleSubmit}>
+                {/* <div className="form-group" onSubmit={this.handleSubmit}>
                     <a className="btn btn-danger" href="/auth/google">Google +</a>
-                </div>
+                </div> */}
             </div>
         );
     }
