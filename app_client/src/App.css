@@ -221,3 +221,32 @@ button:active {
   border: black;
   padding: 0.5em 0.75em 0.625em
 }
+
+.panel-body {
+  padding-bottom: 10px;
+
+ }
+
+hr {
+  border-width: 1px;
+  border-color: rgb(43, 42, 42);
+  border-block-end-style: groove
+}
+
+.navbar-fixed-top {
+  background-color: #000;
+  /* background-image: url('./components/navbar/Asset11.png') */
+}
+
+#banner-news {
+  background-image: url('./components/navbar/oc2.png');
+
+}
+
+#banner-deals {
+  background-image: url('./components/navbar/oc2.png');
+}
+
+#banner-weather {
+  background-image: url('./components/navbar/oc3.png');
+}

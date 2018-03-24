@@ -1,10 +1,11 @@
 import React from "react";
-import SignUpForm from "../components/users/SignUpForm"
+import SignUpForm from "../components/users/SignUpForm";
+import css from "./assets/style.css";
 
 
 const SignUp = () =>
 
-    <div>
+    <div className='signup'>
         <div className='row'>
             <div className='col-md-12 text-center'>
                 <h3>Sign up</h3>

@@ -1,0 +1,13 @@
+.signup {
+    background-image: url('./sea.png');
+    background-repeat:no-repeat;
+    padding: 70px;
+
+}
+
+.container #landing-bg {
+    background-image: url('./sea.png');
+    background-repeat:no-repeat;
+    padding: 100px;
+
+}

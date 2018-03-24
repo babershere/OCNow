@@ -25,7 +25,7 @@ class App extends Component {
               <ProtectedRoute exact path="/home" component={Home} />
               <Route exact path ="/user/edit" component={UserEdit}/>
               <Route exact path ="/user/add" component={UserAdd}/>
-              <ProtectedRoute exact path ="/user/profile/:id" component={UserProfile}/>
+              <ProtectedRoute exact path ="/user/profile/" component={UserProfile}/>
               <Route exact path ="/signup" component={SignUp}/>
 
             </div>

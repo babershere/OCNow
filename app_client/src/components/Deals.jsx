@@ -44,9 +44,9 @@ class Deals extends React.Component {
     render() {
         return (
             <div>
-                <div className='panel panel-default' style={fixHeight}>
+                <div className='panel panel-default' id='banner-deals' style={fixHeight}>
                     <div className='panel-body'>
-                        <h4 className='weather__value'>{this.props.dropDownText} Deals: </h4>
+                        <h3 className='weather__value'>{this.props.dropDownText} Deals: </h3>
                     </div>
                 </div>
                 {this.state.deals.map((elem, i) => {

@@ -13,7 +13,7 @@ class News extends React.Component {
     render() {        
         return (
         <div>
-            <div className='panel panel-default' style={fixHeight}>
+            <div className='panel panel-default'id='banner-news' style={fixHeight}>
                 <div className='panel-body'>
                     <h2 style={titleStyle} className='weather__value'>{this.props.dropDownText} News</h2>
                 </div>
