@@ -23,7 +23,7 @@ class Chat extends Component {
             open: false
         };
 
-        this.socket = io('https://intense-inlet-80206.herokuapp.com/');
+        this.socket = io('https://ocnow.herokuapp.com/');
 
         this.socket.on('RECEIVE_MESSAGE', function (data) {
             addMessage(data);

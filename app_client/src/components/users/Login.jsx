@@ -29,7 +29,9 @@ class Login extends Component {
             console.log(this.props);
             window.localStorage.setItem("token", resp.data.jwt)
             window.localStorage.setItem("firstName", resp.data.user.local.firstName)
-
+            window.localStorage.setItem("lastName", resp.data.user.local.lastName)
+            window.localStorage.setItem("email", resp.data.user.local.email)
+           
             // this.props.getdata(resp.data.user.local.firstName);
             // window.location = "/home";
 
