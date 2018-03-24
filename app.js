@@ -16,6 +16,8 @@ const axios = require('axios');
 const passport = require("passport");
 const flash = require('connect-flash');
 const session = require('express-session');
+
+
 const configDB = require('./config/database.js');
 require('./config/passport')
 // (passport); // pass passport for configuration
@@ -48,7 +50,7 @@ app.use(session({
 app.use(passport.initialize());
 
 app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Origin", 'https://intense-inlet-80206.herokuapp.com/');
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
@@ -56,7 +58,7 @@ app.use(function (req, res, next) {
 require('./app_api/routes/user.js')(app, passport); // load our routes and pass in our app and fully configured passport
 
 app.use("/api", apiRoutes);
-app.use('/', articleRoutes);
+// app.use('/', articleRoutes);
 
 // // If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
 var MONGODB_URI =
@@ -71,7 +73,7 @@ mongoose.connect(MONGODB_URI, {
 
 // Database configuration
 let databaseUrl = "newsdb";
-let collections = ["users", "articles", "chat", "events", "deals"];
+let collections = ["users"];
 
 
 // Hook mongojs configuration to the db variable

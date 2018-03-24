@@ -30,9 +30,7 @@ class Chat extends Component {
         });
 
         const addMessage = data => {
-            console.log(data);
             this.setState({ messages: [...this.state.messages, data] });
-            console.log(this.state.messages);
         };
 
         this.sendMessage = ev => {
@@ -56,9 +54,9 @@ class Chat extends Component {
 
                         <div className="messages">
                             {this.state.messages === null ? <div></div> :
-                                this.state.messages.map(message => {
+                                this.state.messages.map((message, i) => {
                                     return (
-                                        <div>{message.author}:   {message.message}</div>
+                                        <div key={i}>{message.author}:   {message.message}</div>
                                     )
                                 })}
                         </div>
@@ -75,7 +73,7 @@ class Chat extends Component {
                 <Panel.Heading>
                     <Panel.Title>
                         <Row>
-                            <Col md={2}><Panel.Toggle componentClass="a"><span class="glyphicon glyphicon-chevron-up"></span></Panel.Toggle></Col>
+                            <Col md={2}><Panel.Toggle componentClass="a"><span className="glyphicon glyphicon-chevron-up"></span></Panel.Toggle></Col>
                             <Col md={10}><h4 className='weather__value' style={titleStyle}>OC Chat</h4></Col>
                         </Row>
 

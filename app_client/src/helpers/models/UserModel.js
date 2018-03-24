@@ -1,5 +1,5 @@
 import axios from "axios";
-const ROUTE = "/user"
+const ROUTE = "/user/profile"
 export default {
     /**
      * getOne User
