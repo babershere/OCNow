@@ -14,7 +14,7 @@ const session = require('express-session');
 //load up all the models, routes and express handlers
 const models = require("./app_api/models");
 const apiRoutes = require("./app_api/routes/index.routes");
-const articleRoutes = require("./app_api/routes/api/article");
+// const articleRoutes = require("./app_api/routes/api/article");
 
 const configDB = require('./config/database.js');
 const app = express();
@@ -64,7 +64,7 @@ app.use(function (req, res, next) {
 require('./app_api/routes/user.js')(app, passport); // load our routes and pass in our app and fully configured passport
 
 app.use("/api", apiRoutes);
-app.use('/', articleRoutes);
+// app.use('/', articleRoutes);
 
 // // If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
 var MONGODB_URI =
