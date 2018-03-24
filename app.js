@@ -50,7 +50,7 @@ app.use(session({
 app.use(passport.initialize());
 
 app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", 'https://intense-inlet-80206.herokuapp.com/');
+    res.header("Access-Control-Allow-Origin", 'https://ocnow.herokuapp.com/home');
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
