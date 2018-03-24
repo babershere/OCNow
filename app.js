@@ -18,8 +18,8 @@ const flash = require('connect-flash');
 const session = require('express-session');
 
 //load up all the models, routes and express handlers
-const models = require("./app_api/models");
-const apiRoutes = require("./app_api/routes/index.routes");
+
+// const apiRoutes = require("./app_api/routes/index.routes");
 // const articleRoutes = require("./app_api/routes/api/article");
 
 const configDB = require('./config/database.js');
