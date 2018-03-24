@@ -26,20 +26,24 @@ class UserProfile extends React.Component {
     }
 
     render() {
+        const firstName = window.localStorage.getItem('firstName');
+        const lastName = window.localStorage.getItem('lastName');
+        const email = window.localStorage.getItem('email');
+
         return(
             <div>
                 <h1 className="text-center">My Profile</h1>
                 <div className="col-md-8 col-md-offset-2" style={formContainerStyle}>
                 <div className="form-group">
-                        <label htmlFor="firstName">First Name</label>
+                        <label htmlFor="firstName">First Name:   {firstName ? <p style={{ color: 'Red' }}> {firstName}</p> : null}</label>
                         <h3>{this.state.thisUser.firstName}</h3>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="lastName">Last Name</label>
+                        <label htmlFor="lastName">Last Name :   {lastName ? <p style={{ color: 'Red' }}> {lastName}</p> : null}  </label>
                         <h3>{this.state.thisUser.lastName}</h3>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="email">Email</label>
+                        <label htmlFor="email">Email: {email ? <p style={{ color: 'Red' }}> {email}</p> : null}</label>
                         <h3>{this.state.thisUser.email}</h3>
                     </div>
                     <div className="form-group">

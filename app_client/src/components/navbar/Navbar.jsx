@@ -39,8 +39,8 @@ class Navbar extends React.Component {
                         >
                             <Link to="/home">Home</Link>
                         </li>
-                        <li className={window.location.pathname === "/user/profile/:id" ? "active" : ""}>
-                            <Link to="/user/profile/:id">    {firstName ? <p style={{ color: 'white' }}>Hello {firstName}!</p> : null}</Link>
+                        <li className={window.location.pathname === "/user/profile/" ? "active" : ""}>
+                            <Link to="/user/profile/">    {firstName ? <p style={{ color: 'white' }}>Hello {firstName}!</p> : null}</Link>
                         </li>
                     </ul>
 
