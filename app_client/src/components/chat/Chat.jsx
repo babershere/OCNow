@@ -24,7 +24,7 @@ class Chat extends Component {
             open: false
         };
 
-        this.socket = io('https://intense-inlet-80206.herokuapp.com/');
+        this.socket = io('http://localhost:3000');
 
         this.socket.on('RECEIVE_MESSAGE', function (data) {
             addMessage(data);
