@@ -52,6 +52,9 @@ body {
   margin: 0 auto;
 }
 
+#root {
+  padding-top: 50px;
+}
 
 .title-container {
   height: 90vh;
@@ -87,7 +90,8 @@ body {
 }
 
 #navbrand {
-  color: rgb(247, 164, 10)
+  width:200px;
+  padding-bottom: 60px;
 }
 
 input[type="navtext"], input[type="password"] {
