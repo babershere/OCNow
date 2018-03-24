@@ -16,6 +16,16 @@ class Navbar extends React.Component {
         console.log("user logged out")
     }
 
+    renderbtn(firstName){
+        if (firstName) {
+            return <button onClick={() => { this.handleSubmit() }} className="btn btn-default navbar-btn btn-danger">Log Out</button>
+        }
+  else {
+            return <a href="/" className="btn btn-default navbar-btn btn-primary">Log In</a>
+  }
+
+    }
+
     render() {
         const firstName = window.localStorage.getItem('firstName');
 
@@ -47,8 +57,9 @@ class Navbar extends React.Component {
                     <div className="nav navbar-nav navbar-right">
 
                         <div className='nav navbar-nav'>
+                        {this.renderbtn(firstName)}
 
-                            <button onClick={() => { this.handleSubmit() }} className="btn btn-default navbar-btn">Log Out</button>
+                            {/* <button onClick={() => { this.handleSubmit() }} className="btn btn-default navbar-btn">Log Out</button> */}
                         </div>
                     </div>
                 </div>
