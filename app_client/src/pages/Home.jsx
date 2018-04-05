@@ -128,10 +128,10 @@ render(){
             <Events dropDownText={this.state.dropDownText} city={this.state.dealsCity}/>
         </div>
     </div>
-    <hr/>
+    <hr class="hr-xs"/>
 
     <div className='row'>
-        <div className='col-md-2'>
+        <div id="deals" className='col-md-2'>
             <Deals dropDownText={this.state.dropDownText} city={this.state.dealsCity}/>
         </div>
         <div className='col-md-7'>
