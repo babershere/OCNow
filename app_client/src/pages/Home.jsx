@@ -123,7 +123,7 @@ render(){
         </div>
     </div>
         <hr/>
-    <div className='row'>
+    <div id="ticketmaster" className='row'>
         <div className='col-md-12' style={eventsStyle} >
             <Events dropDownText={this.state.dropDownText} city={this.state.dealsCity}/>
         </div>

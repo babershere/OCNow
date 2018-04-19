@@ -268,6 +268,10 @@ hr {
     margin: 0 auto;
   }
 
+  .container {
+    text-align: center
+  }
+
   .hr-xs {
    border-width: 0px;
   }
@@ -283,6 +287,10 @@ hr {
 
   .col-md-12 hr {
     display: none;
+  }
+
+  #ticketmaster {
+    display: inline-block;
   }
 
   #deals img {
