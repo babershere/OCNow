@@ -36,6 +36,10 @@ body {
   font-family: "Open Sans", serif;
 }
 
+.container {
+  width: 100%;
+}
+
 .wrapper {
   background: linear-gradient(to right, #e67e22, #e74c3c);
   height: 100vh;
@@ -215,6 +219,8 @@ button:active {
   color: rgb(83, 80, 80);
 }
 
+
+
 .panel {
   box-shadow: 0 6px 10px 0 rgba(0,0,0,0.14), 0 1px 18px 0 rgba(0,0,0,0.12), 0 3px 5px -1px rgba(0,0,0,0.3);
   background-color: rgb(255, 255, 255);
@@ -249,6 +255,28 @@ hr {
 
 #banner-weather {
   background-image: url('./components/navbar/oc3.png');
+}
+
+@media (max-width: 993px) {
+  
+  .container {
+    width: initial;
+    text-align: center;
+  }
+
+  #ticketmaster {
+    display: inline-block;
+  }
+  
+  .hr-xs {
+    border-width: 0px;
+  }
+
+  #deals img {
+    width: 40% !important;
+    height: auto !important;
+  }
+
 }
 
 
