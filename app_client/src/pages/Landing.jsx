@@ -35,7 +35,7 @@ class Landing extends React.Component {
             <div className='container' id='landing-bg'>
                 <div className='row'>
                     <div className="col-md-4"></div>
-                    <div className="col-md-4">
+                    <div id="login" className="col-md-4">
                         <div className="panel panel-default">
                             <div className="panel-body">
                                 <h3>Please Log In:</h3>
@@ -47,7 +47,7 @@ class Landing extends React.Component {
                 </div>
                 <div className='row'>
                     <div className="col-md-4"></div>
-                    <div className="col-md-4">
+                    <div id="signup" className="col-md-4">
                         <div className="panel panel-default">
                             <div className="panel-body">
                                 <h3>Or Sign Up:</h3>

@@ -36,6 +36,10 @@ body {
   font-family: "Open Sans", serif;
 }
 
+.container {
+  width: 100%;
+}
+
 .wrapper {
   background: linear-gradient(to right, #e67e22, #e74c3c);
   height: 100vh;
@@ -215,6 +219,8 @@ button:active {
   color: rgb(83, 80, 80);
 }
 
+
+
 .panel {
   box-shadow: 0 6px 10px 0 rgba(0,0,0,0.14), 0 1px 18px 0 rgba(0,0,0,0.12), 0 3px 5px -1px rgba(0,0,0,0.3);
   background-color: rgb(255, 255, 255);
@@ -290,8 +296,6 @@ hr {
     margin: 0 auto;
   }
 
-<<<<<<< HEAD
-=======
   .container {
     text-align: center
   }
@@ -300,7 +304,6 @@ hr {
    border-width: 0px;
   }
 
->>>>>>> c9cb3f843b3f713a8eb8c319f82297080eee2506
  .row {
     text-align: center;
   }
@@ -314,8 +317,6 @@ hr {
     display: none;
   }
 
-<<<<<<< HEAD
-=======
   #ticketmaster {
     display: inline-block;
   }
@@ -325,7 +326,6 @@ hr {
     height: auto !important;
   }
 
->>>>>>> c9cb3f843b3f713a8eb8c319f82297080eee2506
   #banner-weather {
     background-image: url(/static/media/oc2.50ccbf36.png);
   }
