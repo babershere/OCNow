@@ -37,7 +37,6 @@ npm manifest:
       "/api/signup": {
         "target": "http://localhost:3001"
       },
-  
       "/unlink/local": {
         "target": "http://localhost:3001"
       }

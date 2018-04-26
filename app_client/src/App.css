@@ -251,6 +251,28 @@ hr {
   background-image: url('./components/navbar/oc3.png');
 }
 
+@media (max-width: 993px) {
+  
+  .container {
+    width: initial;
+    text-align: center;
+  }
+
+  #ticketmaster {
+    display: inline-block;
+  }
+  
+  .hr-xs {
+    border-width: 0px;
+  }
+
+  #deals img {
+    width: 40% !important;
+    height: auto !important;
+  }
+
+}
+
 
 @media (max-width: 767px) {
 
@@ -268,10 +290,6 @@ hr {
     margin: 0 auto;
   }
 
-  .hr-xs {
-   border-width: 0px;
-  }
-
  .row {
     text-align: center;
   }
@@ -283,11 +301,6 @@ hr {
 
   .col-md-12 hr {
     display: none;
-  }
-
-  #deals img {
-    width: 40% !important;
-    height: auto !important;
   }
 
   #banner-weather {
