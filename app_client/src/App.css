@@ -290,6 +290,17 @@ hr {
     margin: 0 auto;
   }
 
+<<<<<<< HEAD
+=======
+  .container {
+    text-align: center
+  }
+
+  .hr-xs {
+   border-width: 0px;
+  }
+
+>>>>>>> c9cb3f843b3f713a8eb8c319f82297080eee2506
  .row {
     text-align: center;
   }
@@ -303,6 +314,18 @@ hr {
     display: none;
   }
 
+<<<<<<< HEAD
+=======
+  #ticketmaster {
+    display: inline-block;
+  }
+
+  #deals img {
+    width: 40% !important;
+    height: auto !important;
+  }
+
+>>>>>>> c9cb3f843b3f713a8eb8c319f82297080eee2506
   #banner-weather {
     background-image: url(/static/media/oc2.50ccbf36.png);
   }
