@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Login from "../components/users/Login";
-import css from "./assets/style.css";
 
 class Landing extends React.Component {
 
@@ -33,6 +32,8 @@ class Landing extends React.Component {
     render() {
         return (
             <div className='container' id='landing-bg'>
+                <h3>A hyperlocal social based app to display breaking neighborhood news, as well as coupons and deals from local businesses and information about nearby events.</h3>
+                <br />
                 <div className='row'>
                     <div className="col-md-4"></div>
                     <div id="login" className="col-md-4">

@@ -1,4 +1,28 @@
-.App {
+
+/* Temp chat hide */
+#collapsible-panel-example-3 {
+  display: none !important;
+}
+
+#landing-bg h3 {
+  text-align: center;
+  font-family: Pacifico;
+  text-shadow: 1px 1px 2px #9a9a9a;
+}
+
+.signup {
+  background-image: url('./pages/assets/sea.png');
+  background-repeat:no-repeat;
+  padding: 70px;
+
+}
+
+.container #landing-bg {
+  background-image: url('./pages/assets/sea.png');
+  background-repeat:no-repeat;
+  padding: 100px;
+
+}.App {
   text-align: center;
 }
 
@@ -246,15 +270,17 @@ hr {
 
 #banner-news {
   background-image: url('./components/navbar/oc2.png');
-
+  background-size: cover;
 }
 
 #banner-deals {
   background-image: url('./components/navbar/oc2.png');
+  background-size: cover;
 }
 
 #banner-weather {
   background-image: url('./components/navbar/oc3.png');
+  background-size: cover;
 }
 
 @media (max-width: 993px) {
