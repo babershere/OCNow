@@ -1,2 +1,2 @@
-# project3
-An app to see local news, events, and get local business adverts
+# OC NOW
+Hyperlocal social web based app to receive neighborhood news, recieve coupons/deals from local business and events. 
